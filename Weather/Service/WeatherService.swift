@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol WeatherServiceProtocol {
+protocol WeatherServiceDelegate {
     func fetchWeatherData(query: String, completion: @escaping (WeatherData?) -> Void)
 }
 
-class WeatherService: WeatherServiceProtocol {
+class WeatherService: WeatherServiceDelegate {
     var httpClient: HTTPClientProtocol = HTTPClient()
     
     func fetchWeatherData(query: String, completion: @escaping (WeatherData?) -> Void) {

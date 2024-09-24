@@ -10,7 +10,7 @@ protocol WeatherListInteractorDelegate {
 }
 
 class WeatherListInteractor: WeatherListInteractorDelegate {
-    var service: WeatherServiceProtocol?
+    var repository: WeatherRepositoryDelegate?
     var presenter: WeatherListPresenterDelegate?
     
     func getCityList(searchString: String) {

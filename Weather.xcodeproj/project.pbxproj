@@ -24,6 +24,7 @@
 		914BE3FB2CA1BF05009A5BEE /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */; };
 		91EDA9252CA30A52009DD6C1 /* WeatherListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9242CA30A52009DD6C1 /* WeatherListConfigurator.swift */; };
 		91EDA9272CA30C90009DD6C1 /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9262CA30C90009DD6C1 /* WeatherListRouter.swift */; };
+		91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		91EDA9242CA30A52009DD6C1 /* WeatherListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListConfigurator.swift; sourceTree = "<group>"; };
 		91EDA9262CA30C90009DD6C1 /* WeatherListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
+		91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				914BE3BA2CA1A8C5009A5BEE /* SceneDelegate.swift */,
 				914BE3EF2CA1AEA1009A5BEE /* Shared */,
 				914BE3EE2CA1AE58009A5BEE /* WeatherList */,
+				91EDA9282CA3167B009DD6C1 /* Repository */,
 				914BE3F12CA1AEB4009A5BEE /* Service */,
 				914BE3BE2CA1A8C5009A5BEE /* Main.storyboard */,
 				914BE3C12CA1A8C6009A5BEE /* Assets.xcassets */,
@@ -157,6 +160,14 @@
 				914BE3F82CA1B854009A5BEE /* SearchResponse.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		91EDA9282CA3167B009DD6C1 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */,
 				914BE3EB2CA1AE23009A5BEE /* WeatherListInteractor.swift in Sources */,
 				914BE3E92CA1AC1C009A5BEE /* WeatherModel.swift in Sources */,
 				914BE3BD2CA1A8C5009A5BEE /* WeatherListViewController.swift in Sources */,
