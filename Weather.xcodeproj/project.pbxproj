@@ -22,6 +22,8 @@
 		914BE3F72CA1B773009A5BEE /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BE3F62CA1B773009A5BEE /* WeatherAPI.swift */; };
 		914BE3F92CA1B854009A5BEE /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BE3F82CA1B854009A5BEE /* SearchResponse.swift */; };
 		914BE3FB2CA1BF05009A5BEE /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */; };
+		91EDA9252CA30A52009DD6C1 /* WeatherListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9242CA30A52009DD6C1 /* WeatherListConfigurator.swift */; };
+		91EDA9272CA30C90009DD6C1 /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9262CA30C90009DD6C1 /* WeatherListRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		914BE3F62CA1B773009A5BEE /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		914BE3F82CA1B854009A5BEE /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		91EDA9242CA30A52009DD6C1 /* WeatherListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListConfigurator.swift; sourceTree = "<group>"; };
+		91EDA9262CA30C90009DD6C1 /* WeatherListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +123,10 @@
 		914BE3EE2CA1AE58009A5BEE /* WeatherList */ = {
 			isa = PBXGroup;
 			children = (
+				91EDA9242CA30A52009DD6C1 /* WeatherListConfigurator.swift */,
 				914BE3EA2CA1AE23009A5BEE /* WeatherListInteractor.swift */,
 				914BE3EC2CA1AE42009A5BEE /* WeatherListPresenter.swift */,
+				91EDA9262CA30C90009DD6C1 /* WeatherListRouter.swift */,
 			);
 			path = WeatherList;
 			sourceTree = "<group>";
@@ -265,6 +271,8 @@
 				914BE3F52CA1B4BA009A5BEE /* WeatherResponse.swift in Sources */,
 				914BE3F72CA1B773009A5BEE /* WeatherAPI.swift in Sources */,
 				914BE3F32CA1AEC2009A5BEE /* WeatherService.swift in Sources */,
+				91EDA9272CA30C90009DD6C1 /* WeatherListRouter.swift in Sources */,
+				91EDA9252CA30A52009DD6C1 /* WeatherListConfigurator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,6 +5,14 @@
 //  Created by Jacky Tjoa on 23/9/24.
 //
 
-class WeatherListPresenter {
+protocol WeatherListPresenterDelegate {
+    func presentCityList()
+}
+
+class WeatherListPresenter: WeatherListPresenterDelegate {
+    weak var output: WeatherListViewDelegate?
     
+    func presentCityList() {
+        output?.displayCityList()
+    }
 }
