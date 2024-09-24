@@ -14,10 +14,10 @@ class WeatherListInteractor: WeatherListInteractorDelegate {
     var presenter: WeatherListPresenterDelegate?
     
     func onSearch(searchString: String) {
-        repository?.fetchCityList(searchString: searchString, success: { result in
-            
-        }, failure: { error in
-            //TODO: alert
+        repository?.fetchCityList(searchString: searchString, success: { [weak self] result in
+            self?.presenter?.presentCityList()
+        }, failure: { [weak self] error in
+            self?.presenter?.presentError(error: error)
         })
     }
 }

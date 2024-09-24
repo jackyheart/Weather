@@ -7,6 +7,7 @@
 
 protocol WeatherListPresenterDelegate {
     func presentCityList()
+    func presentError(error: Error?)
 }
 
 class WeatherListPresenter: WeatherListPresenterDelegate {
@@ -14,5 +15,9 @@ class WeatherListPresenter: WeatherListPresenterDelegate {
     
     func presentCityList() {
         view?.displayCityList()
+    }
+    
+    func presentError(error: Error?) {
+        view?.displayErrorAlert(error: error)
     }
 }

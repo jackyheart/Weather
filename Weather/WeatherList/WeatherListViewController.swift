@@ -9,6 +9,7 @@ import UIKit
 
 protocol WeatherListViewDelegate: AnyObject {
     func displayCityList()
+    func displayErrorAlert(error: Error?)
 }
 
 class WeatherListViewController: UIViewController {
@@ -34,6 +35,10 @@ class WeatherListViewController: UIViewController {
 
 extension WeatherListViewController: WeatherListViewDelegate {
     func displayCityList() {
+    }
+    
+    func displayErrorAlert(error: Error?) {
+        //TODO: alert
     }
 }
 
