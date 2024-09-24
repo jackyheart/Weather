@@ -9,11 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     let kWeatherCell = "weatherCell"
-    var tableView: UITableView?
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: kWeatherCell)
+        searchBar.placeholder = "Search for a city"
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: kWeatherCell)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -21,11 +25,12 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kWeatherCell, for: indexPath)
+        cell.textLabel?.text = "cell \(indexPath.row)"
         return cell
     }
 }
@@ -34,5 +39,15 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
+
+//MARK: - UISearchBarDelegate
+
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, 
+                   shouldChangeTextIn range: NSRange,
+                   replacementText text: String) -> Bool {
+        return true
     }
 }
