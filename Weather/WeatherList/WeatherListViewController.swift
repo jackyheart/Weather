@@ -15,7 +15,7 @@ class WeatherListViewController: UIViewController {
     let kWeatherCell = "weatherCell"
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var output: WeatherListInteractorDelegate?
+    var interactor: WeatherListInteractorDelegate?
     var router: WeatherListRouterDelegate?
     
     override func viewDidLoad() {

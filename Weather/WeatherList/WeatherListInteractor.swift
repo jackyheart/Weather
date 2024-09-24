@@ -11,7 +11,7 @@ protocol WeatherListInteractorDelegate {
 
 class WeatherListInteractor: WeatherListInteractorDelegate {
     var service: WeatherServiceProtocol?
-    var output: WeatherListPresenterDelegate?
+    var presenter: WeatherListPresenterDelegate?
     
     func getCityList(searchString: String) {
         

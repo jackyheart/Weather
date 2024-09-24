@@ -12,10 +12,10 @@ class WeatherListConfigurator {
         let router = WeatherListRouter()
         let service = WeatherService()
         
-        viewController.output = interactor
-        interactor.output = presenter
+        viewController.interactor = interactor
+        interactor.presenter = presenter
         interactor.service = service
-        presenter.output = viewController
+        presenter.view = viewController
         viewController.router = router
         router.viewController = viewController
     }

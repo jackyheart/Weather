@@ -10,9 +10,9 @@ protocol WeatherListPresenterDelegate {
 }
 
 class WeatherListPresenter: WeatherListPresenterDelegate {
-    weak var output: WeatherListViewDelegate?
+    weak var view: WeatherListViewDelegate?
     
     func presentCityList() {
-        output?.displayCityList()
+        view?.displayCityList()
     }
 }
