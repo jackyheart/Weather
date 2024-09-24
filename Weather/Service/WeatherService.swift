@@ -8,24 +8,42 @@
 import Foundation
 
 protocol WeatherServiceDelegate {
-    func fetchWeatherData(query: String, completion: @escaping (WeatherData?) -> Void)
+    func fetchCityList(query: String, success: @escaping ([SearchResult]?) -> Void, failure: @escaping (Error?) -> Void)
+    func fetchWeatherData(query: String, success: @escaping (WeatherData?) -> Void, failure: @escaping (Error?) -> Void)
 }
 
 class WeatherService: WeatherServiceDelegate {
     var httpClient: HTTPClientProtocol = HTTPClient()
     
-    func fetchWeatherData(query: String, completion: @escaping (WeatherData?) -> Void) {
+    func fetchCityList(query: String, success: @escaping ([SearchResult]?) -> Void, failure: @escaping (Error?) -> Void) {
+        let urlString = WeatherAPI.weather + "?q=" + query + "?key=" + WeatherAPI.key
+        httpClient.fetchData(urlString: urlString,
+                             completion: { data, error in
+            guard let data = data else {
+                failure(APIError.dataError)
+                return
+            }
+            do {
+                let response = try JSONDecoder().decode(SearchResponse.self, from: data)
+                success(response.result)
+            } catch let error {
+                failure(error)
+            }
+        })
+    }
+    
+    func fetchWeatherData(query: String, success: @escaping (WeatherData?) -> Void, failure: @escaping (Error?) -> Void) {
         httpClient.fetchData(urlString: WeatherAPI.weather + query,
                              completion: { data, error in
             guard let data = data else {
-                //TODO: return failure block
+                failure(APIError.dataError)
                 return
             }
             do {
                 let response = try JSONDecoder().decode(WeatherResponse.self, from: data)
-                completion(response.data)
+                success(response.data)
             } catch let error {
-                //TODO: return failure block
+                failure(error)
             }
         })
     }

@@ -25,6 +25,7 @@
 		91EDA9252CA30A52009DD6C1 /* WeatherListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9242CA30A52009DD6C1 /* WeatherListConfigurator.swift */; };
 		91EDA9272CA30C90009DD6C1 /* WeatherListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9262CA30C90009DD6C1 /* WeatherListRouter.swift */; };
 		91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */; };
+		91EDA92C2CA31C85009DD6C1 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA92B2CA31C85009DD6C1 /* APIError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		91EDA9242CA30A52009DD6C1 /* WeatherListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListConfigurator.swift; sourceTree = "<group>"; };
 		91EDA9262CA30C90009DD6C1 /* WeatherListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListRouter.swift; sourceTree = "<group>"; };
 		91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
+		91EDA92B2CA31C85009DD6C1 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,10 +156,11 @@
 			isa = PBXGroup;
 			children = (
 				914BE3F62CA1B773009A5BEE /* WeatherAPI.swift */,
+				91EDA92B2CA31C85009DD6C1 /* APIError.swift */,
 				914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */,
 				914BE3F22CA1AEC2009A5BEE /* WeatherService.swift */,
-				914BE3F42CA1B4BA009A5BEE /* WeatherResponse.swift */,
 				914BE3F82CA1B854009A5BEE /* SearchResponse.swift */,
+				914BE3F42CA1B4BA009A5BEE /* WeatherResponse.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				914BE3E92CA1AC1C009A5BEE /* WeatherModel.swift in Sources */,
 				914BE3BD2CA1A8C5009A5BEE /* WeatherListViewController.swift in Sources */,
 				914BE3F92CA1B854009A5BEE /* SearchResponse.swift in Sources */,
+				91EDA92C2CA31C85009DD6C1 /* APIError.swift in Sources */,
 				914BE3B92CA1A8C5009A5BEE /* AppDelegate.swift in Sources */,
 				914BE3BB2CA1A8C5009A5BEE /* SceneDelegate.swift in Sources */,
 				914BE3FB2CA1BF05009A5BEE /* HTTPClient.swift in Sources */,

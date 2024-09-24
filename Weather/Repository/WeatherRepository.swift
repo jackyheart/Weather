@@ -7,21 +7,20 @@
 
 protocol WeatherRepositoryDelegate {
     func retrieveLastSearchedCities(limit: Int)
-    func fetchCityList(searchString: String)
+    func fetchCityList(searchString: String, success: @escaping ([SearchResult]?) -> Void, failure: @escaping (Error?) -> Void)
     func fetchWeather(city: String)
 }
 
 class WeatherRepository: WeatherRepositoryDelegate {
-    var remoteSource: WeatherServiceDelegate?
+    var remoteSource: WeatherServiceDelegate? = WeatherService()
     
     func retrieveLastSearchedCities(limit: Int) {
     }
     
-    func fetchCityList(searchString: String) {
+    func fetchCityList(searchString: String, success: @escaping ([SearchResult]?) -> Void, failure: @escaping (Error?) -> Void) {
+        remoteSource?.fetchCityList(query: searchString, success: success, failure: failure)
     }
     
     func fetchWeather(city: String) {
-        remoteSource?.fetchWeatherData(query: city, completion: { data in
-        })
     }
 }

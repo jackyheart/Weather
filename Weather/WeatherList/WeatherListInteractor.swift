@@ -6,14 +6,18 @@
 //
 
 protocol WeatherListInteractorDelegate {
-    func getCityList(searchString: String)
+    func onSearch(searchString: String)
 }
 
 class WeatherListInteractor: WeatherListInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: WeatherListPresenterDelegate?
     
-    func getCityList(searchString: String) {
-        
+    func onSearch(searchString: String) {
+        repository?.fetchCityList(searchString: searchString, success: { result in
+            
+        }, failure: { error in
+            //TODO: alert
+        })
     }
 }

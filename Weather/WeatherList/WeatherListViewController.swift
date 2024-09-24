@@ -69,6 +69,10 @@ extension WeatherListViewController: UISearchBarDelegate {
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
         
+        if updatedText.count > 3 {
+            interactor?.onSearch(searchString: updatedText)
+        }
+        
         return true
     }
 }
