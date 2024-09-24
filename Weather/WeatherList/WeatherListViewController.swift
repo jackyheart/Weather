@@ -21,6 +21,10 @@ class WeatherListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         WeatherListConfigurator.configure(self)
+        setupUI()
+    }
+    
+    private func setupUI() {
         searchBar.placeholder = "Search for a city"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: kWeatherCell)
         tableView.dataSource = self
