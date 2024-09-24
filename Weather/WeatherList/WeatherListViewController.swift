@@ -11,7 +11,7 @@ protocol WeatherListViewDelegate: AnyObject {
     func displayCityList()
 }
 
-class ViewController: UIViewController {
+class WeatherListViewController: UIViewController {
     let kWeatherCell = "weatherCell"
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -28,14 +28,14 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: WeatherListViewDelegate {
+extension WeatherListViewController: WeatherListViewDelegate {
     func displayCityList() {
     }
 }
 
 //MARK: - UITableViewDataSource
 
-extension ViewController: UITableViewDataSource {
+extension WeatherListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
@@ -49,14 +49,14 @@ extension ViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDataSource
 
-extension ViewController: UITableViewDelegate {
+extension WeatherListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 
 //MARK: - UISearchBarDelegate
 
-extension ViewController: UISearchBarDelegate {
+extension WeatherListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, 
                    shouldChangeTextIn range: NSRange,
                    replacementText text: String) -> Bool {
@@ -64,11 +64,7 @@ extension ViewController: UISearchBarDelegate {
         let currentText = searchBar.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-        if updatedText.count < 3 {
-            return false
-        }
+        
         return true
     }
-    
-    
 }

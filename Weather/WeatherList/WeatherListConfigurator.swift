@@ -5,10 +5,8 @@
 //  Created by Jacky Tjoa on 24/9/24.
 //
 
-import UIKit
-
 class WeatherListConfigurator {
-    static func configure(_ viewController: ViewController) {
+    static func configure(_ viewController: WeatherListViewController) {
         let interactor = WeatherListInteractor()
         let presenter = WeatherListPresenter()
         let router = WeatherListRouter()
