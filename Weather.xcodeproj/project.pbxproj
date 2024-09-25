@@ -83,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		910865C92CA46BBB00B924D8 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				914BE3F82CA1B854009A5BEE /* SearchResponse.swift */,
+				914BE3F42CA1B4BA009A5BEE /* WeatherResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		914BE3AC2CA1A8C5009A5BEE = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +171,7 @@
 				91EDA92B2CA31C85009DD6C1 /* APIError.swift */,
 				914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */,
 				914BE3F22CA1AEC2009A5BEE /* WeatherService.swift */,
-				914BE3F82CA1B854009A5BEE /* SearchResponse.swift */,
-				914BE3F42CA1B4BA009A5BEE /* WeatherResponse.swift */,
+				910865C92CA46BBB00B924D8 /* Response */,
 			);
 			path = Service;
 			sourceTree = "<group>";
