@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		910865C82CA46B4900B924D8 /* SearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865C72CA46B4900B924D8 /* SearchCellViewModel.swift */; };
 		914BE3B92CA1A8C5009A5BEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BE3B82CA1A8C5009A5BEE /* AppDelegate.swift */; };
 		914BE3BB2CA1A8C5009A5BEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BE3BA2CA1A8C5009A5BEE /* SceneDelegate.swift */; };
 		914BE3BD2CA1A8C5009A5BEE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BE3BC2CA1A8C5009A5BEE /* SearchViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		910865C72CA46B4900B924D8 /* SearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellViewModel.swift; sourceTree = "<group>"; };
 		914BE3B52CA1A8C5009A5BEE /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		914BE3B82CA1A8C5009A5BEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		914BE3BA2CA1A8C5009A5BEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		914BE3F02CA1AEA7009A5BEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				910865C72CA46B4900B924D8 /* SearchCellViewModel.swift */,
 				914BE3E82CA1AC1C009A5BEE /* WeatherModel.swift */,
 			);
 			path = Model;
@@ -280,6 +283,7 @@
 				914BE3BD2CA1A8C5009A5BEE /* SearchViewController.swift in Sources */,
 				914BE3F92CA1B854009A5BEE /* SearchResponse.swift in Sources */,
 				91EDA92C2CA31C85009DD6C1 /* APIError.swift in Sources */,
+				910865C82CA46B4900B924D8 /* SearchCellViewModel.swift in Sources */,
 				914BE3B92CA1A8C5009A5BEE /* AppDelegate.swift in Sources */,
 				914BE3BB2CA1A8C5009A5BEE /* SceneDelegate.swift in Sources */,
 				914BE3FB2CA1BF05009A5BEE /* HTTPClient.swift in Sources */,
