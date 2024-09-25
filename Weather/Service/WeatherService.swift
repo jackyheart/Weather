@@ -8,14 +8,14 @@
 import Foundation
 
 protocol WeatherServiceDelegate {
-    func fetchCityList(query: String, success: @escaping (SearchResult?) -> Void, failure: @escaping (Error?) -> Void)
+    func fetchCityList(query: String, success: @escaping (SearchResponse?) -> Void, failure: @escaping (Error?) -> Void)
     func fetchWeatherData(query: String, success: @escaping (WeatherData?) -> Void, failure: @escaping (Error?) -> Void)
 }
 
 class WeatherService: WeatherServiceDelegate {
     var httpClient: HTTPClientProtocol = HTTPClient()
     
-    func fetchCityList(query: String, success: @escaping (SearchResult?) -> Void, failure: @escaping (Error?) -> Void) {
+    func fetchCityList(query: String, success: @escaping (SearchResponse?) -> Void, failure: @escaping (Error?) -> Void) {
         let urlString = WeatherAPI.search + "?key=" + WeatherAPI.key + "&q=" + query + "&format=json"
         httpClient.fetchData(urlString: urlString,
                              completion: { data, error in
@@ -25,7 +25,7 @@ class WeatherService: WeatherServiceDelegate {
             }
             do {
                 let response = try JSONDecoder().decode(SearchResponse.self, from: data)
-                success(response.searchApi)
+                success(response)
             } catch let error {
                 failure(error)
             }

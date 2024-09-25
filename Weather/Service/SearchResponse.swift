@@ -6,14 +6,14 @@
 //
 
 struct SearchResponse: Codable {
-    let searchApi: SearchResult
+    let searchApi: SearchApi
     
     enum CodingKeys: String, CodingKey {
         case searchApi = "search_api"
     }
 }
 
-struct SearchResult: Codable {
+struct SearchApi: Codable {
     let result: [ResultItem]
 }
 
