@@ -20,7 +20,7 @@ class WeatherRepository: WeatherRepositoryDelegate {
     
     func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void, 
                        failure: @escaping (Error?) -> Void) {
-        remoteSource?.fetchCityList(query: searchString, success: success, failure: failure)
+        remoteSource?.fetchData(query: searchString, success: success, failure: failure)
     }
     
     func fetchWeather(city: String) {
