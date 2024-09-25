@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     var interactor: SearchInteractorDelegate?
     var router: SearchRouterDelegate?
     private let kWeatherCell = "weatherCell"
+    private let emptyView = SearchEmptyView()
     private var dataArray: [SearchCellViewModel] = []
     
     override func viewDidLoad() {
@@ -58,6 +59,11 @@ extension SearchViewController: SearchViewDelegate {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if dataArray.count == 0 {
+            tableView.backgroundView = emptyView
+        } else {
+            tableView.backgroundView = nil
+        }
         return dataArray.count
     }
     
