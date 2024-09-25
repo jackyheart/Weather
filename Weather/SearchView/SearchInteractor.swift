@@ -5,13 +5,13 @@
 //  Created by Jacky Tjoa on 23/9/24.
 //
 
-protocol WeatherListInteractorDelegate {
+protocol SearchInteractorDelegate {
     func onSearch(searchString: String)
 }
 
-class WeatherListInteractor: WeatherListInteractorDelegate {
+class SearchInteractor: SearchInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
-    var presenter: WeatherListPresenterDelegate?
+    var presenter: SearchPresenterDelegate?
     
     func onSearch(searchString: String) {
         repository?.fetchCityList(searchString: searchString, success: { [weak self] response in

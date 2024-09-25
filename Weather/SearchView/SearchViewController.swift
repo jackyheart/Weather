@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol WeatherListViewDelegate: AnyObject {
+protocol SearchViewDelegate: AnyObject {
     func displayCityList(_ result: [SearchCellViewModel])
     func displayErrorAlert(error: Error?)
 }
 
-class WeatherListViewController: UIViewController {
+class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var interactor: WeatherListInteractorDelegate?
-    var router: WeatherListRouterDelegate?
+    var interactor: SearchInteractorDelegate?
+    var router: SearchRouterDelegate?
     private let kWeatherCell = "weatherCell"
     private var dataArray: [SearchCellViewModel] = []
     
@@ -34,7 +34,7 @@ class WeatherListViewController: UIViewController {
     }
 }
 
-extension WeatherListViewController: WeatherListViewDelegate {
+extension SearchViewController: SearchViewDelegate {
     func displayCityList(_ result: [SearchCellViewModel]) {
         dataArray = result
         DispatchQueue.main.async { [weak self] in
@@ -56,7 +56,7 @@ extension WeatherListViewController: WeatherListViewDelegate {
 
 //MARK: - UITableViewDataSource
 
-extension WeatherListViewController: UITableViewDataSource {
+extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
@@ -71,14 +71,14 @@ extension WeatherListViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDataSource
 
-extension WeatherListViewController: UITableViewDelegate {
+extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
 
 //MARK: - UISearchBarDelegate
 
-extension WeatherListViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, 
                    shouldChangeTextIn range: NSRange,
                    replacementText text: String) -> Bool {

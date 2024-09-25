@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol WeatherListRouterDelegate {
+protocol SearchRouterDelegate {
     func navigateToDetailsScreen()
 }
 
-class WeatherListRouter: WeatherListRouterDelegate {
-    weak var viewController: (UIViewController & WeatherListViewDelegate)?
+class SearchRouter: SearchRouterDelegate {
+    weak var viewController: (UIViewController & SearchViewDelegate)?
     
     func navigateToDetailsScreen() {
     }

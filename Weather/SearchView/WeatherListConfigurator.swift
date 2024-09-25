@@ -6,10 +6,10 @@
 //
 
 class WeatherListConfigurator {
-    static func configure(_ viewController: WeatherListViewController) {
-        let interactor = WeatherListInteractor()
-        let presenter = WeatherListPresenter()
-        let router = WeatherListRouter()
+    static func configure(_ viewController: SearchViewController) {
+        let interactor = SearchInteractor()
+        let presenter = SearchPresenter()
+        let router = SearchRouter()
         let repository = WeatherRepository()
         
         viewController.interactor = interactor

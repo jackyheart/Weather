@@ -5,13 +5,13 @@
 //  Created by Jacky Tjoa on 23/9/24.
 //
 
-protocol WeatherListPresenterDelegate {
+protocol SearchPresenterDelegate {
     func presentCityList(results: [ResultItem])
     func presentError(error: Error?)
 }
 
-class WeatherListPresenter: WeatherListPresenterDelegate {
-    weak var view: WeatherListViewDelegate?
+class SearchPresenter: SearchPresenterDelegate {
+    weak var view: SearchViewDelegate?
     
     func presentCityList(results: [ResultItem]) {
         let cellViewModelList = results.map {
