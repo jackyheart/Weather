@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WeatherListConfigurator.configure(self)
+        SearchConfigurator.configure(self)
         setupUI()
     }
     

@@ -1,11 +1,11 @@
 //
-//  WeatherListConfigurator.swift
+//  SearchConfigurator.swift
 //  Weather
 //
 //  Created by Jacky Tjoa on 24/9/24.
 //
 
-class WeatherListConfigurator {
+class SearchConfigurator {
     static func configure(_ viewController: SearchViewController) {
         let interactor = SearchInteractor()
         let presenter = SearchPresenter()
