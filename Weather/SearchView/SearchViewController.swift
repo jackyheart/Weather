@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SearchViewDelegate: AnyObject {
-    func displayCityList(_ result: [SearchCellViewModel])
+    func displayResultList(_ results: [SearchCellViewModel])
     func displayErrorAlert(error: Error?)
 }
 
@@ -35,8 +35,8 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: SearchViewDelegate {
-    func displayCityList(_ result: [SearchCellViewModel]) {
-        dataArray = result
+    func displayResultList(_ results: [SearchCellViewModel]) {
+        dataArray = results
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }

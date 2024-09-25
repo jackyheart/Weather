@@ -14,12 +14,12 @@ class SearchPresenter: SearchPresenterDelegate {
     weak var view: SearchViewDelegate?
     
     func presentCityList(results: [ResultItem]) {
-        let cellViewModelList = results.map {
+        let resultListViewModel = results.map {
             let displayText = "\($0.areaName.first?.value ?? ""), \($0.country.first?.value ?? "")"
             let cellViewModel = SearchCellViewModel(displayText: displayText)
             return cellViewModel
         }
-        view?.displayCityList(cellViewModelList)
+        view?.displayResultList(resultListViewModel)
     }
     
     func presentError(error: Error?) {
