@@ -1,5 +1,5 @@
 //
-//  ErrorCode.swift
+//  APIError.swift
 //  Weather
 //
 //  Created by Jacky Tjoa on 25/9/24.
