@@ -27,7 +27,7 @@ class SearchEmptyView: UIView {
         messageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         messageLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         messageLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        messageLabel.text = "No results available x 2"
+        messageLabel.text = "No results available"
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
     }
