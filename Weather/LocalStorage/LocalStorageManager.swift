@@ -34,8 +34,16 @@ class LocalStorageManager: LocalStorageDelegate {
     
     func saveViewedCity(data: SearchCellModel) {
         guard let storedData = localSource.read(key: key) else {
+            do {
+                let lastViewed = LastViewedCity(data: data, dateViewed: Date())
+                let encodedData = try JSONEncoder().encode([lastViewed])
+                localSource.write(value: encodedData, key: key)
+            } catch let error {
+                print(error)
+            }
             return
         }
+        
         do {
             var storedLastViews = try JSONDecoder().decode([LastViewedCity].self, from: storedData)
             let lastViewed = LastViewedCity(data: data, dateViewed: Date())
@@ -43,9 +51,8 @@ class LocalStorageManager: LocalStorageDelegate {
             let encodedData = try JSONEncoder().encode(storedLastViews)
             localSource.write(value: encodedData, key: key)
             //TODO: cleanup storage
-        } catch {
-            //Logging
-            print("write error to local storage")
+        } catch let error {
+            print(error)
         }
     }
 }
