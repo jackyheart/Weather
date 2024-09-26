@@ -15,15 +15,15 @@ protocol WeatherRepositoryDelegate {
 }
 
 class WeatherRepository: WeatherRepositoryDelegate {
-    var localSource: LocalStorageDelegate = LocalStorageManager()
+    var localSource: LocalStorageManagerDelegate? = LocalStorageManager()
     var remoteSource: RemoteServiceManagerDelegate? = RemoteServiceManager()
     
     func storeViewedCity(data: SearchCellModel) {
-        localSource.saveViewedCity(data: data)
+        localSource?.saveViewedCity(data: data)
     }
     
     func retrieveViewedCities(limit: Int) -> [LastViewedCity] {
-        return localSource.retrieveViewedCities(limit: limit)
+        return localSource?.retrieveViewedCities(limit: limit) ?? []
     }
     
     func fetchCityList(searchString: String, 

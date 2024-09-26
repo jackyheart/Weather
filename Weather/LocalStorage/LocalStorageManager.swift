@@ -7,17 +7,17 @@
 
 import Foundation
 
-protocol LocalStorageDelegate {
+protocol LocalStorageManagerDelegate {
     func retrieveViewedCities(limit: Int) -> [LastViewedCity]
     func saveViewedCity(data: SearchCellModel)
 }
 
-class LocalStorageManager: LocalStorageDelegate {
+class LocalStorageManager: LocalStorageManagerDelegate {
     private let key = "viewedCities"
-    let localSource: LocalSourceDelegate = UserDefaultsManager()
+    let localSource: LocalSourceDelegate? = UserDefaultsManager()
     
     func retrieveViewedCities(limit: Int) -> [LastViewedCity] {
-        guard let storedData = localSource.read(key: key) else {
+        guard let storedData = localSource?.read(key: key) else {
             return []
         }
         do {
@@ -32,11 +32,11 @@ class LocalStorageManager: LocalStorageDelegate {
     }
     
     func saveViewedCity(data: SearchCellModel) {
-        guard let storedData = localSource.read(key: key) else {
+        guard let storedData = localSource?.read(key: key) else {
             do {
                 let lastViewed = LastViewedCity(data: data, dateViewed: Date())
                 let encodedData = try JSONEncoder().encode([lastViewed])
-                localSource.write(value: encodedData, key: key)
+                localSource?.write(value: encodedData, key: key)
             } catch let error {
                 print(error)
             }
@@ -48,7 +48,7 @@ class LocalStorageManager: LocalStorageDelegate {
             let lastViewed = LastViewedCity(data: data, dateViewed: Date())
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
-            localSource.write(value: encodedData, key: key)
+            localSource?.write(value: encodedData, key: key)
             //TODO: cleanup storage
         } catch let error {
             print(error)
