@@ -15,7 +15,7 @@ protocol WeatherRepositoryDelegate {
 
 class WeatherRepository: WeatherRepositoryDelegate {
     var localSource: LocalStorageDelegate = LocalStorageManager()
-    var remoteSource: WeatherServiceDelegate? = WeatherService()
+    var remoteSource: RemoteServiceDelegate? = RemoteService()
     
     func storeViewedCity(data: SearchCellModel) {
         localSource.saveViewedCity(data: data)

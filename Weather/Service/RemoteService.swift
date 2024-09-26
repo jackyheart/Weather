@@ -1,5 +1,5 @@
 //
-//  WeatherService.swift
+//  RemoteService.swift
 //  Weather
 //
 //  Created by Jacky Tjoa on 23/9/24.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol WeatherServiceDelegate {
+protocol RemoteServiceDelegate {
     func fetchData<T: Decodable>(query: String, 
                                  success: @escaping (T?) -> Void,
                                  failure: @escaping (Error?) -> Void)
 }
 
-class WeatherService: WeatherServiceDelegate {
+class RemoteService: RemoteServiceDelegate {
     var httpClient: HTTPClientProtocol = HTTPClient()
     
     private func buildURL(withBaseURL baseURL: String, query: String) -> String {

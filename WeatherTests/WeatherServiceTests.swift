@@ -9,11 +9,11 @@ import XCTest
 @testable import Weather
 
 final class WeatherServiceTests: XCTestCase {
-    var sut: WeatherService!
+    var sut: RemoteService!
     var mockHTTPClient: MockHTTPClient!
     
     override func setUp() {
-        sut = WeatherService()
+        sut = RemoteService()
         mockHTTPClient = MockHTTPClient()
         sut.httpClient = mockHTTPClient
     }
