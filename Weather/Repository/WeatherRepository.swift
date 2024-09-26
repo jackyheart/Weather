@@ -6,16 +6,18 @@
 //
 
 protocol WeatherRepositoryDelegate {
-    func retrieveLastSearchedCities(limit: Int)
+    func retrieveLastVisitedCities(limit: Int)
     func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void, 
                        failure: @escaping (Error?) -> Void)
     func fetchWeather(city: String)
 }
 
 class WeatherRepository: WeatherRepositoryDelegate {
+    var localSource: LocalStorageProtocol = UserDefaultsManager()
     var remoteSource: WeatherServiceDelegate? = WeatherService()
     
-    func retrieveLastSearchedCities(limit: Int) {
+    func retrieveLastVisitedCities(limit: Int) {
+        localSource.retriveVisitedCities(limit: limit)
     }
     
     func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void, 
