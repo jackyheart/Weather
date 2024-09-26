@@ -29,8 +29,9 @@ class LocalStorageManager: LocalStorageDelegate {
         }
         do {
             let storedLastViews = try JSONDecoder().decode([LastViewedCity].self, from: storedData)
-            //TODO: sort and limit
-            return storedLastViews
+            let sortedViews = storedLastViews.sorted(by: { $0.dateViewed > $1.dateViewed })
+            let limitSortedViews = Array(sortedViews.prefix(limit))
+            return limitSortedViews
         } catch {
             //Logging
             print("read error from local storage")
