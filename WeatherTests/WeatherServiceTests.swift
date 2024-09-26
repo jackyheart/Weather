@@ -43,7 +43,6 @@ final class WeatherServiceTests: XCTestCase {
 
 final class MockHTTPClient: HTTPClientProtocol {
     var fileName: String = ""
-    var shouldReturnSuccess = true
     
     func fetchData(urlString: String,
                    completion: @escaping (Data?, (any Error)?) -> Void) {
