@@ -12,11 +12,6 @@ protocol LocalStorageDelegate {
     func saveViewedCity(data: SearchCellModel)
 }
 
-struct LastViewedCity: Codable {
-    let data: SearchCellModel
-    let dateViewed: Date
-}
-
 class LocalStorageManager: LocalStorageDelegate {
     private let key = "viewedCities"
     let localSource: LocalSourceDelegate = UserDefaultsManager()
