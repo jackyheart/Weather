@@ -31,6 +31,7 @@
 		919DCEDC2CA5AADA0046DF58 /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */; };
 		919DCEDE2CA5B1980046DF58 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */; };
 		919DCEE12CA5BAE60046DF58 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 919DCEE02CA5BAE60046DF58 /* empty.json */; };
+		919DCEE32CA5BD480046DF58 /* RemoteServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCEE22CA5BD480046DF58 /* RemoteServiceManagerTests.swift */; };
 		91EDA9252CA30A52009DD6C1 /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */; };
 		91EDA9272CA30C90009DD6C1 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */; };
 		91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */; };
@@ -75,6 +76,7 @@
 		919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
 		919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 		919DCEE02CA5BAE60046DF58 /* empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		919DCEE22CA5BD480046DF58 /* RemoteServiceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteServiceManagerTests.swift; sourceTree = "<group>"; };
 		91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
 		91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				910865CC2CA4744A00B924D8 /* MockJson */,
 				910865CF2CA474BA00B924D8 /* WeatherServiceTests.swift */,
+				919DCEE22CA5BD480046DF58 /* RemoteServiceManagerTests.swift */,
 			);
 			path = WeatherTests;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				910865D02CA474BA00B924D8 /* WeatherServiceTests.swift in Sources */,
+				919DCEE32CA5BD480046DF58 /* RemoteServiceManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
