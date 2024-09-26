@@ -25,9 +25,8 @@ class LocalStorageManager: LocalStorageDelegate {
             let sortedViews = storedLastViews.sorted(by: { $0.dateViewed > $1.dateViewed })
             let limitSortedViews = Array(sortedViews.prefix(limit))
             return limitSortedViews
-        } catch {
-            //Logging
-            print("read error from local storage")
+        } catch let error {
+            print(error)
         }
         return []
     }
