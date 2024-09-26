@@ -183,13 +183,11 @@
 		914BE3F12CA1AEB4009A5BEE /* RemoteService */ = {
 			isa = PBXGroup;
 			children = (
-				914BE3F62CA1B773009A5BEE /* WeatherAPI.swift */,
-				91EDA92B2CA31C85009DD6C1 /* APIError.swift */,
+				919DCEDF2CA5B6920046DF58 /* Constants */,
+				910865C92CA46BBB00B924D8 /* Responses */,
 				914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */,
 				914BE3F22CA1AEC2009A5BEE /* RemoteService.swift */,
-				919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */,
 				919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */,
-				910865C92CA46BBB00B924D8 /* Responses */,
 			);
 			path = RemoteService;
 			sourceTree = "<group>";
@@ -201,6 +199,16 @@
 				919DCED52CA4F52B0046DF58 /* LocalStorageManager.swift */,
 			);
 			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		919DCEDF2CA5B6920046DF58 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				914BE3F62CA1B773009A5BEE /* WeatherAPI.swift */,
+				91EDA92B2CA31C85009DD6C1 /* APIError.swift */,
+				919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		91EDA9282CA3167B009DD6C1 /* Repository */ = {

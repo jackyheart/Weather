@@ -7,7 +7,7 @@
 
 import Foundation
 
-class APIError {
+struct APIError {
     static let kDomain = "WeatherAPIError"
     static let dataError = NSError(domain: kDomain, code: 1001, userInfo: ["message": "no data available"])
 }
