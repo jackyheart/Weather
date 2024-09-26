@@ -7,6 +7,7 @@
 
 protocol SearchInteractorDelegate {
     func onSearch(searchString: String)
+    func didSelectItem(with data: SearchCellModel)
 }
 
 class SearchInteractor: SearchInteractorDelegate {
@@ -20,5 +21,9 @@ class SearchInteractor: SearchInteractorDelegate {
         }, failure: { [weak self] error in
             self?.presenter?.presentError(error: error)
         })
+    }
+    
+    func didSelectItem(with data: SearchCellModel) {
+        repository?.storeViewedCity(data: data)
     }
 }

@@ -9,13 +9,11 @@ import Foundation
 
 protocol LocalStorageDelegate {
     func retrieveViewedCities(limit: Int) -> [LastViewedCity]
-    func saveViewedCity(value: String)
+    func saveViewedCity(data: SearchCellModel)
 }
 
 struct LastViewedCity: Codable {
-    let displayText: String
-    let latitude: String
-    let longitude: String
+    let data: SearchCellModel
     let dateViewed: Date
 }
 
@@ -24,7 +22,7 @@ class LocalStorageManager: LocalStorageDelegate {
     let localSource: LocalSourceDelegate = UserDefaultsManager()
     
     func retrieveViewedCities(limit: Int) -> [LastViewedCity] {
-        guard var storedData = localSource.read(key: key) else {
+        guard let storedData = localSource.read(key: key) else {
             return []
         }
         do {
@@ -39,17 +37,17 @@ class LocalStorageManager: LocalStorageDelegate {
         return []
     }
     
-    func saveViewedCity(value: String) {
-        guard var storedData = localSource.read(key: key) else {
+    func saveViewedCity(data: SearchCellModel) {
+        guard let storedData = localSource.read(key: key) else {
             return
         }
         do {
             var storedLastViews = try JSONDecoder().decode([LastViewedCity].self, from: storedData)
-            //TODO: retrieve lat, long from data model
-            let lastViewed = LastViewedCity(displayText: value, latitude: "", longitude: "", dateViewed: Date())
+            let lastViewed = LastViewedCity(data: data, dateViewed: Date())
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
             localSource.write(value: encodedData, key: key)
+            //TODO: cleanup storage
         } catch {
             //Logging
             print("write error to local storage")
