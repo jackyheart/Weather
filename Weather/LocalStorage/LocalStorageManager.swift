@@ -1,5 +1,5 @@
 //
-//  UserDefaultsManager.swift
+//  LocalStorageManager.swift
 //  Weather
 //
 //  Created by Jacky Tjoa on 26/9/24.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-protocol LocalStorageProtocol {
-    func retriveVisitedCities(limit: Int) -> [LastViewed]
-    func persistVisitedCity(value: String)
+protocol LocalStorageDelegate {
+    func retrieveViewedCities(limit: Int) -> [LastViewed]
+    func saveViewedCity(value: String)
 }
 
 struct LastViewed: Codable {
@@ -17,11 +17,11 @@ struct LastViewed: Codable {
     let viewedDate: Date
 }
 
-class UserDefaultsManager: LocalStorageProtocol {
+class LocalStorageManager: LocalStorageDelegate {
     let userDefaults = UserDefaults.standard
     let key = "visitedCities"
     
-    func retriveVisitedCities(limit: Int) -> [LastViewed] {
+    func retrieveViewedCities(limit: Int) -> [LastViewed] {
         guard var storedData = userDefaults.object(forKey: key) as? Data else {
             return []
         }
@@ -35,7 +35,7 @@ class UserDefaultsManager: LocalStorageProtocol {
         return []
     }
     
-    func persistVisitedCity(value: String) {
+    func saveViewedCity(value: String) {
         guard var storedData = userDefaults.object(forKey: key) as? Data else {
             return
         }

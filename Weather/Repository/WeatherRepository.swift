@@ -13,11 +13,11 @@ protocol WeatherRepositoryDelegate {
 }
 
 class WeatherRepository: WeatherRepositoryDelegate {
-    var localSource: LocalStorageProtocol = UserDefaultsManager()
+    var localSource: LocalStorageDelegate = LocalStorageManager()
     var remoteSource: WeatherServiceDelegate? = WeatherService()
     
     func retrieveLastVisitedCities(limit: Int) {
-        localSource.retriveVisitedCities(limit: limit)
+        localSource.retrieveViewedCities(limit: limit)
     }
     
     func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void, 
