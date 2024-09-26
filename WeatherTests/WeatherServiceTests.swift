@@ -32,6 +32,13 @@ final class WeatherServiceTests: XCTestCase {
             XCTAssertNil(error)
         }
         
+        mockHTTPClient.fileName = "empty"
+        sut.fetchData<SearchResponse>(urlString: "someURLString") { (result: SearchResponse?) -> Void in
+            XCTAssertNil(result)
+        } failure: { error in
+            XCTAssertNotNil(error)
+        }
+        
         mockHTTPClient.fileName = ""
         sut.fetchData<SearchResponse>(urlString: "someURLString") { (result: SearchResponse?) -> Void in
             XCTAssertNil(result)
