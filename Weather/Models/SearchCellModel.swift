@@ -7,6 +7,7 @@
 
 struct SearchCellModel: Codable {
     let displayText: String
+    let noteText: String
     let latitude: String
     let longitude: String
 }

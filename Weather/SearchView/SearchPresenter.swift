@@ -16,7 +16,9 @@ class SearchPresenter: SearchPresenterDelegate {
     
     func presentLastViewedCities(results: [LastViewedCity]) {
         let viewModelList = results.map {
+            let dateString = Util.formatDate(date: $0.dateViewed)
             let viewModel = SearchCellModel(displayText: $0.data.displayText,
+                                            noteText: "Last viewed: \(dateString)",
                                             latitude: $0.data.latitude,
                                             longitude: $0.data.longitude)
             return viewModel
@@ -28,6 +30,7 @@ class SearchPresenter: SearchPresenterDelegate {
         let viewModelList = results.map {
             let displayText = "\($0.areaName.first?.value ?? ""), \($0.country.first?.value ?? "")"
             let viewModel = SearchCellModel(displayText: displayText,
+                                            noteText: "",
                                             latitude: $0.latitude,
                                             longitude: $0.longitude)
             return viewModel

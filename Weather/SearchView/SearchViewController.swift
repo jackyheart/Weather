@@ -30,7 +30,7 @@ class SearchViewController: UIViewController {
     
     private func setupUI() {
         searchBar.placeholder = "Search for a city"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: kWeatherCell)
+        tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: kWeatherCell)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -72,6 +72,7 @@ extension SearchViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: kWeatherCell, for: indexPath)
         let data = dataArray[indexPath.row]
         cell.textLabel?.text = data.displayText
+        cell.detailTextLabel?.text = data.noteText
         return cell
     }
 }
