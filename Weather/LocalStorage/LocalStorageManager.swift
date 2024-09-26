@@ -8,11 +8,11 @@
 import Foundation
 
 protocol LocalStorageDelegate {
-    func retrieveViewedCities(limit: Int) -> [LastViewed]
+    func retrieveViewedCities(limit: Int) -> [LastViewedCity]
     func saveViewedCity(value: String)
 }
 
-struct LastViewed: Codable {
+struct LastViewedCity: Codable {
     let displayText: String
     let latitude: String
     let longitude: String
@@ -23,12 +23,12 @@ class LocalStorageManager: LocalStorageDelegate {
     private let key = "viewedCities"
     let localSource: LocalSourceDelegate = UserDefaultsManager()
     
-    func retrieveViewedCities(limit: Int) -> [LastViewed] {
+    func retrieveViewedCities(limit: Int) -> [LastViewedCity] {
         guard var storedData = localSource.read(key: key) else {
             return []
         }
         do {
-            let storedLastViews = try JSONDecoder().decode([LastViewed].self, from: storedData)
+            let storedLastViews = try JSONDecoder().decode([LastViewedCity].self, from: storedData)
             //TODO: sort and limit
             return storedLastViews
         } catch {
@@ -43,9 +43,9 @@ class LocalStorageManager: LocalStorageDelegate {
             return
         }
         do {
-            var storedLastViews = try JSONDecoder().decode([LastViewed].self, from: storedData)
+            var storedLastViews = try JSONDecoder().decode([LastViewedCity].self, from: storedData)
             //TODO: retrieve lat, long from data model
-            let lastViewed = LastViewed(displayText: value, latitude: "", longitude: "", dateViewed: Date())
+            let lastViewed = LastViewedCity(displayText: value, latitude: "", longitude: "", dateViewed: Date())
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
             localSource.write(value: encodedData, key: key)
