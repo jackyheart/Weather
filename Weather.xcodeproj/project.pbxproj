@@ -97,13 +97,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		910865C92CA46BBB00B924D8 /* Response */ = {
+		910865C92CA46BBB00B924D8 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
 				914BE3F82CA1B854009A5BEE /* SearchResponse.swift */,
 				914BE3F42CA1B4BA009A5BEE /* WeatherResponse.swift */,
 			);
-			path = Response;
+			path = Responses;
 			sourceTree = "<group>";
 		};
 		910865CC2CA4744A00B924D8 /* MockJson */ = {
@@ -140,8 +140,6 @@
 				914BE3F02CA1AEA7009A5BEE /* Models */,
 				914BE3EE2CA1AE58009A5BEE /* SearchView */,
 				91EDA9282CA3167B009DD6C1 /* Repository */,
-				919DCED42CA4F5130046DF58 /* LocalStorage */,
-				914BE3F12CA1AEB4009A5BEE /* RemoteService */,
 				914BE3BE2CA1A8C5009A5BEE /* Main.storyboard */,
 				914BE3C12CA1A8C6009A5BEE /* Assets.xcassets */,
 				914BE3C32CA1A8C6009A5BEE /* LaunchScreen.storyboard */,
@@ -191,7 +189,7 @@
 				914BE3F22CA1AEC2009A5BEE /* RemoteService.swift */,
 				919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */,
 				919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */,
-				910865C92CA46BBB00B924D8 /* Response */,
+				910865C92CA46BBB00B924D8 /* Responses */,
 			);
 			path = RemoteService;
 			sourceTree = "<group>";
@@ -209,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */,
+				919DCED42CA4F5130046DF58 /* LocalStorage */,
+				914BE3F12CA1AEB4009A5BEE /* RemoteService */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
