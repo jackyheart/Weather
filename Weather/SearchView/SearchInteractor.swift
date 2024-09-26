@@ -6,6 +6,7 @@
 //
 
 protocol SearchInteractorDelegate {
+    func onViewLoaded()
     func onSearch(searchString: String)
     func didSelectItem(with data: SearchCellModel)
 }
@@ -13,6 +14,12 @@ protocol SearchInteractorDelegate {
 class SearchInteractor: SearchInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: SearchPresenterDelegate?
+    private let kLastViewedLimit = 10
+    
+    func onViewLoaded() {
+        let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit) ?? []
+        presenter?.presentLastViewedCities(results: lastViewedCities)
+    }
     
     func onSearch(searchString: String) {
         repository?.fetchCityList(searchString: searchString, 
@@ -22,7 +29,7 @@ class SearchInteractor: SearchInteractorDelegate {
             self?.presenter?.presentError(error: error)
         })
     }
-    
+
     func didSelectItem(with data: SearchCellModel) {
         repository?.storeViewedCity(data: data)
     }

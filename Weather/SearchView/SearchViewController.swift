@@ -25,6 +25,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         SearchConfigurator.configure(self)
         setupUI()
+        interactor?.onViewLoaded()
     }
     
     private func setupUI() {

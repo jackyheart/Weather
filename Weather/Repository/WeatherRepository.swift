@@ -7,8 +7,8 @@
 
 protocol WeatherRepositoryDelegate {
     func storeViewedCity(data: SearchCellModel)
-    func retrieveViewedCities(limit: Int)
-    func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void, 
+    func retrieveViewedCities(limit: Int) -> [LastViewedCity]
+    func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void,
                        failure: @escaping (Error?) -> Void)
     func fetchWeather(city: String)
 }
@@ -21,8 +21,8 @@ class WeatherRepository: WeatherRepositoryDelegate {
         localSource.saveViewedCity(data: data)
     }
     
-    func retrieveViewedCities(limit: Int) {
-        localSource.retrieveViewedCities(limit: limit)
+    func retrieveViewedCities(limit: Int) -> [LastViewedCity] {
+        return localSource.retrieveViewedCities(limit: limit)
     }
     
     func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void, 
