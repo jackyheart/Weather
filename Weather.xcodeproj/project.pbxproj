@@ -197,8 +197,8 @@
 				91EDA92B2CA31C85009DD6C1 /* APIError.swift */,
 				914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */,
 				914BE3F22CA1AEC2009A5BEE /* RemoteService.swift */,
-				919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */,
 				919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */,
+				919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */,
 				910865C92CA46BBB00B924D8 /* Response */,
 			);
 			path = Service;
