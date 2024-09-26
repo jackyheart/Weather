@@ -25,7 +25,7 @@ final class WeatherServiceTests: XCTestCase {
     
     func testFetchData() {
         mockHTTPClient.fileName = "search"
-        sut.fetchData<SearchResponse>(query: "someQuery") { (result: SearchResponse?) -> Void in
+        sut.fetchData<SearchResponse>(urlString: "someURLString") { (result: SearchResponse?) -> Void in
             XCTAssertNotNil(result)
             XCTAssertEqual(result?.searchApi.result.count, 3)
         } failure: { error in
@@ -33,7 +33,7 @@ final class WeatherServiceTests: XCTestCase {
         }
         
         mockHTTPClient.fileName = ""
-        sut.fetchData<SearchResponse>(query: "someQuery") { (result: SearchResponse?) -> Void in
+        sut.fetchData<SearchResponse>(urlString: "someURLString") { (result: SearchResponse?) -> Void in
             XCTAssertNil(result)
         } failure: { error in
             XCTAssertNotNil(error)

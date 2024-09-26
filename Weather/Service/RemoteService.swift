@@ -8,23 +8,18 @@
 import Foundation
 
 protocol RemoteServiceDelegate {
-    func fetchData<T: Decodable>(query: String, 
+    func fetchData<T: Decodable>(urlString: String,
                                  success: @escaping (T?) -> Void,
                                  failure: @escaping (Error?) -> Void)
 }
 
 class RemoteService: RemoteServiceDelegate {
-    var httpClient: HTTPClientProtocol = HTTPClient()
+    var httpClient: HTTPClientProtocol? = HTTPClient()
     
-    private func buildURL(withBaseURL baseURL: String, query: String) -> String {
-        return baseURL + "?key=" + WeatherAPI.key + "&q=" + query + "&format=json"
-    }
-    
-    func fetchData<T: Decodable>(query: String,
+    func fetchData<T: Decodable>(urlString: String,
                                  success: @escaping (T?) -> Void,
                                  failure: @escaping (Error?) -> Void) {
-        let urlString = buildURL(withBaseURL: WeatherAPI.search, query: query)
-        httpClient.fetchData(urlString: urlString,
+        httpClient?.fetchData(urlString: urlString,
                              completion: { data, error in
             guard let data = data else {
                 failure(APIError.dataError)

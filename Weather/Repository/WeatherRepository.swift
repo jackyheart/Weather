@@ -8,14 +8,15 @@
 protocol WeatherRepositoryDelegate {
     func storeViewedCity(data: SearchCellModel)
     func retrieveViewedCities(limit: Int) -> [LastViewedCity]
-    func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void,
+    func fetchCityList(searchString: String, 
+                       success: @escaping (SearchResponse?) -> Void,
                        failure: @escaping (Error?) -> Void)
     func fetchWeather(city: String)
 }
 
 class WeatherRepository: WeatherRepositoryDelegate {
     var localSource: LocalStorageDelegate = LocalStorageManager()
-    var remoteSource: RemoteServiceDelegate? = RemoteService()
+    var remoteSource: RemoteServiceManagerDelegate? = RemoteServiceManager()
     
     func storeViewedCity(data: SearchCellModel) {
         localSource.saveViewedCity(data: data)
@@ -25,9 +26,10 @@ class WeatherRepository: WeatherRepositoryDelegate {
         return localSource.retrieveViewedCities(limit: limit)
     }
     
-    func fetchCityList(searchString: String, success: @escaping (SearchResponse?) -> Void, 
+    func fetchCityList(searchString: String, 
+                       success: @escaping (SearchResponse?) -> Void, 
                        failure: @escaping (Error?) -> Void) {
-        remoteSource?.fetchData(query: searchString, success: success, failure: failure)
+        remoteSource?.fetchCityList(searchString: searchString, success: success, failure: failure)
     }
     
     func fetchWeather(city: String) {
