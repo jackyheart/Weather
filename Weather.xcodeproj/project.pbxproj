@@ -29,6 +29,7 @@
 		919DCED82CA583E10046DF58 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCED72CA583E10046DF58 /* UserDefaultsManager.swift */; };
 		919DCEDA2CA59DAD0046DF58 /* LastViewedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCED92CA59DAD0046DF58 /* LastViewedCity.swift */; };
 		919DCEDC2CA5AADA0046DF58 /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */; };
+		919DCEDE2CA5B1980046DF58 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */; };
 		91EDA9252CA30A52009DD6C1 /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */; };
 		91EDA9272CA30C90009DD6C1 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */; };
 		91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */; };
@@ -71,6 +72,7 @@
 		919DCED72CA583E10046DF58 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		919DCED92CA59DAD0046DF58 /* LastViewedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewedCity.swift; sourceTree = "<group>"; };
 		919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
+		919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 		91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
 		91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */,
 				914BE3F22CA1AEC2009A5BEE /* RemoteService.swift */,
 				919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */,
+				919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */,
 				910865C92CA46BBB00B924D8 /* Response */,
 			);
 			path = Service;
@@ -323,6 +326,7 @@
 				919DCEDA2CA59DAD0046DF58 /* LastViewedCity.swift in Sources */,
 				91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */,
 				914BE3EB2CA1AE23009A5BEE /* SearchInteractor.swift in Sources */,
+				919DCEDE2CA5B1980046DF58 /* URLBuilder.swift in Sources */,
 				914BE3E92CA1AC1C009A5BEE /* WeatherModel.swift in Sources */,
 				914BE3BD2CA1A8C5009A5BEE /* SearchViewController.swift in Sources */,
 				914BE3F92CA1B854009A5BEE /* SearchResponse.swift in Sources */,
