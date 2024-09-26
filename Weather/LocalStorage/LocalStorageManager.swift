@@ -20,11 +20,11 @@ struct LastViewed: Codable {
 }
 
 class LocalStorageManager: LocalStorageDelegate {
-    let userDefaults = UserDefaults.standard
-    let key = "viewedCities"
+    private let key = "viewedCities"
+    let localSource: LocalSourceDelegate = UserDefaultsManager()
     
     func retrieveViewedCities(limit: Int) -> [LastViewed] {
-        guard var storedData = userDefaults.object(forKey: key) as? Data else {
+        guard var storedData = localSource.read(key: key) else {
             return []
         }
         do {
@@ -32,13 +32,14 @@ class LocalStorageManager: LocalStorageDelegate {
             //TODO: sort and limit
             return storedLastViews
         } catch {
-            //error handling
+            //Logging
+            print("read error from local storage")
         }
         return []
     }
     
     func saveViewedCity(value: String) {
-        guard var storedData = userDefaults.object(forKey: key) as? Data else {
+        guard var storedData = localSource.read(key: key) else {
             return
         }
         do {
@@ -47,9 +48,10 @@ class LocalStorageManager: LocalStorageDelegate {
             let lastViewed = LastViewed(displayText: value, latitude: "", longitude: "", dateViewed: Date())
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
-            userDefaults.set(encodedData, forKey: key)
+            localSource.write(value: encodedData, key: key)
         } catch {
-            //error handling
+            //Logging
+            print("write error to local storage")
         }
     }
 }
