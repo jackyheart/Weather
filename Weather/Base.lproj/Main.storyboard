@@ -17,30 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2qv-P6-rJq">
-                                <rect key="frame" x="0.0" y="103" width="393" height="723"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="fBR-wb-0r9">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="1fW-fn-JXP"/>
+                                    </connections>
+                                </searchBar>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="fBR-wb-0r9">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="TPw-kp-xxt"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="1fW-fn-JXP"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fBR-wb-0r9" secondAttribute="trailing" id="Lmj-eM-ozA"/>
                             <constraint firstItem="2qv-P6-rJq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="8" id="O6d-hy-b8o"/>
-                            <constraint firstItem="fBR-wb-0r9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UJ6-CU-q4r"/>
-                            <constraint firstItem="2qv-P6-rJq" firstAttribute="top" secondItem="fBR-wb-0r9" secondAttribute="bottom" id="cwk-sz-HBd"/>
+                            <constraint firstItem="2qv-P6-rJq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="beM-wd-4d1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2qv-P6-rJq" secondAttribute="trailing" id="mJ3-y5-mrz"/>
                             <constraint firstItem="2qv-P6-rJq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sOq-aH-1bb"/>
-                            <constraint firstItem="fBR-wb-0r9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vzH-nB-7dI"/>
                         </constraints>
                     </view>
                     <connections>
