@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		910865C82CA46B4900B924D8 /* SearchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865C72CA46B4900B924D8 /* SearchCellViewModel.swift */; };
+		910865C82CA46B4900B924D8 /* SearchCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865C72CA46B4900B924D8 /* SearchCellModel.swift */; };
 		910865CB2CA4725900B924D8 /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865CA2CA4725900B924D8 /* SearchEmptyView.swift */; };
 		910865CE2CA4748300B924D8 /* search.json in Resources */ = {isa = PBXBuildFile; fileRef = 910865CD2CA4748300B924D8 /* search.json */; };
 		910865D02CA474BA00B924D8 /* WeatherServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865CF2CA474BA00B924D8 /* WeatherServiceTests.swift */; };
@@ -44,7 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		910865C72CA46B4900B924D8 /* SearchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellViewModel.swift; sourceTree = "<group>"; };
+		910865C72CA46B4900B924D8 /* SearchCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellModel.swift; sourceTree = "<group>"; };
 		910865CA2CA4725900B924D8 /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		910865CD2CA4748300B924D8 /* search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search.json; sourceTree = "<group>"; };
 		910865CF2CA474BA00B924D8 /* WeatherServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTests.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		914BE3F02CA1AEA7009A5BEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				910865C72CA46B4900B924D8 /* SearchCellViewModel.swift */,
+				910865C72CA46B4900B924D8 /* SearchCellModel.swift */,
 				914BE3E82CA1AC1C009A5BEE /* WeatherModel.swift */,
 			);
 			path = Model;
@@ -321,7 +321,7 @@
 				914BE3F92CA1B854009A5BEE /* SearchResponse.swift in Sources */,
 				919DCED82CA583E10046DF58 /* UserDefaultsManager.swift in Sources */,
 				91EDA92C2CA31C85009DD6C1 /* APIError.swift in Sources */,
-				910865C82CA46B4900B924D8 /* SearchCellViewModel.swift in Sources */,
+				910865C82CA46B4900B924D8 /* SearchCellModel.swift in Sources */,
 				910865CB2CA4725900B924D8 /* SearchEmptyView.swift in Sources */,
 				914BE3B92CA1A8C5009A5BEE /* AppDelegate.swift in Sources */,
 				914BE3BB2CA1A8C5009A5BEE /* SceneDelegate.swift in Sources */,

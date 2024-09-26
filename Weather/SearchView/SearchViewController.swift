@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SearchViewDelegate: AnyObject {
-    func displayResultList(_ results: [SearchCellViewModel])
+    func displayResultList(_ results: [SearchCellModel])
     func displayErrorAlert(error: Error?)
 }
 
@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     var router: SearchRouterDelegate?
     private let kWeatherCell = "weatherCell"
     private let emptyView = SearchEmptyView()
-    private var dataArray: [SearchCellViewModel] = []
+    private var dataArray: [SearchCellModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: SearchViewDelegate {
-    func displayResultList(_ results: [SearchCellViewModel]) {
+    func displayResultList(_ results: [SearchCellModel]) {
         dataArray = results
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()

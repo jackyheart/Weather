@@ -16,7 +16,9 @@ class SearchPresenter: SearchPresenterDelegate {
     func presentCityList(results: [ResultItem]) {
         let resultListViewModel = results.map {
             let displayText = "\($0.areaName.first?.value ?? ""), \($0.country.first?.value ?? "")"
-            let cellViewModel = SearchCellViewModel(displayText: displayText)
+            let cellViewModel = SearchCellModel(displayText: displayText, 
+                                                latitude: $0.latitude,
+                                                longitude: $0.longitude)
             return cellViewModel
         }
         view?.displayResultList(resultListViewModel)
