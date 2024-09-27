@@ -27,7 +27,7 @@
 		914BE3FB2CA1BF05009A5BEE /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */; };
 		919DCED62CA4F52B0046DF58 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCED52CA4F52B0046DF58 /* LocalStorageManager.swift */; };
 		919DCED82CA583E10046DF58 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCED72CA583E10046DF58 /* UserDefaultsManager.swift */; };
-		919DCEDA2CA59DAD0046DF58 /* LastViewedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCED92CA59DAD0046DF58 /* LastViewedCity.swift */; };
+		919DCEDA2CA59DAD0046DF58 /* ViewedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCED92CA59DAD0046DF58 /* ViewedItem.swift */; };
 		919DCEDC2CA5AADA0046DF58 /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */; };
 		919DCEDE2CA5B1980046DF58 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */; };
 		919DCEE12CA5BAE60046DF58 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 919DCEE02CA5BAE60046DF58 /* empty.json */; };
@@ -76,7 +76,7 @@
 		914BE3FA2CA1BF05009A5BEE /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		919DCED52CA4F52B0046DF58 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		919DCED72CA583E10046DF58 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		919DCED92CA59DAD0046DF58 /* LastViewedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewedCity.swift; sourceTree = "<group>"; };
+		919DCED92CA59DAD0046DF58 /* ViewedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewedItem.swift; sourceTree = "<group>"; };
 		919DCEDB2CA5AADA0046DF58 /* RemoteServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
 		919DCEDD2CA5B1980046DF58 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 		919DCEE02CA5BAE60046DF58 /* empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				910865C72CA46B4900B924D8 /* SearchCellModel.swift */,
-				919DCED92CA59DAD0046DF58 /* LastViewedCity.swift */,
+				919DCED92CA59DAD0046DF58 /* ViewedItem.swift */,
 				914BE3E82CA1AC1C009A5BEE /* WeatherModel.swift */,
 			);
 			path = Models;
@@ -350,7 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				919DCEDA2CA59DAD0046DF58 /* LastViewedCity.swift in Sources */,
+				919DCEDA2CA59DAD0046DF58 /* ViewedItem.swift in Sources */,
 				91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */,
 				914BE3EB2CA1AE23009A5BEE /* SearchInteractor.swift in Sources */,
 				919DCEDE2CA5B1980046DF58 /* URLBuilder.swift in Sources */,

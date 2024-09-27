@@ -40,11 +40,11 @@ final class SearchInteractorTests: XCTestCase {
 }
 
 final class SearchPresenterSpy: SearchPresenterDelegate {
-    var lastViewedResults: [LastViewedCity] = []
+    var lastViewedResults: [ViewedItem] = []
     var searchResults: [ResultItem] = []
     var searchError: Error?
     
-    func presentLastViewedCities(results: [LastViewedCity]) {
+    func presentLastViewedCities(results: [ViewedItem]) {
         lastViewedResults = results
     }
     
@@ -63,7 +63,7 @@ final class MockRepository: WeatherRepositoryDelegate {
     func storeViewedCity(data: SearchCellModel) {
     }
     
-    func retrieveViewedCities(limit: Int) -> [LastViewedCity] {
+    func retrieveViewedCities(limit: Int) -> [ViewedItem] {
         return []
     }
     

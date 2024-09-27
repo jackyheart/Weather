@@ -5,8 +5,10 @@
 //  Created by Jacky Tjoa on 23/9/24.
 //
 
+import Foundation
+
 protocol SearchPresenterDelegate {
-    func presentLastViewedCities(results: [LastViewedCity])
+    func presentLastViewedCities(results: [ViewedItem])
     func presentCityList(results: [ResultItem])
     func presentError(error: Error?)
 }
@@ -14,29 +16,37 @@ protocol SearchPresenterDelegate {
 class SearchPresenter: SearchPresenterDelegate {
     weak var view: SearchViewDelegate?
     
-    func presentLastViewedCities(results: [LastViewedCity]) {
+    func presentLastViewedCities(results: [ViewedItem]) {
         let viewModelList = results.map {
-            let dateString = Util.formatDate(date: $0.dateViewed)
-            let viewModel = SearchCellModel(displayText: "\($0.city), \($0.country)",
-                                            noteText: "Last viewed: \(dateString)",
-                                            noteColor: .lightGray)
-            return viewModel
+            convertDataModelToViewModel(data: $0.data,
+                                        dateViewed: $0.dateViewed)
         }
         view?.displayResultList(viewModelList)
     }
     
     func presentCityList(results: [ResultItem]) {
         let viewModelList = results.map {
-            let displayText = "\($0.areaName.first?.value ?? ""), \($0.country.first?.value ?? "")"
-            let viewModel = SearchCellModel(displayText: displayText,
-                                            noteText: "",
-                                            noteColor: .lightGray)
-            return viewModel
+            return convertDataModelToViewModel(data: $0,
+                                               dateViewed: nil)
         }
         view?.displayResultList(viewModelList)
     }
     
     func presentError(error: Error?) {
         view?.displayErrorAlert(error: error)
+    }
+    
+    private func convertDataModelToViewModel(data: ResultItem,
+                                             dateViewed: Date?) -> SearchCellModel {
+        let displayText = "\(data.areaName.first?.value ?? ""), \(data.country.first?.value ?? "")"
+        var noteText = ""
+        if let dateViewed = dateViewed {
+            let dateString = Util.formatDate(date: dateViewed)
+            noteText = "Last viewed: \(dateString)"
+        }
+        let viewModel = SearchCellModel(displayText: displayText,
+                                        noteText: noteText,
+                                        noteTextColor: .gray)
+        return viewModel
     }
 }

@@ -7,11 +7,8 @@
 
 import Foundation
 
-struct LastViewedCity: Codable {
+struct ViewedItem: Codable {
     let key: String
-    let city: String
-    let country: String
-    let latitude: String
-    let longitude: String
+    let data: ResultItem
     let dateViewed: Date
 }

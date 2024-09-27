@@ -8,20 +8,20 @@
 import Foundation
 
 protocol LocalStorageManagerDelegate {
-    func retrieveViewedCities(limit: Int) -> [LastViewedCity]
+    func retrieveViewedCities(limit: Int) -> [ViewedItem]
     func saveViewedCity(data: ResultItem)
 }
 
 class LocalStorageManager: LocalStorageManagerDelegate {
-    private let key = "viewedCities"
+    private let key = "viewedItems"
     let localSource: LocalSourceDelegate? = UserDefaultsManager()
     
-    func retrieveViewedCities(limit: Int) -> [LastViewedCity] {
+    func retrieveViewedCities(limit: Int) -> [ViewedItem] {
         guard let storedData = localSource?.read(key: key) else {
             return []
         }
         do {
-            let storedLastViews = try JSONDecoder().decode([LastViewedCity].self, from: storedData)
+            let storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
             let sortedViews = storedLastViews.sorted(by: { $0.dateViewed > $1.dateViewed })
             let limitSortedViews = Array(sortedViews.prefix(limit))
             return limitSortedViews
@@ -44,7 +44,7 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         }
         
         do {
-            var storedLastViews = try JSONDecoder().decode([LastViewedCity].self, from: storedData)
+            var storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
             let lastViewed = convertDataModelToStorageModel(data: data)
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
@@ -55,15 +55,12 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         }
     }
     
-    private func convertDataModelToStorageModel(data: ResultItem) -> LastViewedCity {
+    private func convertDataModelToStorageModel(data: ResultItem) -> ViewedItem {
         //key is the combination of latitude and longitude to uniquely identify item
         let key = "\(data.latitude), \(data.longitude)"
-        let lastViewedCity = LastViewedCity(key: key,
-                                            city: data.areaName.first?.value ?? "",
-                                            country: data.country.first?.value ?? "",
-                                            latitude: data.latitude,
-                                            longitude: data.longitude,
-                                            dateViewed: Date())
+        let lastViewedCity = ViewedItem(key: key,
+                                        data: data,
+                                        dateViewed: Date())
         return lastViewedCity
     }
 }

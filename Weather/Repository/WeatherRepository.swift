@@ -7,7 +7,7 @@
 
 protocol WeatherRepositoryDelegate {
     func storeViewedCity(data: ResultItem)
-    func retrieveViewedCities(limit: Int) -> [LastViewedCity]
+    func retrieveViewedCities(limit: Int) -> [ViewedItem]
     func fetchCityList(searchString: String, 
                        success: @escaping (SearchResponse?) -> Void,
                        failure: @escaping (Error?) -> Void)
@@ -22,7 +22,7 @@ class WeatherRepository: WeatherRepositoryDelegate {
         localSource?.saveViewedCity(data: data)
     }
     
-    func retrieveViewedCities(limit: Int) -> [LastViewedCity] {
+    func retrieveViewedCities(limit: Int) -> [ViewedItem] {
         return localSource?.retrieveViewedCities(limit: limit) ?? []
     }
     

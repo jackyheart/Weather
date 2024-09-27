@@ -73,6 +73,7 @@ extension SearchViewController: UITableViewDataSource {
         let data = dataArray[indexPath.row]
         cell.textLabel?.text = data.displayText
         cell.detailTextLabel?.text = data.noteText
+        cell.detailTextLabel?.textColor = data.noteTextColor
         return cell
     }
 }

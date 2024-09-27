@@ -10,5 +10,5 @@ import UIKit
 struct SearchCellModel {
     let displayText: String
     let noteText: String
-    let noteColor: UIColor
+    let noteTextColor: UIColor
 }
