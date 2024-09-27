@@ -58,31 +58,29 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
 }
 
 final class MockRepository: WeatherRepositoryDelegate {
-    var dataStore: [ResultItem] = []
+    var dataStore: [ViewedItem] = []
+    var searchApiShouldReturnSuccess = true
     
     func storeViewedCity(data: ResultItem) {
-        dataStore.append(data)
+        let viewedItem = DataModelConverter.convertDataModelToStorageModel(data: data,
+                                                                           dateViewed: Date())
+        dataStore.append(viewedItem)
     }
     
     func retrieveViewedCities(limit: Int) -> [ViewedItem] {
-        let inputDates = [
-            "26 Sep 2024 09:48:13 AM",
-            "27 Sep 2024 09:47:36 PM",
-            "28 Sep 2024 09:31:24 PM"]
-        
-        let viewedItems = dataStore.enumerated().map { (index, element) in
-            let dateString = inputDates[index]
-            let date = DateUtil.shared.dateFromString(string: dateString)!
-            return DataModelConverter.convertDataModelToStorageModel(data: element,
-                                                                     dateViewed: date)
-        }
-        return viewedItems
+        return dataStore
     }
     
-    func fetchCityList(searchString: String, 
+    func fetchCityList(searchString: String,
                        success: @escaping (SearchResponse?) -> Void,
-                       failure: @escaping ((any Error)?) -> Void) {
-        
+                       failure: @escaping (Error?) -> Void) {
+        if searchApiShouldReturnSuccess {
+            let searchResponse = MockDataManager.fetchMockResponse(fileName: "search",
+                                                                   className: SearchResponse.self)
+            success(searchResponse)
+        } else {
+            failure(APIError.dataError)
+        }
     }
     
     func fetchWeather(city: String) {
