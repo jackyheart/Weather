@@ -33,9 +33,51 @@ final class SearchPresenterTests: XCTestCase {
     }
     
     func testPresentLastViewedCities() {
-        sut.presentLastViewedCities(results: [], ordering: .descending)
-        //TODO: to update
-        XCTFail()
+        let dateStrings = [
+            "26 Sep 2024 09:48:13 AM",
+            "27 Sep 2024 09:47:36 PM",
+            "28 Sep 2024 09:31:24 PM"]
+        
+        let expectedCityOrder = [
+            "London, United Kingdom",
+            "London, Canada",
+            "Londonderry, United States of America"
+        ]
+        
+        let expectedDateOrder = [
+            "Last viewed: 26 Sep 2024 09:48:13 AM",
+            "Last viewed: 27 Sep 2024 09:47:36 PM",
+            "Last viewed: 28 Sep 2024 09:31:24 PM"
+        ]
+        
+        presenLastViewedCities(order: .ascending, 
+                               inputDates: dateStrings,
+                               expectedCityOrder: expectedCityOrder,
+                               expectedDateOrder: expectedDateOrder)
+        presenLastViewedCities(order: .descending,
+                               inputDates: dateStrings,
+                               expectedCityOrder: expectedCityOrder.reversed(),
+                               expectedDateOrder: expectedDateOrder.reversed())
+        
+    }
+    
+    func presenLastViewedCities(order: ItemOrdering, 
+                                inputDates: [String],
+                                expectedCityOrder: [String],
+                                expectedDateOrder: [String]) {
+        let viewedItems = resultItems.enumerated().map { (index, element) in
+            let dateString = inputDates[index]
+            let date = Util.dateFromString(string: dateString)!
+            return DataModelConverter.convertDataModelToStorageModel(data: element,
+                                                                     dateViewed: date)
+        }
+        
+        sut.presentLastViewedCities(results: viewedItems, ordering: order)
+
+        let actualCityOrder = viewSpy.cellModels.map { $0.displayText }
+        let actualDateOrder = viewSpy.cellModels.map { $0.noteText }
+        XCTAssertEqual(actualCityOrder, expectedCityOrder)
+        XCTAssertEqual(actualDateOrder, expectedDateOrder)
     }
     
     func testPresentCityList() {
@@ -52,11 +94,11 @@ final class SearchPresenterTests: XCTestCase {
 }
 
 final class SearchViewSpy: SearchViewDelegate {
-    var resultList: [SearchCellModel] = []
+    var cellModels: [SearchCellModel] = []
     var errorResult: Error?
     
     func displayResultList(_ results: [SearchCellModel]) {
-        resultList = results
+        cellModels = results
     }
     
     func displayErrorAlert(error: Error?) {
