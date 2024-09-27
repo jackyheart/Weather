@@ -173,10 +173,8 @@
 			children = (
 				910865CC2CA4744A00B924D8 /* MockJsons */,
 				91DD6BB02CA71520001B8725 /* Mocks */,
-				91DD6BAA2CA6C482001B8725 /* SearchInteractorTests.swift */,
-				91DD6BA82CA6C1EC001B8725 /* SearchPresenterTests.swift */,
-				910865CF2CA474BA00B924D8 /* WeatherServiceTests.swift */,
-				919DCEE22CA5BD480046DF58 /* RemoteServiceManagerTests.swift */,
+				91DD6BB32CA715CE001B8725 /* SearchView */,
+				91DD6BB42CA715DD001B8725 /* RemoteService */,
 			);
 			path = WeatherTests;
 			sourceTree = "<group>";
@@ -252,6 +250,24 @@
 				91DD6BB12CA71538001B8725 /* MockRepository.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		91DD6BB32CA715CE001B8725 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				91DD6BAA2CA6C482001B8725 /* SearchInteractorTests.swift */,
+				91DD6BA82CA6C1EC001B8725 /* SearchPresenterTests.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		91DD6BB42CA715DD001B8725 /* RemoteService */ = {
+			isa = PBXGroup;
+			children = (
+				910865CF2CA474BA00B924D8 /* WeatherServiceTests.swift */,
+				919DCEE22CA5BD480046DF58 /* RemoteServiceManagerTests.swift */,
+			);
+			path = RemoteService;
 			sourceTree = "<group>";
 		};
 		91EDA9282CA3167B009DD6C1 /* Repository */ = {
