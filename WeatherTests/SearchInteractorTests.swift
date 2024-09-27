@@ -58,13 +58,25 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
 }
 
 final class MockRepository: WeatherRepositoryDelegate {
-    var dataStore: [SearchCellModel] = []
+    var dataStore: [ResultItem] = []
     
     func storeViewedCity(data: ResultItem) {
+        dataStore.append(data)
     }
     
     func retrieveViewedCities(limit: Int) -> [ViewedItem] {
-        return []
+        let inputDates = [
+            "26 Sep 2024 09:48:13 AM",
+            "27 Sep 2024 09:47:36 PM",
+            "28 Sep 2024 09:31:24 PM"]
+        
+        let viewedItems = dataStore.enumerated().map { (index, element) in
+            let dateString = inputDates[index]
+            let date = DateUtil.shared.dateFromString(string: dateString)!
+            return DataModelConverter.convertDataModelToStorageModel(data: element,
+                                                                     dateViewed: date)
+        }
+        return viewedItems
     }
     
     func fetchCityList(searchString: String, 
