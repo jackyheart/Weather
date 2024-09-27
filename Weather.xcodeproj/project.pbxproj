@@ -37,6 +37,7 @@
 		91DD6BA92CA6C1EC001B8725 /* SearchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD6BA82CA6C1EC001B8725 /* SearchPresenterTests.swift */; };
 		91DD6BAB2CA6C482001B8725 /* SearchInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD6BAA2CA6C482001B8725 /* SearchInteractorTests.swift */; };
 		91DD6BAD2CA6F46F001B8725 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD6BAC2CA6F46F001B8725 /* MockDataManager.swift */; };
+		91DD6BAF2CA6FADB001B8725 /* DataModelConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD6BAE2CA6FADB001B8725 /* DataModelConverter.swift */; };
 		91EDA9252CA30A52009DD6C1 /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */; };
 		91EDA9272CA30C90009DD6C1 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */; };
 		91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */; };
@@ -87,6 +88,7 @@
 		91DD6BA82CA6C1EC001B8725 /* SearchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTests.swift; sourceTree = "<group>"; };
 		91DD6BAA2CA6C482001B8725 /* SearchInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTests.swift; sourceTree = "<group>"; };
 		91DD6BAC2CA6F46F001B8725 /* MockDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
+		91DD6BAE2CA6FADB001B8725 /* DataModelConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelConverter.swift; sourceTree = "<group>"; };
 		91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
 		91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				910865C72CA46B4900B924D8 /* SearchCellModel.swift */,
 				919DCED92CA59DAD0046DF58 /* ViewedItem.swift */,
 				914BE3E82CA1AC1C009A5BEE /* WeatherModel.swift */,
+				91DD6BAE2CA6FADB001B8725 /* DataModelConverter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				914BE3FB2CA1BF05009A5BEE /* HTTPClient.swift in Sources */,
 				914BE3ED2CA1AE42009A5BEE /* SearchPresenter.swift in Sources */,
 				914BE3F52CA1B4BA009A5BEE /* WeatherResponse.swift in Sources */,
+				91DD6BAF2CA6FADB001B8725 /* DataModelConverter.swift in Sources */,
 				914BE3F72CA1B773009A5BEE /* WeatherAPI.swift in Sources */,
 				919DCED62CA4F52B0046DF58 /* LocalStorageManager.swift in Sources */,
 				914BE3F32CA1AEC2009A5BEE /* RemoteService.swift in Sources */,

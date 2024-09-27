@@ -33,7 +33,7 @@ class LocalStorageManager: LocalStorageManagerDelegate {
     func saveViewedItem(data: ResultItem) {
         guard let storedData = localSource?.read(key: key) else {
             do {
-                let lastViewed = convertDataModelToStorageModel(data: data)
+                let lastViewed = DataModelConverter.convertDataModelToStorageModel(data: data)
                 let encodedData = try JSONEncoder().encode([lastViewed])
                 localSource?.write(value: encodedData, key: key)
             } catch let error {
@@ -44,7 +44,7 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         
         do {
             var storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
-            let lastViewed = convertDataModelToStorageModel(data: data)
+            let lastViewed = DataModelConverter.convertDataModelToStorageModel(data: data)
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
             localSource?.write(value: encodedData, key: key)
@@ -53,14 +53,5 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         } catch let error {
             print(error)
         }
-    }
-    
-    private func convertDataModelToStorageModel(data: ResultItem) -> ViewedItem {
-        //key is the combination of latitude and longitude to uniquely identify item
-        let key = "\(data.latitude), \(data.longitude)"
-        let viewedItem = ViewedItem(key: key,
-                                    data: data,
-                                    dateViewed: Date())
-        return viewedItem
     }
 }
