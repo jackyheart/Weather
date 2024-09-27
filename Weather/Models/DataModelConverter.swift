@@ -23,12 +23,12 @@ class DataModelConverter {
         return viewModel
     }
     
-    static func convertDataModelToStorageModel(data: ResultItem) -> ViewedItem {
+    static func convertDataModelToStorageModel(data: ResultItem, dateViewed: Date) -> ViewedItem {
         //key is the combination of latitude and longitude to uniquely identify item
         let key = "\(data.latitude), \(data.longitude)"
         let viewedItem = ViewedItem(key: key,
                                     data: data,
-                                    dateViewed: Date())
+                                    dateViewed: dateViewed)
         return viewedItem
     }
 }

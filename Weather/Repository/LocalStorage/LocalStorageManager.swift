@@ -33,7 +33,10 @@ class LocalStorageManager: LocalStorageManagerDelegate {
     func saveViewedItem(data: ResultItem) {
         guard let storedData = localSource?.read(key: key) else {
             do {
-                let lastViewed = DataModelConverter.convertDataModelToStorageModel(data: data)
+                let lastViewed = DataModelConverter
+                    .convertDataModelToStorageModel(
+                        data: data,
+                        dateViewed: Date())
                 let encodedData = try JSONEncoder().encode([lastViewed])
                 localSource?.write(value: encodedData, key: key)
             } catch let error {
@@ -44,7 +47,10 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         
         do {
             var storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
-            let lastViewed = DataModelConverter.convertDataModelToStorageModel(data: data)
+            let lastViewed = DataModelConverter
+                .convertDataModelToStorageModel(
+                    data: data,
+                    dateViewed: Date())
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
             localSource?.write(value: encodedData, key: key)
