@@ -56,10 +56,12 @@ final class MockHTTPClient: HTTPClientProtocol {
         if fileName.isEmpty {
             completion(nil, APIError.dataError)
         } else {
-            let bundle = Bundle(for: MockHTTPClient.self)
-            let path = bundle.path(forResource: fileName, ofType: "json")!
-            let content = try! String(contentsOfFile: path)
-            completion(Data(content.utf8), nil)
+//            let bundle = Bundle(for: MockHTTPClient.self)
+//            let path = bundle.path(forResource: fileName, ofType: "json")!
+//            let content = try! String(contentsOfFile: path)
+//            completion(Data(content.utf8), nil)
+            let data = MockDataManager.getJsonDataFromFile(fileName: fileName)
+            completion(data, nil)
         }
     }
 }

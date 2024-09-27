@@ -36,6 +36,7 @@
 		919DCEE82CA5C6E20046DF58 /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919DCEE72CA5C6E20046DF58 /* SubtitleTableViewCell.swift */; };
 		91DD6BA92CA6C1EC001B8725 /* SearchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD6BA82CA6C1EC001B8725 /* SearchPresenterTests.swift */; };
 		91DD6BAB2CA6C482001B8725 /* SearchInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD6BAA2CA6C482001B8725 /* SearchInteractorTests.swift */; };
+		91DD6BAD2CA6F46F001B8725 /* MockDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DD6BAC2CA6F46F001B8725 /* MockDataManager.swift */; };
 		91EDA9252CA30A52009DD6C1 /* SearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */; };
 		91EDA9272CA30C90009DD6C1 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */; };
 		91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */; };
@@ -85,6 +86,7 @@
 		919DCEE72CA5C6E20046DF58 /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		91DD6BA82CA6C1EC001B8725 /* SearchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTests.swift; sourceTree = "<group>"; };
 		91DD6BAA2CA6C482001B8725 /* SearchInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTests.swift; sourceTree = "<group>"; };
+		91DD6BAC2CA6F46F001B8725 /* MockDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataManager.swift; sourceTree = "<group>"; };
 		91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchConfigurator.swift; sourceTree = "<group>"; };
 		91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				910865CC2CA4744A00B924D8 /* MockJson */,
+				91DD6BAC2CA6F46F001B8725 /* MockDataManager.swift */,
 				91DD6BAA2CA6C482001B8725 /* SearchInteractorTests.swift */,
 				91DD6BA82CA6C1EC001B8725 /* SearchPresenterTests.swift */,
 				910865CF2CA474BA00B924D8 /* WeatherServiceTests.swift */,
@@ -384,6 +387,7 @@
 				91DD6BA92CA6C1EC001B8725 /* SearchPresenterTests.swift in Sources */,
 				910865D02CA474BA00B924D8 /* WeatherServiceTests.swift in Sources */,
 				91DD6BAB2CA6C482001B8725 /* SearchInteractorTests.swift in Sources */,
+				91DD6BAD2CA6F46F001B8725 /* MockDataManager.swift in Sources */,
 				919DCEE32CA5BD480046DF58 /* RemoteServiceManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
