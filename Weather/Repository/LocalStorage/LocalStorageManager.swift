@@ -9,7 +9,7 @@ import Foundation
 
 protocol LocalStorageManagerDelegate {
     func retrieveViewedCities(limit: Int) -> [LastViewedCity]
-    func saveViewedCity(data: SearchCellModel)
+    func saveViewedCity(data: ResultItem)
 }
 
 class LocalStorageManager: LocalStorageManagerDelegate {
@@ -31,10 +31,10 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         return []
     }
     
-    func saveViewedCity(data: SearchCellModel) {
+    func saveViewedCity(data: ResultItem) {
         guard let storedData = localSource?.read(key: key) else {
             do {
-                let lastViewed = LastViewedCity(data: data, dateViewed: Date())
+                let lastViewed = convertDataModelToStorageModel(data: data)
                 let encodedData = try JSONEncoder().encode([lastViewed])
                 localSource?.write(value: encodedData, key: key)
             } catch let error {
@@ -45,7 +45,7 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         
         do {
             var storedLastViews = try JSONDecoder().decode([LastViewedCity].self, from: storedData)
-            let lastViewed = LastViewedCity(data: data, dateViewed: Date())
+            let lastViewed = convertDataModelToStorageModel(data: data)
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
             localSource?.write(value: encodedData, key: key)
@@ -53,5 +53,17 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         } catch let error {
             print(error)
         }
+    }
+    
+    private func convertDataModelToStorageModel(data: ResultItem) -> LastViewedCity {
+        //key is the combination of latitude and longitude to uniquely identify item
+        let key = "\(data.latitude), \(data.longitude)"
+        let lastViewedCity = LastViewedCity(key: key,
+                                            city: data.areaName.first?.value ?? "",
+                                            country: data.country.first?.value ?? "",
+                                            latitude: data.latitude,
+                                            longitude: data.longitude,
+                                            dateViewed: Date())
+        return lastViewedCity
     }
 }

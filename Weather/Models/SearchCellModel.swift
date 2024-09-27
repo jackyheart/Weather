@@ -5,9 +5,10 @@
 //  Created by Jacky Tjoa on 26/9/24.
 //
 
-struct SearchCellModel: Codable {
+import UIKit
+
+struct SearchCellModel {
     let displayText: String
     let noteText: String
-    let latitude: String
-    let longitude: String
+    let noteColor: UIColor
 }

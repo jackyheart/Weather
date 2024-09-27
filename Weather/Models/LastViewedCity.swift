@@ -8,6 +8,10 @@
 import Foundation
 
 struct LastViewedCity: Codable {
-    let data: SearchCellModel
+    let key: String
+    let city: String
+    let country: String
+    let latitude: String
+    let longitude: String
     let dateViewed: Date
 }

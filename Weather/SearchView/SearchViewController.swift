@@ -81,8 +81,7 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellData = dataArray[indexPath.row]
-        interactor?.didSelectItem(with: cellData)
+        interactor?.didSelectItem(onIndex: indexPath.row)
     }
 }
 

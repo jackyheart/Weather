@@ -6,7 +6,7 @@
 //
 
 protocol WeatherRepositoryDelegate {
-    func storeViewedCity(data: SearchCellModel)
+    func storeViewedCity(data: ResultItem)
     func retrieveViewedCities(limit: Int) -> [LastViewedCity]
     func fetchCityList(searchString: String, 
                        success: @escaping (SearchResponse?) -> Void,
@@ -18,7 +18,7 @@ class WeatherRepository: WeatherRepositoryDelegate {
     var localSource: LocalStorageManagerDelegate? = LocalStorageManager()
     var remoteSource: RemoteServiceManagerDelegate? = RemoteServiceManager()
     
-    func storeViewedCity(data: SearchCellModel) {
+    func storeViewedCity(data: ResultItem) {
         localSource?.saveViewedCity(data: data)
     }
     

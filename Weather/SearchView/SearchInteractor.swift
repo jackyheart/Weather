@@ -8,13 +8,14 @@
 protocol SearchInteractorDelegate {
     func onViewLoaded()
     func onSearchEntered(searchString: String)
-    func didSelectItem(with data: SearchCellModel)
+    func didSelectItem(onIndex index: Int)
 }
 
 class SearchInteractor: SearchInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: SearchPresenterDelegate?
     private let kLastViewedLimit = 10
+    private var dataList: [ResultItem] = []
     
     func onViewLoaded() {
         let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit) ?? []
@@ -24,13 +25,16 @@ class SearchInteractor: SearchInteractorDelegate {
     func onSearchEntered(searchString: String) {
         repository?.fetchCityList(searchString: searchString, 
                                   success: { [weak self] response in
-            self?.presenter?.presentCityList(results: response?.searchApi.result ?? [])
+            let resultList = response?.searchApi.result ?? []
+            self?.dataList = resultList
+            self?.presenter?.presentCityList(results: resultList)
         }, failure: { [weak self] error in
+            self?.dataList.removeAll()
             self?.presenter?.presentError(error: error)
         })
     }
 
-    func didSelectItem(with data: SearchCellModel) {
-        repository?.storeViewedCity(data: data)
+    func didSelectItem(onIndex index: Int) {
+        repository?.storeViewedCity(data: dataList[index])
     }
 }
