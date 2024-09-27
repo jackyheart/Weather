@@ -50,7 +50,7 @@ final class SearchPresenterTests: XCTestCase {
             "Last viewed: 28 Sep 2024 09:31:24 PM"
         ]
         
-        presenLastViewedCities(order: .ascending, 
+        presenLastViewedCities(order: .ascending,
                                inputDates: dateStrings,
                                expectedCityOrder: expectedCityOrder,
                                expectedDateOrder: expectedDateOrder)
@@ -61,7 +61,7 @@ final class SearchPresenterTests: XCTestCase {
         
     }
     
-    func presenLastViewedCities(order: ItemOrdering, 
+    func presenLastViewedCities(order: ItemOrdering,
                                 inputDates: [String],
                                 expectedCityOrder: [String],
                                 expectedDateOrder: [String]) {
@@ -73,23 +73,34 @@ final class SearchPresenterTests: XCTestCase {
         }
         
         sut.presentLastViewedCities(results: viewedItems, ordering: order)
-
+        
         let actualCityOrder = viewSpy.cellModels.map { $0.displayText }
         let actualDateOrder = viewSpy.cellModels.map { $0.noteText }
+        
         XCTAssertEqual(actualCityOrder, expectedCityOrder)
         XCTAssertEqual(actualDateOrder, expectedDateOrder)
     }
     
     func testPresentCityList() {
-        sut.presentCityList(results: [])
-        //TODO: to update
-        XCTFail()
+        sut.presentCityList(results: resultItems)
+        
+        let expectedCityList = [
+            "London, United Kingdom",
+            "London, Canada",
+            "Londonderry, United States of America"
+        ]
+        
+        let actualCityList = viewSpy.cellModels.map { $0.displayText }
+        
+        XCTAssertEqual(expectedCityList, actualCityList)
     }
     
     func testPresentError() {
         sut.presentError(error: APIError.dataError)
-        //TODO: to update
-        XCTFail()
+        XCTAssertNotNil(viewSpy.errorResult)
+        
+        sut.presentError(error: nil)
+        XCTAssertNil(viewSpy.errorResult)
     }
 }
 
