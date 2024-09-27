@@ -11,15 +11,19 @@ import XCTest
 final class SearchInteractorTests: XCTestCase {
     var sut: SearchInteractor!
     var presenterSpy: SearchPresenterSpy!
+    var mockRepository: MockRepository!
     
     override func setUp() {
         presenterSpy = SearchPresenterSpy()
+        mockRepository = MockRepository()
         sut = SearchInteractor()
         sut.presenter = presenterSpy
+        sut.repository = mockRepository
     }
     
     override func tearDown() {
         presenterSpy = nil
+        mockRepository = nil
         sut = nil
     }
     
@@ -29,8 +33,13 @@ final class SearchInteractorTests: XCTestCase {
     }
     
     func testOnSearchEntered() {
-        //TODO: to update
-        XCTFail()
+        mockRepository.searchApiShouldReturnSuccess = true
+        sut.onSearchEntered(searchString: "someSearchString")
+        XCTAssertEqual(presenterSpy.searchResults.count, 3)
+
+        mockRepository.searchApiShouldReturnSuccess = false
+        sut.onSearchEntered(searchString: "someSearchString")
+        XCTAssertNotNil(presenterSpy.searchError)
     }
     
     func testDidSelectItem() {
