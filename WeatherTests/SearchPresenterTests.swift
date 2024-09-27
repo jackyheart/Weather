@@ -67,7 +67,7 @@ final class SearchPresenterTests: XCTestCase {
                                 expectedDateOrder: [String]) {
         let viewedItems = resultItems.enumerated().map { (index, element) in
             let dateString = inputDates[index]
-            let date = Util.dateFromString(string: dateString)!
+            let date = DateUtil.shared.dateFromString(string: dateString)!
             return DataModelConverter.convertDataModelToStorageModel(data: element,
                                                                      dateViewed: date)
         }

@@ -14,7 +14,7 @@ class DataModelConverter {
         let displayText = "\(data.areaName.first?.value ?? ""), \(data.country.first?.value ?? "")"
         var noteText = ""
         if let dateViewed = dateViewed {
-            let dateString = Util.formatDate(date: dateViewed)
+            let dateString = DateUtil.shared.formatDate(date: dateViewed)
             noteText = "Last viewed: \(dateString)"
         }
         let viewModel = SearchCellModel(displayText: displayText,
