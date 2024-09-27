@@ -8,15 +8,15 @@
 import Foundation
 
 protocol LocalStorageManagerDelegate {
-    func retrieveViewedCities(limit: Int) -> [ViewedItem]
-    func saveViewedCity(data: ResultItem)
+    func retrieveViewedItems(limit: Int) -> [ViewedItem]
+    func saveViewedItem(data: ResultItem)
 }
 
 class LocalStorageManager: LocalStorageManagerDelegate {
     private let key = "viewedItems"
     let localSource: LocalSourceDelegate? = UserDefaultsManager()
     
-    func retrieveViewedCities(limit: Int) -> [ViewedItem] {
+    func retrieveViewedItems(limit: Int) -> [ViewedItem] {
         guard let storedData = localSource?.read(key: key) else {
             return []
         }
@@ -30,7 +30,7 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         return []
     }
     
-    func saveViewedCity(data: ResultItem) {
+    func saveViewedItem(data: ResultItem) {
         guard let storedData = localSource?.read(key: key) else {
             do {
                 let lastViewed = convertDataModelToStorageModel(data: data)
@@ -58,9 +58,9 @@ class LocalStorageManager: LocalStorageManagerDelegate {
     private func convertDataModelToStorageModel(data: ResultItem) -> ViewedItem {
         //key is the combination of latitude and longitude to uniquely identify item
         let key = "\(data.latitude), \(data.longitude)"
-        let lastViewedCity = ViewedItem(key: key,
-                                        data: data,
-                                        dateViewed: Date())
-        return lastViewedCity
+        let viewedItem = ViewedItem(key: key,
+                                    data: data,
+                                    dateViewed: Date())
+        return viewedItem
     }
 }

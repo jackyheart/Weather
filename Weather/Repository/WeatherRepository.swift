@@ -19,11 +19,11 @@ class WeatherRepository: WeatherRepositoryDelegate {
     var remoteSource: RemoteServiceManagerDelegate? = RemoteServiceManager()
     
     func storeViewedCity(data: ResultItem) {
-        localSource?.saveViewedCity(data: data)
+        localSource?.saveViewedItem(data: data)
     }
     
     func retrieveViewedCities(limit: Int) -> [ViewedItem] {
-        return localSource?.retrieveViewedCities(limit: limit) ?? []
+        return localSource?.retrieveViewedItems(limit: limit) ?? []
     }
     
     func fetchCityList(searchString: String, 
