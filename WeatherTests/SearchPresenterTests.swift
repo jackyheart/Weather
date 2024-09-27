@@ -11,16 +11,25 @@ import XCTest
 final class SearchPresenterTests: XCTestCase {
     var sut: SearchPresenter!
     var viewSpy: SearchViewSpy!
+    var resultItems: [ResultItem] = []
     
     override func setUp() {
         viewSpy = SearchViewSpy()
         sut = SearchPresenter()
         sut.view = viewSpy
+        prepareData()
     }
     
     override func tearDown() {
+        resultItems.removeAll()
         viewSpy = nil
         sut = nil
+    }
+    
+    func prepareData() {
+        let searchResponse = MockDataManager.fetchMockResponse(fileName: "search",
+                                                               className: SearchResponse.self)
+        resultItems = searchResponse.searchApi.result
     }
     
     func testPresentLastViewedCities() {
