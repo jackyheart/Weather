@@ -7,8 +7,13 @@
 
 import Foundation
 
+enum ItemOrdering {
+    case ascending
+    case descending
+}
+
 protocol SearchPresenterDelegate {
-    func presentLastViewedCities(results: [ViewedItem])
+    func presentLastViewedCities(results: [ViewedItem], ordering: ItemOrdering)
     func presentCityList(results: [ResultItem])
     func presentError(error: Error?)
 }
@@ -16,8 +21,16 @@ protocol SearchPresenterDelegate {
 class SearchPresenter: SearchPresenterDelegate {
     weak var view: SearchViewDelegate?
     
-    func presentLastViewedCities(results: [ViewedItem]) {
-        let viewModelList = results.map {
+    func presentLastViewedCities(results: [ViewedItem], ordering: ItemOrdering) {
+        let sortedResults = results.sorted(by: {
+            switch ordering {
+            case .descending:
+                $0.dateViewed > $1.dateViewed
+            case .ascending:
+                $0.dateViewed < $1.dateViewed
+            }
+        })
+        let viewModelList = sortedResults.map {
             convertDataModelToViewModel(data: $0.data,
                                         dateViewed: $0.dateViewed)
         }

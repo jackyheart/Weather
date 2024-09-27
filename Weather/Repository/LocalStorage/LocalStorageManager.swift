@@ -22,8 +22,7 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         }
         do {
             let storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
-            let sortedViews = storedLastViews.sorted(by: { $0.dateViewed > $1.dateViewed })
-            let limitSortedViews = Array(sortedViews.prefix(limit))
+            let limitSortedViews = Array(storedLastViews.prefix(limit))
             return limitSortedViews
         } catch let error {
             print(error)
@@ -50,6 +49,7 @@ class LocalStorageManager: LocalStorageManagerDelegate {
             let encodedData = try JSONEncoder().encode(storedLastViews)
             localSource?.write(value: encodedData, key: key)
             //TODO: cleanup storage
+            //TODO: remove duplicate item
         } catch let error {
             print(error)
         }
