@@ -10,12 +10,12 @@ import XCTest
 
 final class RemoteServiceManagerTests: XCTestCase {
     var sut: RemoteServiceManager!
-    var spy: RemoteServiceSpy!
+    var serviceSpy: RemoteServiceSpy!
     
     override func setUp() {
-        spy = RemoteServiceSpy()
+        serviceSpy = RemoteServiceSpy()
         sut = RemoteServiceManager()
-        sut.service = spy
+        sut.service = serviceSpy
     }
     
     override func tearDown() {
@@ -24,8 +24,8 @@ final class RemoteServiceManagerTests: XCTestCase {
     
     func testFetchCityList() {
         sut.fetchCityList(searchString: "someSearchString") { response in } failure: { error in }
-        XCTAssert(spy.fetchDataCalled)
-        XCTAssertTrue(spy.passedURLString
+        XCTAssert(serviceSpy.fetchDataCalled)
+        XCTAssertTrue(serviceSpy.passedURLString
             .contains("https://api.worldweatheronline.com/premium/v1/search.ashx"))
     }
 }
