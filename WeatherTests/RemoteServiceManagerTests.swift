@@ -24,20 +24,17 @@ final class RemoteServiceManagerTests: XCTestCase {
     
     func testFetchCityList() {
         sut.fetchCityList(searchString: "someSearchString") { response in } failure: { error in }
-        XCTAssert(serviceSpy.fetchDataCalled)
         XCTAssertTrue(serviceSpy.passedURLString
             .contains("https://api.worldweatheronline.com/premium/v1/search.ashx"))
     }
 }
 
 final class RemoteServiceSpy: RemoteServiceDelegate {
-    var fetchDataCalled = false
     var passedURLString = ""
     
     func fetchData<T>(urlString: String,
                       success: @escaping (T?) -> Void,
                       failure: @escaping ((any Error)?) -> Void) where T : Decodable {
         passedURLString = urlString
-        fetchDataCalled = true
     }
 }
