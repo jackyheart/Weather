@@ -24,7 +24,7 @@ final class SearchPresenterTests: XCTestCase {
     }
     
     func testPresentLastViewedCities() {
-        sut.presentLastViewedCities(results: [])
+        sut.presentLastViewedCities(results: [], ordering: .descending)
         //TODO: to update
         XCTFail()
     }

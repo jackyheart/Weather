@@ -44,7 +44,7 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
     var searchResults: [ResultItem] = []
     var searchError: Error?
     
-    func presentLastViewedCities(results: [ViewedItem]) {
+    func presentLastViewedCities(results: [ViewedItem], ordering: ItemOrdering) {
         lastViewedResults = results
     }
     
@@ -60,7 +60,7 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
 final class MockRepository: WeatherRepositoryDelegate {
     var dataStore: [SearchCellModel] = []
     
-    func storeViewedCity(data: SearchCellModel) {
+    func storeViewedCity(data: ResultItem) {
     }
     
     func retrieveViewedCities(limit: Int) -> [ViewedItem] {
