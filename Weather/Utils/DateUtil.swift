@@ -9,8 +9,8 @@ import Foundation
 
 class DateUtil {
     static let shared = DateUtil()
-    let kDateFormat = "dd MMM yyyy hh:mm:ss a"
-    let dateFormatter = DateFormatter()
+    private let kDateFormat = "dd MMM yyyy hh:mm:ss a"
+    private let dateFormatter = DateFormatter()
     
     init() {
         dateFormatter.dateFormat = kDateFormat
