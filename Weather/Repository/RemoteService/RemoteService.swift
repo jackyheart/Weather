@@ -20,7 +20,7 @@ class RemoteService: RemoteServiceDelegate {
                                  success: @escaping (T?) -> Void,
                                  failure: @escaping (Error?) -> Void) {
         httpClient?.fetchData(urlString: urlString,
-                             completion: { data, error in
+                              completion: { data, error in
             guard let data = data else {
                 failure(APIError.dataError)
                 return

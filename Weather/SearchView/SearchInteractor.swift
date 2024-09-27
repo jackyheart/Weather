@@ -24,7 +24,7 @@ class SearchInteractor: SearchInteractorDelegate {
     }
     
     func onSearchEntered(searchString: String) {
-        repository?.fetchCityList(searchString: searchString, 
+        repository?.fetchCityList(searchString: searchString,
                                   success: { [weak self] response in
             let resultList = response?.searchApi.result ?? []
             self?.dataList = resultList
@@ -34,7 +34,7 @@ class SearchInteractor: SearchInteractorDelegate {
             self?.presenter?.presentError(error: error)
         })
     }
-
+    
     func didSelectItem(onIndex index: Int) {
         repository?.storeViewedCity(data: dataList[index])
     }

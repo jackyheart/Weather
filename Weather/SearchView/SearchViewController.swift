@@ -89,7 +89,7 @@ extension SearchViewController: UITableViewDelegate {
 //MARK: - UISearchBarDelegate
 
 extension SearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, 
+    func searchBar(_ searchBar: UISearchBar,
                    shouldChangeTextIn range: NSRange,
                    replacementText text: String) -> Bool {
         
