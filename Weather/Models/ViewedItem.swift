@@ -1,5 +1,5 @@
 //
-//  LastViewedCity.swift
+//  ViewedItem.swift
 //  Weather
 //
 //  Created by Jacky Tjoa on 26/9/24.
