@@ -13,11 +13,11 @@ protocol LocalStorageManagerDelegate {
 }
 
 class LocalStorageManager: LocalStorageManagerDelegate {
-    private let key = "viewedItems"
+    private let kStorageKey = "viewedItems"
     let localSource: LocalSourceDelegate? = UserDefaultsManager()
     
     func retrieveViewedItems(limit: Int, ordering: ItemOrdering) -> [ViewedItem] {
-        guard let storedData = localSource?.read(key: key) else {
+        guard let storedData = localSource?.read(key: kStorageKey) else {
             return []
         }
         do {
@@ -39,14 +39,16 @@ class LocalStorageManager: LocalStorageManagerDelegate {
     }
     
     func saveViewedItem(data: ResultItem) {
-        guard let storedData = localSource?.read(key: key) else {
+        guard let storedData = localSource?.read(key: kStorageKey) else {
             do {
+                let dataKey = DataModelConverter.constructDataKey(data: data)
                 let lastViewed = DataModelConverter
                     .convertDataModelToStorageModel(
+                        key: dataKey,
                         data: data,
                         dateViewed: Date())
                 let encodedData = try JSONEncoder().encode([lastViewed])
-                localSource?.write(value: encodedData, key: key)
+                localSource?.write(value: encodedData, key: kStorageKey)
             } catch let error {
                 print(error)
             }
@@ -55,13 +57,15 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         
         do {
             var storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
+            let dataKey = DataModelConverter.constructDataKey(data: data)
             let lastViewed = DataModelConverter
                 .convertDataModelToStorageModel(
+                    key: dataKey,
                     data: data,
                     dateViewed: Date())
             storedLastViews.append(lastViewed)
             let encodedData = try JSONEncoder().encode(storedLastViews)
-            localSource?.write(value: encodedData, key: key)
+            localSource?.write(value: encodedData, key: kStorageKey)
             //TODO: cleanup storage
             //TODO: remove duplicate item
         } catch let error {
