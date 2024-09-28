@@ -34,6 +34,7 @@ class SearchViewController: UIViewController {
         tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: kWeatherCell)
         tableView.dataSource = self
         tableView.delegate = self
+        self.title = "Search"
     }
 }
 
