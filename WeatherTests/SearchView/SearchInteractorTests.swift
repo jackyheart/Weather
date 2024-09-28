@@ -32,13 +32,15 @@ final class SearchInteractorTests: XCTestCase {
         let searchResponse = MockDataManager.fetchMockResponse(fileName: "search",
                                                                className: SearchResponse.self)
         sut.dataList = searchResponse.searchApi.result
-    }
-    
-    func testOnViewLoaded() {
+        
+        //TODO: update MockRepository implementation
         for item in sut.dataList {
             mockRepository.storeViewedCity(data: item)
         }
-        
+        sut.viewedDataList = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
+    }
+    
+    func testOnViewLoaded() {
         sut.onViewLoaded()
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
         
@@ -47,7 +49,18 @@ final class SearchInteractorTests: XCTestCase {
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
     }
     
-    func testOnSearchEntered() {
+    func testOnSearchTextEntered() {
+        sut.onSearchTextEntered(withSearchString: "")
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
+        
+        sut.onSearchTextEntered(withSearchString: "Lon")
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
+        
+        sut.onSearchTextEntered(withSearchString: "Londonderry")
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
+    }
+    
+    func testDidPressSearch() {
         mockRepository.searchApiShouldReturnSuccess = true
         sut.didPressSearch(withSearchString: "someSearchString")
         XCTAssertEqual(presenterSpy.searchResults.count, 3)
@@ -58,13 +71,13 @@ final class SearchInteractorTests: XCTestCase {
     }
     
     func testDidSelectItem() {
-        XCTAssertEqual(mockRepository.dataStore.count, 0)
-        sut.didSelectItem(onIndex: 0)
-        XCTAssertEqual(mockRepository.dataStore.count, 1)
-        sut.didSelectItem(onIndex: 1)
-        XCTAssertEqual(mockRepository.dataStore.count, 2)
-        sut.didSelectItem(onIndex: 2)
         XCTAssertEqual(mockRepository.dataStore.count, 3)
+        sut.didSelectItem(onIndex: 0)
+        XCTAssertEqual(mockRepository.dataStore.count, 4)
+        sut.didSelectItem(onIndex: 1)
+        XCTAssertEqual(mockRepository.dataStore.count, 5)
+        sut.didSelectItem(onIndex: 2)
+        XCTAssertEqual(mockRepository.dataStore.count, 6)
     }
 }
 
