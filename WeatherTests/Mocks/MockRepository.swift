@@ -19,7 +19,7 @@ final class MockRepository: WeatherRepositoryDelegate {
     }
     
     func retrieveViewedCities(limit: Int) -> [ViewedItem] {
-        return dataStore
+        return Array(dataStore.prefix(limit))
     }
     
     func fetchCityList(searchString: String,

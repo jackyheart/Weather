@@ -14,8 +14,8 @@ protocol SearchInteractorDelegate {
 class SearchInteractor: SearchInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: SearchPresenterDelegate?
-    private let kLastViewedLimit = 10
-    private var dataList: [ResultItem] = []
+    var kLastViewedLimit = 10
+    var dataList: [ResultItem] = []
     
     func onViewLoaded() {
         let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit) ?? []

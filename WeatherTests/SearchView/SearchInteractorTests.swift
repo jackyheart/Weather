@@ -19,6 +19,7 @@ final class SearchInteractorTests: XCTestCase {
         sut = SearchInteractor()
         sut.presenter = presenterSpy
         sut.repository = mockRepository
+        prepareData()
     }
     
     override func tearDown() {
@@ -27,9 +28,23 @@ final class SearchInteractorTests: XCTestCase {
         sut = nil
     }
     
+    func prepareData() {
+        let searchResponse = MockDataManager.fetchMockResponse(fileName: "search",
+                                                               className: SearchResponse.self)
+        sut.dataList = searchResponse.searchApi.result
+    }
+    
     func testOnViewLoaded() {
-        //TODO: to update
-        XCTFail()
+        for item in sut.dataList {
+            mockRepository.storeViewedCity(data: item)
+        }
+        
+        sut.onViewLoaded()
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
+        
+        sut.kLastViewedLimit = 1
+        sut.onViewLoaded()
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
     }
     
     func testOnSearchEntered() {
@@ -43,8 +58,13 @@ final class SearchInteractorTests: XCTestCase {
     }
     
     func testDidSelectItem() {
-        //TODO: to update
-        XCTFail()
+        XCTAssertEqual(mockRepository.dataStore.count, 0)
+        sut.didSelectItem(onIndex: 0)
+        XCTAssertEqual(mockRepository.dataStore.count, 1)
+        sut.didSelectItem(onIndex: 1)
+        XCTAssertEqual(mockRepository.dataStore.count, 2)
+        sut.didSelectItem(onIndex: 2)
+        XCTAssertEqual(mockRepository.dataStore.count, 3)
     }
 }
 
