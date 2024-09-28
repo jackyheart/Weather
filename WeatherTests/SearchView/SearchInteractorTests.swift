@@ -49,11 +49,11 @@ final class SearchInteractorTests: XCTestCase {
     
     func testOnSearchEntered() {
         mockRepository.searchApiShouldReturnSuccess = true
-        sut.onSearchEntered(searchString: "someSearchString")
+        sut.didPressSearch(withSearchString: "someSearchString")
         XCTAssertEqual(presenterSpy.searchResults.count, 3)
 
         mockRepository.searchApiShouldReturnSuccess = false
-        sut.onSearchEntered(searchString: "someSearchString")
+        sut.didPressSearch(withSearchString: "someSearchString")
         XCTAssertNotNil(presenterSpy.searchError)
     }
     

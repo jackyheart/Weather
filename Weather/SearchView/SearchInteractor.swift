@@ -7,7 +7,7 @@
 
 protocol SearchInteractorDelegate {
     func onViewLoaded()
-    func onSearchEntered(searchString: String)
+    func didPressSearch(withSearchString searchString: String)
     func didSelectItem(onIndex index: Int)
 }
 
@@ -24,7 +24,7 @@ class SearchInteractor: SearchInteractorDelegate {
         presenter?.presentLastViewedCities(results: lastViewedCities)
     }
     
-    func onSearchEntered(searchString: String) {
+    func didPressSearch(withSearchString searchString: String) {
         repository?.fetchCityList(searchString: searchString,
                                   success: { [weak self] response in
             let resultList = response?.searchApi.result ?? []

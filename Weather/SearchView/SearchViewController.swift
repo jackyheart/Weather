@@ -106,6 +106,6 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text, !searchText.isEmpty else {
             return
         }
-        interactor?.onSearchEntered(searchString: searchText)
+        interactor?.didPressSearch(withSearchString: searchText)
     }
 }
