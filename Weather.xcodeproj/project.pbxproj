@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91014AA52CA7F04E0022E56F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014AA42CA7F04E0022E56F /* DetailViewController.swift */; };
 		910865C82CA46B4900B924D8 /* SearchCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865C72CA46B4900B924D8 /* SearchCellModel.swift */; };
 		910865CB2CA4725900B924D8 /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865CA2CA4725900B924D8 /* SearchEmptyView.swift */; };
 		910865CE2CA4748300B924D8 /* search.json in Resources */ = {isa = PBXBuildFile; fileRef = 910865CD2CA4748300B924D8 /* search.json */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		91014AA42CA7F04E0022E56F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		910865C72CA46B4900B924D8 /* SearchCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellModel.swift; sourceTree = "<group>"; };
 		910865CA2CA4725900B924D8 /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		910865CD2CA4748300B924D8 /* search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search.json; sourceTree = "<group>"; };
@@ -115,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91014AA32CA7F02E0022E56F /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				91014AA42CA7F04E0022E56F /* DetailViewController.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
 		910865C92CA46BBB00B924D8 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +169,7 @@
 				919DCEE42CA5C0CC0046DF58 /* Utils */,
 				914BE3F02CA1AEA7009A5BEE /* Models */,
 				914BE3EE2CA1AE58009A5BEE /* SearchView */,
+				91014AA32CA7F02E0022E56F /* DetailView */,
 				91EDA9282CA3167B009DD6C1 /* Repository */,
 				914BE3BE2CA1A8C5009A5BEE /* Main.storyboard */,
 				914BE3C12CA1A8C6009A5BEE /* Assets.xcassets */,
@@ -396,6 +407,7 @@
 				910865C82CA46B4900B924D8 /* SearchCellModel.swift in Sources */,
 				910865CB2CA4725900B924D8 /* SearchEmptyView.swift in Sources */,
 				914BE3B92CA1A8C5009A5BEE /* AppDelegate.swift in Sources */,
+				91014AA52CA7F04E0022E56F /* DetailViewController.swift in Sources */,
 				914BE3BB2CA1A8C5009A5BEE /* SceneDelegate.swift in Sources */,
 				919DCEE62CA5C0E90046DF58 /* DateUtil.swift in Sources */,
 				914BE3FB2CA1BF05009A5BEE /* HTTPClient.swift in Sources */,
