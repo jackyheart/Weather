@@ -14,8 +14,11 @@ class DetailInteractor: DetailInteractorDelegate {
     var presenter: DetailPresenterDelegate?
     
     func onViewLoaded(withDataItem dataItem: ResultItem?) {
-        //TODO: query string
-        repository?.fetchWeather(queryString: "",
+        let latitude = dataItem?.latitude ?? ""
+        let longitude = dataItem?.longitude ?? ""
+        let query = "\(latitude),\(longitude)"
+        
+        repository?.fetchWeather(queryString: query,
                                  success: { response in
             self.presenter?.presentWeatherResult(result: response?.data.currentCondition.first)
         }, failure: { [weak self] error in

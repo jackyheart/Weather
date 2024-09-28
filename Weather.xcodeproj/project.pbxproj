@@ -127,9 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				91014AAA2CA80C200022E56F /* DetailConfigurator.swift */,
-				91014AA42CA7F04E0022E56F /* DetailViewController.swift */,
 				91014AA62CA8079A0022E56F /* DetailInteractor.swift */,
 				91014AA82CA807C00022E56F /* DetailPresenter.swift */,
+				91014AA42CA7F04E0022E56F /* DetailViewController.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
