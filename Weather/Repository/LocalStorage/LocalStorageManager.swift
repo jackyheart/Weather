@@ -58,16 +58,24 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         do {
             var storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
             let dataKey = DataModelConverter.constructDataKey(data: data)
+            
+            //remove duplicate
+            if let index = storedLastViews.firstIndex(where: { $0.key == dataKey }) {
+                storedLastViews.remove(at: index)
+            }
+            
+            //add newly viewed item
             let lastViewed = DataModelConverter
                 .convertDataModelToStorageModel(
                     key: dataKey,
                     data: data,
                     dateViewed: Date())
             storedLastViews.append(lastViewed)
+            
+            //write to storage
             let encodedData = try JSONEncoder().encode(storedLastViews)
             localSource?.write(value: encodedData, key: kStorageKey)
             //TODO: cleanup storage
-            //TODO: remove duplicate item
         } catch let error {
             print(error)
         }
