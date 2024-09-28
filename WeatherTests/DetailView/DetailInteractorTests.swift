@@ -10,12 +10,21 @@ import XCTest
 
 final class DetailInteractorTests: XCTestCase {
     var sut: DetailInteractor!
+    var presenterSpy: DetailPresenterSpy!
+    var mockRepository: WeatherRepository!
 
     override func setUp() {
+        presenterSpy = DetailPresenterSpy()
+        mockRepository = WeatherRepository()
+
         sut = DetailInteractor()
+        sut.repository = mockRepository
+        sut.presenter = presenterSpy
     }
     
     override func tearDown() {
+        mockRepository = nil
+        presenterSpy = nil
         sut = nil
     }
 }
