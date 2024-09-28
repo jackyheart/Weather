@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LocalStorageManagerDelegate {
-    func retrieveViewedItems(limit: Int) -> [ViewedItem]
+    func retrieveViewedItems(limit: Int, ordering: ItemOrdering) -> [ViewedItem]
     func saveViewedItem(data: ResultItem)
 }
 
@@ -16,13 +16,21 @@ class LocalStorageManager: LocalStorageManagerDelegate {
     private let key = "viewedItems"
     let localSource: LocalSourceDelegate? = UserDefaultsManager()
     
-    func retrieveViewedItems(limit: Int) -> [ViewedItem] {
+    func retrieveViewedItems(limit: Int, ordering: ItemOrdering) -> [ViewedItem] {
         guard let storedData = localSource?.read(key: key) else {
             return []
         }
         do {
             let storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
-            let limitSortedViews = Array(storedLastViews.prefix(limit))
+            let sortedViews = storedLastViews.sorted(by: {
+                switch ordering {
+                case .descending:
+                    $0.dateViewed > $1.dateViewed
+                case .ascending:
+                    $0.dateViewed < $1.dateViewed
+                }
+            })
+            let limitSortedViews = Array(sortedViews.prefix(limit))
             return limitSortedViews
         } catch let error {
             print(error)

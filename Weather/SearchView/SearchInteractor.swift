@@ -18,9 +18,9 @@ class SearchInteractor: SearchInteractorDelegate {
     var dataList: [ResultItem] = []
     
     func onViewLoaded() {
-        let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit) ?? []
-        presenter?.presentLastViewedCities(results: lastViewedCities,
-                                           ordering: .descending)
+        let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit,
+                                                                ordering: .descending) ?? []
+        presenter?.presentLastViewedCities(results: lastViewedCities)
     }
     
     func onSearchEntered(searchString: String) {
