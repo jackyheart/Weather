@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DetailViewControllerDelegate: AnyObject {
+    func displayResult(result: WeatherCondition)
+}
+
 class DetailViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
@@ -18,5 +22,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = dataItem?.areaName.first?.value
+    }
+}
+
+extension DetailViewController: DetailViewControllerDelegate {
+    
+    func displayResult(result: WeatherCondition) {
+        
     }
 }
