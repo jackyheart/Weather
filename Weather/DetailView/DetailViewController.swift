@@ -15,7 +15,8 @@ protocol DetailViewControllerDelegate: AnyObject {
 class DetailViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var degreeCelciusLabel: UILabel!
+    @IBOutlet weak var temperatureCelciusLabel: UILabel!
+    @IBOutlet weak var celciusLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var weatherLabel: UILabel!
     var interactor: DetailInteractorDelegate?
@@ -24,8 +25,24 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DetailConfigurator.configure(self)
-        self.title = dataItem?.areaName.first?.value
+        resetValues()
+        displayNavigationTitle()
         interactor?.onViewLoaded(withDataItem: dataItem)
+    }
+    
+    private func resetValues() {
+        self.cityLabel.text = ""
+        self.countryLabel.text = ""
+        self.temperatureCelciusLabel.text = ""
+        self.celciusLabel.isHidden = true
+        self.weatherImageView.image = nil
+        self.weatherLabel.text = ""
+    }
+    
+    private func displayNavigationTitle() {
+        let city = dataItem?.areaName.first?.value ?? ""
+        let country = dataItem?.country.first?.value ?? ""
+        self.title = "\(city), \(country)"
     }
 }
 
@@ -35,7 +52,8 @@ extension DetailViewController: DetailViewControllerDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.cityLabel.text = result.city
             self?.countryLabel.text = result.country
-            self?.degreeCelciusLabel.text = result.temperatureCelcius
+            self?.temperatureCelciusLabel.text = result.temperatureCelcius
+            self?.celciusLabel.isHidden = false
             self?.weatherLabel.text = result.weatherDescription
         }
     }
