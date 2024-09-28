@@ -237,12 +237,12 @@
 			children = (
 				910865C72CA46B4900B924D8 /* SearchCellModel.swift */,
 				91EDA9242CA30A52009DD6C1 /* SearchConfigurator.swift */,
-				910865CA2CA4725900B924D8 /* SearchEmptyView.swift */,
-				919DCEE72CA5C6E20046DF58 /* SubtitleTableViewCell.swift */,
-				914BE3BC2CA1A8C5009A5BEE /* SearchViewController.swift */,
 				914BE3EA2CA1AE23009A5BEE /* SearchInteractor.swift */,
 				914BE3EC2CA1AE42009A5BEE /* SearchPresenter.swift */,
 				91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */,
+				910865CA2CA4725900B924D8 /* SearchEmptyView.swift */,
+				919DCEE72CA5C6E20046DF58 /* SubtitleTableViewCell.swift */,
+				914BE3BC2CA1A8C5009A5BEE /* SearchViewController.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
