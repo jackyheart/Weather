@@ -44,6 +44,19 @@ final class SearchInteractorTests: XCTestCase {
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
     }
     
+    func testOnSearchTextEntered() {
+        storeMockItems()
+        sut.onViewWillAppear()
+        sut.onSearchTextEntered(withSearchString: "Lon")
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
+        
+        sut.onSearchTextEntered(withSearchString: "")
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
+        
+        sut.onSearchTextEntered(withSearchString: "Londonderry")
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
+    }
+    
     func testDidPressSearch() {
         mockRepositoryManager.shouldRemoteServiceReturnSuccessResponse = true
         sut.didPressSearch(withSearchString: "someSearchString")
