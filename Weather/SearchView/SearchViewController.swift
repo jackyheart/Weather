@@ -102,7 +102,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else {
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
             return
         }
         interactor?.onSearchEntered(searchString: searchText)
