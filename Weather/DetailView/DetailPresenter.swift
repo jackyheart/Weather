@@ -6,15 +6,15 @@
 //
 
 protocol DetailPresenterDelegate {
-    func presentWeatherResult(result: WeatherCondition)
+    func presentWeatherResult(result: WeatherCondition?)
     func presentError(error: Error?)
 }
 
 class DetailPresenter: DetailPresenterDelegate {
     weak var view: DetailViewControllerDelegate?
     
-    func presentWeatherResult(result: WeatherCondition) {
-        
+    func presentWeatherResult(result: WeatherCondition?) {
+        //TODO: convert to view model
     }
     
     func presentError(error: Error?) {

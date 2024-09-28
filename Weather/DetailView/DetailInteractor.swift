@@ -6,14 +6,20 @@
 //
 
 protocol DetailInteractorDelegate {
-    func onViewLoaded()
+    func onViewLoaded(withDataItem dataItem: ResultItem?)
 }
 
 class DetailInteractor: DetailInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: DetailPresenterDelegate?
     
-    func onViewLoaded() {
-        
+    func onViewLoaded(withDataItem dataItem: ResultItem?) {
+        //TODO: query string
+        repository?.fetchWeather(queryString: "",
+                                 success: { response in
+            self.presenter?.presentWeatherResult(result: response?.data.currentCondition.first)
+        }, failure: { [weak self] error in
+            self?.presenter?.presentError(error: error)
+        })
     }
 }

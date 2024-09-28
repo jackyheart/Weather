@@ -17,11 +17,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var degreeCelciusLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var weatherLabel: UILabel!
+    var interactor: DetailInteractor?
     var dataItem: ResultItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = dataItem?.areaName.first?.value
+        interactor?.onViewLoaded(withDataItem: dataItem)
     }
 }
 
