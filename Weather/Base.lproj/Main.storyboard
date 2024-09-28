@@ -119,11 +119,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2rN-at-EQJ">
+                                <rect key="frame" x="186.66666666666666" y="378.66666666666669" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="FTd-Xd-y3d"/>
+                                    <constraint firstAttribute="width" constant="20" id="Lfb-sg-dPg"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5K5-6Y-1HV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qTT-VE-5Ie" firstAttribute="top" secondItem="Pe3-84-lZh" secondAttribute="bottom" constant="10" id="4ZQ-uB-5sY"/>
+                            <constraint firstItem="2rN-at-EQJ" firstAttribute="centerX" secondItem="5K5-6Y-1HV" secondAttribute="centerX" id="9ro-tm-mL2"/>
+                            <constraint firstItem="2rN-at-EQJ" firstAttribute="centerY" secondItem="5K5-6Y-1HV" secondAttribute="centerY" constant="-50" id="IW5-up-4zF"/>
                             <constraint firstItem="aT3-iK-IlB" firstAttribute="top" secondItem="qTT-VE-5Ie" secondAttribute="bottom" constant="54" id="IdR-JZ-YM3"/>
                             <constraint firstItem="Pe3-84-lZh" firstAttribute="leading" secondItem="5K5-6Y-1HV" secondAttribute="leading" constant="16" id="IkH-T9-iAc"/>
                             <constraint firstItem="qTT-VE-5Ie" firstAttribute="leading" secondItem="5K5-6Y-1HV" secondAttribute="leading" constant="16" id="PVR-CG-2pT"/>
@@ -141,6 +150,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="2rN-at-EQJ" id="XCi-fB-xE9"/>
                         <outlet property="celciusLabel" destination="XFK-FL-Ext" id="Qfh-aj-BV2"/>
                         <outlet property="cityLabel" destination="Pe3-84-lZh" id="dhs-x3-r5I"/>
                         <outlet property="countryLabel" destination="qTT-VE-5Ie" id="a0S-WW-4Mx"/>

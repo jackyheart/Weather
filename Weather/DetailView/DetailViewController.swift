@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var celciusLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var interactor: DetailInteractorDelegate?
     var dataItem: ResultItem?
     
@@ -27,6 +28,7 @@ class DetailViewController: UIViewController {
         DetailConfigurator.configure(self)
         resetValues()
         displayNavigationTitle()
+        self.activityIndicator.startAnimating()
         interactor?.onViewLoaded(withDataItem: dataItem)
     }
     
@@ -50,6 +52,7 @@ extension DetailViewController: DetailViewControllerDelegate {
     
     func displayResult(result: DetailViewModel) {
         DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.stopAnimating()
             self?.cityLabel.text = result.city
             self?.countryLabel.text = result.country
             self?.temperatureCelciusLabel.text = result.temperatureCelcius
@@ -60,6 +63,7 @@ extension DetailViewController: DetailViewControllerDelegate {
     
     func displayErrorAlert(error: Error?) {
         DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.stopAnimating()
             let nsError = error as? NSError
             let message = nsError?.userInfo["message"] as? String
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
