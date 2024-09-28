@@ -18,8 +18,7 @@ class SearchViewController: UIViewController {
     var interactor: SearchInteractorDelegate?
     private let kWeatherCell = "weatherCell"
     private let emptyView = SearchEmptyView()
-    private var dataArray: [SearchCellModel] = []
-    private var filteredArray: [SearchCellModel] = []
+    private var cellModels: [SearchCellModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +42,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: SearchViewDelegate {
     func displayResultList(_ results: [SearchCellModel]) {
-        dataArray = results
-        filteredArray = results
+        cellModels = results
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
@@ -66,17 +64,17 @@ extension SearchViewController: SearchViewDelegate {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if filteredArray.count == 0 {
+        if cellModels.count == 0 {
             tableView.backgroundView = emptyView
         } else {
             tableView.backgroundView = nil
         }
-        return filteredArray.count
+        return cellModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kWeatherCell, for: indexPath)
-        let data = filteredArray[indexPath.row]
+        let data = cellModels[indexPath.row]
         cell.textLabel?.text = data.displayText
         cell.detailTextLabel?.text = data.noteText
         cell.detailTextLabel?.textColor = data.noteTextColor
