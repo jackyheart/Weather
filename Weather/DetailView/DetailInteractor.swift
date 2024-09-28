@@ -12,7 +12,6 @@ protocol DetailInteractorDelegate {
 class DetailInteractor: DetailInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: DetailPresenterDelegate?
-    var dataItem: ResultItem?
     
     func onViewLoaded(withDataItem dataItem: ResultItem?) {
         let latitude = dataItem?.latitude ?? ""
