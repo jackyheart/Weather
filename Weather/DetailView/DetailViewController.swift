@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DetailConfigurator.configure(self)
         self.title = dataItem?.areaName.first?.value
         interactor?.onViewLoaded(withDataItem: dataItem)
     }

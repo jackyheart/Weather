@@ -10,6 +10,7 @@
 		91014AA52CA7F04E0022E56F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014AA42CA7F04E0022E56F /* DetailViewController.swift */; };
 		91014AA72CA8079A0022E56F /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014AA62CA8079A0022E56F /* DetailInteractor.swift */; };
 		91014AA92CA807C00022E56F /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014AA82CA807C00022E56F /* DetailPresenter.swift */; };
+		91014AAB2CA80C200022E56F /* DetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014AAA2CA80C200022E56F /* DetailConfigurator.swift */; };
 		910865C82CA46B4900B924D8 /* SearchCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865C72CA46B4900B924D8 /* SearchCellModel.swift */; };
 		910865CB2CA4725900B924D8 /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865CA2CA4725900B924D8 /* SearchEmptyView.swift */; };
 		910865CE2CA4748300B924D8 /* search.json in Resources */ = {isa = PBXBuildFile; fileRef = 910865CD2CA4748300B924D8 /* search.json */; };
@@ -62,6 +63,7 @@
 		91014AA42CA7F04E0022E56F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		91014AA62CA8079A0022E56F /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		91014AA82CA807C00022E56F /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		91014AAA2CA80C200022E56F /* DetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConfigurator.swift; sourceTree = "<group>"; };
 		910865C72CA46B4900B924D8 /* SearchCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellModel.swift; sourceTree = "<group>"; };
 		910865CA2CA4725900B924D8 /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		910865CD2CA4748300B924D8 /* search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search.json; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		91014AA32CA7F02E0022E56F /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
+				91014AAA2CA80C200022E56F /* DetailConfigurator.swift */,
 				91014AA42CA7F04E0022E56F /* DetailViewController.swift */,
 				91014AA62CA8079A0022E56F /* DetailInteractor.swift */,
 				91014AA82CA807C00022E56F /* DetailPresenter.swift */,
@@ -416,6 +419,7 @@
 				914BE3B92CA1A8C5009A5BEE /* AppDelegate.swift in Sources */,
 				91014AA52CA7F04E0022E56F /* DetailViewController.swift in Sources */,
 				914BE3BB2CA1A8C5009A5BEE /* SceneDelegate.swift in Sources */,
+				91014AAB2CA80C200022E56F /* DetailConfigurator.swift in Sources */,
 				919DCEE62CA5C0E90046DF58 /* DateUtil.swift in Sources */,
 				914BE3FB2CA1BF05009A5BEE /* HTTPClient.swift in Sources */,
 				914BE3ED2CA1AE42009A5BEE /* SearchPresenter.swift in Sources */,
