@@ -18,8 +18,8 @@ class SearchInteractor: SearchInteractorDelegate {
     var router: SearchRouterDelegate?
     var kLastViewedLimit = 10
     var kLengthStartSearch = 1
-    var dataList: [ResultItem] = []
-    var viewedDataList: [ViewedItem] = []
+    private var dataList: [ResultItem] = []
+    private var viewedDataList: [ViewedItem] = []
     
     private func fetchViewedCities() -> [ViewedItem] {
         let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit,
