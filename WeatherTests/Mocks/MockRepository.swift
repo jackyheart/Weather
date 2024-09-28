@@ -44,6 +44,9 @@ final class MockRepository: WeatherRepositoryDelegate {
         }
     }
     
-    func fetchWeather(city: String) {
+    func fetchWeather(queryString: String, 
+                      success: @escaping (WeatherResponse?) -> Void,
+                      failure: @escaping (Error?) -> Void) {
+        //TODO: to implement
     }
 }
