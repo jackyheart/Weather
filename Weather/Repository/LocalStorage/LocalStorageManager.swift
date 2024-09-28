@@ -14,7 +14,7 @@ protocol LocalStorageManagerDelegate {
 
 class LocalStorageManager: LocalStorageManagerDelegate {
     private let kStorageKey = "viewedItems"
-    let localSource: LocalSourceDelegate? = UserDefaultsManager()
+    var localSource: LocalSourceDelegate? = UserDefaultsManager()
     
     func retrieveViewedItems(limit: Int, ordering: ItemOrdering) -> [ViewedItem] {
         guard let storedData = localSource?.read(key: kStorageKey) else {
