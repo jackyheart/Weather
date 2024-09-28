@@ -10,7 +10,7 @@ struct WeatherResponse: Codable {
 }
 
 struct WeatherData: Codable {
-    let request: WeatherRequest
+    let request: [WeatherRequest]
     let currentCondition: [WeatherCondition]
     
     enum CodingKeys: String, CodingKey {
@@ -25,6 +25,13 @@ struct WeatherRequest: Codable {
 }
 
 struct WeatherCondition: Codable {
+    let tempC: String
     let weatherIconUrl: [ValueList]
     let weatherDesc: [ValueList]
+    
+    enum CodingKeys: String, CodingKey {
+        case tempC = "temp_C"
+        case weatherIconUrl
+        case weatherDesc
+    }
 }

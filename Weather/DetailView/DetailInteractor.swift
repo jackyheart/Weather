@@ -12,6 +12,7 @@ protocol DetailInteractorDelegate {
 class DetailInteractor: DetailInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: DetailPresenterDelegate?
+    var dataItem: ResultItem?
     
     func onViewLoaded(withDataItem dataItem: ResultItem?) {
         let latitude = dataItem?.latitude ?? ""
@@ -20,7 +21,8 @@ class DetailInteractor: DetailInteractorDelegate {
         
         repository?.fetchWeather(queryString: query,
                                  success: { response in
-            self.presenter?.presentWeatherResult(result: response?.data.currentCondition.first)
+            self.presenter?.presentWeatherResult(onDataItem: dataItem,
+                                                 result: response?.data.currentCondition.first)
         }, failure: { [weak self] error in
             self?.presenter?.presentError(error: error)
         })

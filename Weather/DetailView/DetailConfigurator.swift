@@ -14,6 +14,7 @@ class DetailConfigurator {
         viewController.interactor = interactor
         interactor.presenter = presenter
         interactor.repository = repository
+        interactor.dataItem = viewController.dataItem
         presenter.view = viewController
     }
 }
