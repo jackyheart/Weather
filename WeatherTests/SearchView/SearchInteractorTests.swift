@@ -40,12 +40,12 @@ final class SearchInteractorTests: XCTestCase {
         sut.viewedDataList = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
     }
     
-    func testOnViewLoaded() {
-        sut.onViewLoaded()
+    func testOnViewWillAppear() {
+        sut.onViewWillAppear()
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
         
         sut.kLastViewedLimit = 1
-        sut.onViewLoaded()
+        sut.onViewWillAppear()
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
     }
     

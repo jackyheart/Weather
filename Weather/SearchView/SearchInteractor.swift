@@ -6,7 +6,7 @@
 //
 
 protocol SearchInteractorDelegate {
-    func onViewLoaded()
+    func onViewWillAppear()
     func onSearchTextEntered(withSearchString searchString: String)
     func didPressSearch(withSearchString searchString: String)
     func didSelectItem(onIndex index: Int)
@@ -29,7 +29,7 @@ class SearchInteractor: SearchInteractorDelegate {
         return lastViewedCities
     }
     
-    func onViewLoaded() {
+    func onViewWillAppear() {
         let viewedItems = fetchViewedCities()
         presenter?.presentLastViewedCities(results: viewedItems)
     }

@@ -13,7 +13,9 @@ final class MockRepository: WeatherRepositoryDelegate {
     var searchApiShouldReturnSuccess = true
     
     func storeViewedCity(data: ResultItem) {
-        let viewedItem = DataModelConverter.convertDataModelToStorageModel(data: data,
+        let dataKey = DataModelConverter.constructDataKey(data: data)
+        let viewedItem = DataModelConverter.convertDataModelToStorageModel(key: dataKey,
+                                                                           data: data,
                                                                            dateViewed: Date())
         dataStore.append(viewedItem)
     }

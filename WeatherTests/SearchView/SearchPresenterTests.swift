@@ -53,7 +53,9 @@ final class SearchPresenterTests: XCTestCase {
         let viewedItems = resultItems.enumerated().map { (index, element) in
             let dateString = inputDates[index]
             let date = DateUtil.shared.dateFromString(string: dateString)!
-            return DataModelConverter.convertDataModelToStorageModel(data: element,
+            let dataKey = DataModelConverter.constructDataKey(data: element)
+            return DataModelConverter.convertDataModelToStorageModel(key: dataKey,
+                                                                     data: element,
                                                                      dateViewed: date)
         }
         

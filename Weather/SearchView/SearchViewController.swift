@@ -29,7 +29,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        interactor?.onViewLoaded()
+        interactor?.onViewWillAppear()
     }
     
     private func setupUI() {
