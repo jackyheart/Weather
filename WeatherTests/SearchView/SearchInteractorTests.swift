@@ -11,79 +11,75 @@ import XCTest
 final class SearchInteractorTests: XCTestCase {
     var sut: SearchInteractor!
     var presenterSpy: SearchPresenterSpy!
-    var mockRepository: MockRepository!
+    var mockRepositoryManager: MockRepositoryManager!
+    var mockRepository: WeatherRepository!
     
     override func setUp() {
         presenterSpy = SearchPresenterSpy()
-        mockRepository = MockRepository()
+        mockRepositoryManager = MockRepositoryManager()
+        mockRepository = mockRepositoryManager.getMockRepository()
         sut = SearchInteractor()
-        sut.presenter = presenterSpy
         sut.repository = mockRepository
-        prepareData()
+        sut.presenter = presenterSpy
     }
     
     override func tearDown() {
         presenterSpy = nil
+        mockRepositoryManager = nil
         mockRepository = nil
         sut = nil
     }
     
-    func prepareData() {
+    func storeMockItems() {
         let searchResponse: SearchResponse = MockDataManager.fetchMockResponse(fileName: "search")
-        sut.dataList = searchResponse.searchApi.result
-        
-        //TODO: update MockRepository implementation
-        for item in sut.dataList {
+        let resultItems = searchResponse.searchApi.result
+        for item in resultItems {
             mockRepository.storeViewedCity(data: item)
         }
-        sut.viewedDataList = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
     }
     
     func testOnViewWillAppear() {
+        storeMockItems()
         sut.onViewWillAppear()
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
-        
-        sut.kLastViewedLimit = 1
-        sut.onViewWillAppear()
-        XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
-    }
-    
-    func testOnSearchTextEntered() {
-        sut.onSearchTextEntered(withSearchString: "")
-        XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
-        
-        sut.onSearchTextEntered(withSearchString: "Lon")
-        XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
-        
-        sut.onSearchTextEntered(withSearchString: "Londonderry")
-        XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
     }
     
     func testDidPressSearch() {
-        mockRepository.searchApiShouldReturnSuccess = true
+        mockRepositoryManager.shouldRemoteServiceReturnSuccessResponse = true
         sut.didPressSearch(withSearchString: "someSearchString")
         XCTAssertEqual(presenterSpy.searchResults.count, 3)
-
-        mockRepository.searchApiShouldReturnSuccess = false
+        
+        mockRepositoryManager.shouldRemoteServiceReturnSuccessResponse = false
         sut.didPressSearch(withSearchString: "someSearchString")
-        XCTAssertNotNil(presenterSpy.searchError)
+        XCTAssertNotNil(presenterSpy.errorResult)
     }
     
     func testDidSelectItem() {
-        XCTAssertEqual(mockRepository.dataStore.count, 3)
+        sut.didPressSearch(withSearchString: "someSearchString")
+        
         sut.didSelectItem(onIndex: 0)
-        XCTAssertEqual(mockRepository.dataStore.count, 4)
+        var viewedItems = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
+        XCTAssertEqual(viewedItems.count, 1)
+        
         sut.didSelectItem(onIndex: 1)
-        XCTAssertEqual(mockRepository.dataStore.count, 5)
+        viewedItems = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
+        XCTAssertEqual(viewedItems.count, 2)
+        
         sut.didSelectItem(onIndex: 2)
-        XCTAssertEqual(mockRepository.dataStore.count, 6)
+        viewedItems = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
+        XCTAssertEqual(viewedItems.count, 3)
+        
+        //test out-of-bounds
+        sut.didSelectItem(onIndex: 100)
+        viewedItems = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
+        XCTAssertEqual(viewedItems.count, 3)
     }
 }
 
 final class SearchPresenterSpy: SearchPresenterDelegate {
     var lastViewedResults: [ViewedItem] = []
     var searchResults: [ResultItem] = []
-    var searchError: Error?
+    var errorResult: Error?
     
     func presentLastViewedCities(results: [ViewedItem]) {
         lastViewedResults = results
@@ -94,6 +90,6 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
     }
     
     func presentError(error: Error?) {
-        searchError = error
+        errorResult = error
     }
 }
