@@ -16,7 +16,7 @@ class MockDataManager {
         return Data(content.utf8)
     }
     
-    static func fetchMockResponse<T: Decodable>(fileName: String, className: T.Type) -> T {
+    static func fetchMockResponse<T: Decodable>(fileName: String) -> T {
         let data = getJsonDataFromFile(fileName: fileName)
         let response = try! JSONDecoder().decode(T.self, from: data)
         return response

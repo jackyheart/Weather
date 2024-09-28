@@ -27,8 +27,7 @@ final class SearchPresenterTests: XCTestCase {
     }
     
     func prepareData() {
-        let searchResponse = MockDataManager.fetchMockResponse(fileName: "search",
-                                                               className: SearchResponse.self)
+        let searchResponse: SearchResponse = MockDataManager.fetchMockResponse(fileName: "search")
         resultItems = searchResponse.searchApi.result
     }
     

@@ -36,8 +36,7 @@ final class MockRepository: WeatherRepositoryDelegate {
                        success: @escaping (SearchResponse?) -> Void,
                        failure: @escaping (Error?) -> Void) {
         if searchApiShouldReturnSuccess {
-            let searchResponse = MockDataManager.fetchMockResponse(fileName: "search",
-                                                                   className: SearchResponse.self)
+            let searchResponse: SearchResponse = MockDataManager.fetchMockResponse(fileName: "search")
             success(searchResponse)
         } else {
             failure(APIError.dataError)

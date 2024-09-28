@@ -29,8 +29,7 @@ final class SearchInteractorTests: XCTestCase {
     }
     
     func prepareData() {
-        let searchResponse = MockDataManager.fetchMockResponse(fileName: "search",
-                                                               className: SearchResponse.self)
+        let searchResponse: SearchResponse = MockDataManager.fetchMockResponse(fileName: "search")
         sut.dataList = searchResponse.searchApi.result
         
         //TODO: update MockRepository implementation
