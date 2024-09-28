@@ -25,6 +25,10 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         SearchConfigurator.configure(self)
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         interactor?.onViewLoaded()
     }
     

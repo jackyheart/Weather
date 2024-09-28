@@ -21,18 +21,23 @@ class SearchInteractor: SearchInteractorDelegate {
     var dataList: [ResultItem] = []
     var viewedDataList: [ViewedItem] = []
     
-    func onViewLoaded() {
+    private func fetchViewedCities() -> [ViewedItem] {
         let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit,
                                                                 ordering: .descending) ?? []
         self.viewedDataList = lastViewedCities
         self.dataList = lastViewedCities.map { $0.data }
-        presenter?.presentLastViewedCities(results: lastViewedCities)
+        return lastViewedCities
+    }
+    
+    func onViewLoaded() {
+        let viewedItems = fetchViewedCities()
+        presenter?.presentLastViewedCities(results: viewedItems)
     }
     
     func onSearchTextEntered(withSearchString searchString: String) {
         var filteredViewedDataList: [ViewedItem] = []
         if searchString.isEmpty {
-            filteredViewedDataList = viewedDataList
+            filteredViewedDataList = fetchViewedCities()
         } else if searchString.count >= kLengthStartSearch {
             filteredViewedDataList = viewedDataList.filter {
                 $0.data.areaName.first?.value.hasPrefix(searchString) == true
