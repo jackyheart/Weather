@@ -57,6 +57,7 @@ extension DetailViewController: DetailViewControllerDelegate {
             self?.countryLabel.text = result.country
             self?.temperatureCelciusLabel.text = result.temperatureCelcius
             self?.celciusLabel.isHidden = false
+            self?.weatherImageView.load(urlString: result.imageURLString)
             self?.weatherLabel.text = result.weatherDescription
         }
     }
