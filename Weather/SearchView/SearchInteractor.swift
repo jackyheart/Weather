@@ -40,7 +40,8 @@ class SearchInteractor: SearchInteractorDelegate {
             filteredViewedDataList = fetchViewedCities()
         } else if searchString.count >= kLengthStartSearch {
             filteredViewedDataList = viewedDataList.filter {
-                $0.data.areaName.first?.value.hasPrefix(searchString) == true
+                $0.data.areaName.first?.value.lowercased()
+                    .hasPrefix(searchString.lowercased()) == true
             }
         } else {
             return

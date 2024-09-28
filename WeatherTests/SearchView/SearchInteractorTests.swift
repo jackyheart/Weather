@@ -55,7 +55,11 @@ final class SearchInteractorTests: XCTestCase {
     func testOnSearchTextEntered() {
         storeMockItems()
         sut.onViewWillAppear()
+        
         sut.onSearchTextEntered(withSearchString: "Lon")
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
+        
+        sut.onSearchTextEntered(withSearchString: "lon")
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
         
         sut.onSearchTextEntered(withSearchString: "")
@@ -63,6 +67,9 @@ final class SearchInteractorTests: XCTestCase {
         
         sut.onSearchTextEntered(withSearchString: "Londonderry")
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
+        
+        sut.onSearchTextEntered(withSearchString: "randomText")
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 0)
     }
     
     func testDidPressSearch() {
