@@ -15,8 +15,8 @@ class SearchConfigurator {
         viewController.interactor = interactor
         interactor.presenter = presenter
         interactor.repository = repository
+        interactor.router = router
         presenter.view = viewController
-        viewController.router = router
-        router.viewController = viewController
+        router.view = viewController
     }
 }

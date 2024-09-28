@@ -15,6 +15,7 @@ protocol SearchInteractorDelegate {
 class SearchInteractor: SearchInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: SearchPresenterDelegate?
+    var router: SearchRouterDelegate?
     var kLastViewedLimit = 10
     var kLengthStartSearch = 1
     var dataList: [ResultItem] = []
@@ -58,7 +59,9 @@ class SearchInteractor: SearchInteractorDelegate {
     
     func didSelectItem(onIndex index: Int) {
         if index < dataList.count {
-            repository?.storeViewedCity(data: dataList[index])
+            let dataItem = dataList[index]
+            repository?.storeViewedCity(data: dataItem)
+            router?.navigateToDetailScreen(withDataItem: dataItem)
         }
     }
 }

@@ -16,7 +16,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var interactor: SearchInteractorDelegate?
-    var router: SearchRouterDelegate?
     private let kWeatherCell = "weatherCell"
     private let emptyView = SearchEmptyView()
     private var dataArray: [SearchCellModel] = []
@@ -85,6 +84,7 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         interactor?.didSelectItem(onIndex: indexPath.row)
     }
 }
