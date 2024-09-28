@@ -94,12 +94,7 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            filteredArray = dataArray
-        } else if searchText.count >= 2 {
-            filteredArray = dataArray.filter { $0.displayText.hasPrefix(searchText) }
-        }
-        tableView.reloadData()
+        interactor?.onSearchTextEntered(withSearchString: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
