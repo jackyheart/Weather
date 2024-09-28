@@ -149,6 +149,13 @@
                             <constraint firstItem="aT3-iK-IlB" firstAttribute="leading" secondItem="5K5-6Y-1HV" secondAttribute="leading" constant="16" id="wA4-dT-7Kd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="Pe3-84-lZh" id="dhs-x3-r5I"/>
+                        <outlet property="countryLabel" destination="qTT-VE-5Ie" id="a0S-WW-4Mx"/>
+                        <outlet property="degreeCelciusLabel" destination="aT3-iK-IlB" id="eP2-y4-T9V"/>
+                        <outlet property="weatherImageView" destination="ZZX-io-A8S" id="Dqh-hY-a47"/>
+                        <outlet property="weatherLabel" destination="nCd-F6-y47" id="kC4-Bp-FYh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4zi-Lf-C2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
