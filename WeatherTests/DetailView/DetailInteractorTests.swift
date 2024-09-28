@@ -11,21 +11,38 @@ import XCTest
 final class DetailInteractorTests: XCTestCase {
     var sut: DetailInteractor!
     var presenterSpy: DetailPresenterSpy!
+    var mockRepositoryManager: MockRepositoryManager!
     var mockRepository: WeatherRepository!
-
+    
     override func setUp() {
         presenterSpy = DetailPresenterSpy()
-        mockRepository = WeatherRepository()
-
+        mockRepositoryManager = MockRepositoryManager()
+        mockRepository = mockRepositoryManager.getMockRepository()
         sut = DetailInteractor()
         sut.repository = mockRepository
         sut.presenter = presenterSpy
     }
     
     override func tearDown() {
-        mockRepository = nil
         presenterSpy = nil
+        mockRepositoryManager = nil
+        mockRepository = nil
         sut = nil
+    }
+    
+    func testOnViewLoaded() {
+        mockRepositoryManager.shouldRemoteServiceReturnSuccessResponse = true
+        let searchResponse: SearchResponse = MockDataManager.fetchMockResponse(fileName: "search")
+        sut.onViewLoaded(withDataItem: searchResponse.searchApi.result.first)
+        XCTAssertEqual(presenterSpy.dataItem?.areaName.first?.value, "London")
+        XCTAssertEqual(presenterSpy.dataItem?.country.first?.value, "United Kingdom")
+        XCTAssertEqual(presenterSpy.weatherResult?.tempC, "15")
+        XCTAssertTrue(presenterSpy.weatherResult?.weatherIconUrl.first?.value.isEmpty == false)
+        XCTAssertEqual(presenterSpy.weatherResult?.weatherDesc.first?.value, "Partly cloudy")
+        
+        mockRepositoryManager.shouldRemoteServiceReturnSuccessResponse = false
+        sut.onViewLoaded(withDataItem: searchResponse.searchApi.result.first)
+        XCTAssertNotNil(presenterSpy.errorResult)
     }
 }
 
