@@ -49,24 +49,3 @@ final class MockRepository: WeatherRepositoryDelegate {
         //TODO: to implement
     }
 }
-
-final class MockRepositoryManager {
-    let mockLocalStorageManager = LocalStorageManager()
-    let mockRemoteServiceManager = MockRemoteServiceManager()
-    var shouldRemoteServiceReturnSuccessResponse: Bool = true {
-        didSet {
-            mockRemoteServiceManager.shouldReturnSuccessResponse = shouldRemoteServiceReturnSuccessResponse
-        }
-    }
-    
-    init() {
-        mockLocalStorageManager.localSource = MockLocalStorage()
-    }
-    
-    func getMockRepository() -> WeatherRepository {
-        let repository = WeatherRepository()
-        repository.localSource = mockLocalStorageManager
-        repository.remoteSource = mockRemoteServiceManager
-        return repository
-    }
-}

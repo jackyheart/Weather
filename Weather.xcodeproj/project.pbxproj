@@ -18,6 +18,7 @@
 		91014AB72CA844E70022E56F /* DetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014AB62CA844E70022E56F /* DetailInteractorTests.swift */; };
 		91014AB92CA848070022E56F /* MockLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014AB82CA848070022E56F /* MockLocalStorage.swift */; };
 		91014ABB2CA84B360022E56F /* MockRemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014ABA2CA84B360022E56F /* MockRemoteServiceManager.swift */; };
+		91014ABD2CA856770022E56F /* MockRepositoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91014ABC2CA856770022E56F /* MockRepositoryManager.swift */; };
 		910865C82CA46B4900B924D8 /* SearchCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865C72CA46B4900B924D8 /* SearchCellModel.swift */; };
 		910865CB2CA4725900B924D8 /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910865CA2CA4725900B924D8 /* SearchEmptyView.swift */; };
 		910865CE2CA4748300B924D8 /* search.json in Resources */ = {isa = PBXBuildFile; fileRef = 910865CD2CA4748300B924D8 /* search.json */; };
@@ -77,6 +78,7 @@
 		91014AB62CA844E70022E56F /* DetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractorTests.swift; sourceTree = "<group>"; };
 		91014AB82CA848070022E56F /* MockLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocalStorage.swift; sourceTree = "<group>"; };
 		91014ABA2CA84B360022E56F /* MockRemoteServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRemoteServiceManager.swift; sourceTree = "<group>"; };
+		91014ABC2CA856770022E56F /* MockRepositoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepositoryManager.swift; sourceTree = "<group>"; };
 		910865C72CA46B4900B924D8 /* SearchCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellModel.swift; sourceTree = "<group>"; };
 		910865CA2CA4725900B924D8 /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		910865CD2CA4748300B924D8 /* search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search.json; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				91DD6BAC2CA6F46F001B8725 /* MockDataManager.swift */,
 				91DD6BB12CA71538001B8725 /* MockRepository.swift */,
+				91014ABC2CA856770022E56F /* MockRepositoryManager.swift */,
 				91014AB82CA848070022E56F /* MockLocalStorage.swift */,
 				91014ABA2CA84B360022E56F /* MockRemoteServiceManager.swift */,
 			);
@@ -477,6 +480,7 @@
 			files = (
 				91DD6BA92CA6C1EC001B8725 /* SearchPresenterTests.swift in Sources */,
 				91014AB92CA848070022E56F /* MockLocalStorage.swift in Sources */,
+				91014ABD2CA856770022E56F /* MockRepositoryManager.swift in Sources */,
 				91DD6BB22CA71538001B8725 /* MockRepository.swift in Sources */,
 				91014AB52CA83ED70022E56F /* DetailPresenterTests.swift in Sources */,
 				910865D02CA474BA00B924D8 /* WeatherServiceTests.swift in Sources */,
