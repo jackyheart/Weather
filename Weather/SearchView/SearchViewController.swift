@@ -20,6 +20,7 @@ class SearchViewController: UIViewController {
     private let kWeatherCell = "weatherCell"
     private let emptyView = SearchEmptyView()
     private var dataArray: [SearchCellModel] = []
+    private var filteredArray: [SearchCellModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: SearchViewDelegate {
     func displayResultList(_ results: [SearchCellModel]) {
         dataArray = results
+        filteredArray = results
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
         }
@@ -60,17 +62,17 @@ extension SearchViewController: SearchViewDelegate {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if dataArray.count == 0 {
+        if filteredArray.count == 0 {
             tableView.backgroundView = emptyView
         } else {
             tableView.backgroundView = nil
         }
-        return dataArray.count
+        return filteredArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kWeatherCell, for: indexPath)
-        let data = dataArray[indexPath.row]
+        let data = filteredArray[indexPath.row]
         cell.textLabel?.text = data.displayText
         cell.detailTextLabel?.text = data.noteText
         cell.detailTextLabel?.textColor = data.noteTextColor
@@ -89,18 +91,14 @@ extension SearchViewController: UITableViewDelegate {
 //MARK: - UISearchBarDelegate
 
 extension SearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar,
-                   shouldChangeTextIn range: NSRange,
-                   replacementText text: String) -> Bool {
-        
-        let currentText = searchBar.text ?? ""
-        guard let stringRange = Range(range, in: currentText) else { return false }
-        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-        
-        if updatedText.count >= 3 {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filteredArray = dataArray
+        } else if searchText.count >= 2 {
+            filteredArray = dataArray.filter { $0.displayText.hasPrefix(searchText) }
         }
-        
-        return true
+        tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -108,12 +106,5 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         interactor?.onSearchEntered(searchString: searchText)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            dataArray.removeAll()
-            tableView.reloadData()
-        }
     }
 }
