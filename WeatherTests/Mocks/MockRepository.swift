@@ -18,8 +18,16 @@ final class MockRepository: WeatherRepositoryDelegate {
         dataStore.append(viewedItem)
     }
     
-    func retrieveViewedCities(limit: Int) -> [ViewedItem] {
-        return Array(dataStore.prefix(limit))
+    func retrieveViewedCities(limit: Int, ordering: ItemOrdering) -> [ViewedItem] {
+        let sortedViews = dataStore.sorted(by: {
+            switch ordering {
+            case .descending:
+                $0.dateViewed > $1.dateViewed
+            case .ascending:
+                $0.dateViewed < $1.dateViewed
+            }
+        })
+        return Array(sortedViews.prefix(limit))
     }
     
     func fetchCityList(searchString: String,

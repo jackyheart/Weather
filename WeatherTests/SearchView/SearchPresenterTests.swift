@@ -33,7 +33,7 @@ final class SearchPresenterTests: XCTestCase {
     }
     
     func testPresentLastViewedCities() {
-        let dateStrings = [
+        let inputDates = [
             "26 Sep 2024 09:48:13 AM",
             "27 Sep 2024 09:47:36 PM",
             "28 Sep 2024 09:31:24 PM"]
@@ -50,21 +50,6 @@ final class SearchPresenterTests: XCTestCase {
             "Last viewed: 28 Sep 2024 09:31:24 PM"
         ]
         
-        presenLastViewedCities(order: .ascending,
-                               inputDates: dateStrings,
-                               expectedCityOrder: expectedCityOrder,
-                               expectedDateOrder: expectedDateOrder)
-        presenLastViewedCities(order: .descending,
-                               inputDates: dateStrings,
-                               expectedCityOrder: expectedCityOrder.reversed(),
-                               expectedDateOrder: expectedDateOrder.reversed())
-        
-    }
-    
-    func presenLastViewedCities(order: ItemOrdering,
-                                inputDates: [String],
-                                expectedCityOrder: [String],
-                                expectedDateOrder: [String]) {
         let viewedItems = resultItems.enumerated().map { (index, element) in
             let dateString = inputDates[index]
             let date = DateUtil.shared.dateFromString(string: dateString)!
@@ -72,7 +57,7 @@ final class SearchPresenterTests: XCTestCase {
                                                                      dateViewed: date)
         }
         
-        sut.presentLastViewedCities(results: viewedItems, ordering: order)
+        sut.presentLastViewedCities(results: viewedItems)
         
         let actualCityOrder = viewSpy.cellModels.map { $0.displayText }
         let actualDateOrder = viewSpy.cellModels.map { $0.noteText }

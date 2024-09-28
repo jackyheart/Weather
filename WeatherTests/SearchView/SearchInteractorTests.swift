@@ -73,7 +73,7 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
     var searchResults: [ResultItem] = []
     var searchError: Error?
     
-    func presentLastViewedCities(results: [ViewedItem], ordering: ItemOrdering) {
+    func presentLastViewedCities(results: [ViewedItem]) {
         lastViewedResults = results
     }
     
