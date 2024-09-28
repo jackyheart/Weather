@@ -23,6 +23,6 @@ class DetailPresenter: DetailPresenterDelegate {
     }
     
     func presentError(error: Error?) {
-        
+        view?.displayErrorAlert(error: error)
     }
 }
