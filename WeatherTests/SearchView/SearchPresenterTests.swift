@@ -66,8 +66,8 @@ final class SearchPresenterTests: XCTestCase {
         XCTAssertEqual(actualDateOrder, expectedDateOrder)
     }
     
-    func testPresentCityList() {
-        sut.presentCityList(results: resultItems)
+    func testPresentSearchedCityList() {
+        sut.presentSearchedCityList(results: resultItems)
         
         let expectedCityList = [
             "London, United Kingdom",

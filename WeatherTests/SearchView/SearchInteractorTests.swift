@@ -77,7 +77,7 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
         lastViewedResults = results
     }
     
-    func presentCityList(results: [ResultItem]) {
+    func presentSearchedCityList(results: [ResultItem]) {
         searchResults = results
     }
     

@@ -20,6 +20,7 @@ class SearchInteractor: SearchInteractorDelegate {
     func onViewLoaded() {
         let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit,
                                                                 ordering: .descending) ?? []
+        self.dataList = lastViewedCities.map { $0.data }
         presenter?.presentLastViewedCities(results: lastViewedCities)
     }
     
@@ -28,7 +29,7 @@ class SearchInteractor: SearchInteractorDelegate {
                                   success: { [weak self] response in
             let resultList = response?.searchApi.result ?? []
             self?.dataList = resultList
-            self?.presenter?.presentCityList(results: resultList)
+            self?.presenter?.presentSearchedCityList(results: resultList)
         }, failure: { [weak self] error in
             self?.dataList.removeAll()
             self?.presenter?.presentError(error: error)
@@ -36,6 +37,8 @@ class SearchInteractor: SearchInteractorDelegate {
     }
     
     func didSelectItem(onIndex index: Int) {
-        repository?.storeViewedCity(data: dataList[index])
+        if index < dataList.count {
+            repository?.storeViewedCity(data: dataList[index])
+        }
     }
 }

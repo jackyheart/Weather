@@ -12,7 +12,7 @@ enum ItemOrdering {
 
 protocol SearchPresenterDelegate {
     func presentLastViewedCities(results: [ViewedItem])
-    func presentCityList(results: [ResultItem])
+    func presentSearchedCityList(results: [ResultItem])
     func presentError(error: Error?)
 }
 
@@ -27,10 +27,10 @@ class SearchPresenter: SearchPresenterDelegate {
         view?.displayResultList(viewModelList)
     }
     
-    func presentCityList(results: [ResultItem]) {
+    func presentSearchedCityList(results: [ResultItem]) {
         let viewModelList = results.map {
-            return DataModelConverter.convertDataModelToViewModel(data: $0,
-                                                                  dateViewed: nil)
+            DataModelConverter.convertDataModelToViewModel(data: $0,
+                                                           dateViewed: nil)
         }
         view?.displayResultList(viewModelList)
     }
