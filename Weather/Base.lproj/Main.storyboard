@@ -28,18 +28,28 @@
                                     </connections>
                                 </searchBar>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="MXj-CE-77b">
+                                <rect key="frame" x="186.66666666666666" y="400.66666666666669" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="C2b-0Q-KFf"/>
+                                    <constraint firstAttribute="height" constant="20" id="xxG-da-F4a"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="MXj-CE-77b" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-50" id="2p2-XN-RtU"/>
                             <constraint firstItem="2qv-P6-rJq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="8" id="O6d-hy-b8o"/>
                             <constraint firstItem="2qv-P6-rJq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="beM-wd-4d1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2qv-P6-rJq" secondAttribute="trailing" id="mJ3-y5-mrz"/>
+                            <constraint firstItem="MXj-CE-77b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pCg-xW-SvQ"/>
                             <constraint firstItem="2qv-P6-rJq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sOq-aH-1bb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PUh-8H-whR"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="MXj-CE-77b" id="Not-6Y-OZW"/>
                         <outlet property="searchBar" destination="fBR-wb-0r9" id="F76-2f-7Ya"/>
                         <outlet property="tableView" destination="2qv-P6-rJq" id="mNp-Hc-efG"/>
                     </connections>

@@ -15,6 +15,7 @@ protocol SearchViewDelegate: AnyObject {
 class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var interactor: SearchInteractorDelegate?
     private let kWeatherCell = "weatherCell"
     private let emptyView = SearchEmptyView()
@@ -44,12 +45,14 @@ extension SearchViewController: SearchViewDelegate {
     func displayResultList(_ results: [SearchCellModel]) {
         cellModels = results
         DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.stopAnimating()
             self?.tableView.reloadData()
         }
     }
     
     func displayErrorAlert(error: Error?) {
         DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.stopAnimating()
             let nsError = error as? NSError
             let message = nsError?.userInfo["message"] as? String
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -103,6 +106,7 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text, !searchText.isEmpty else {
             return
         }
+        activityIndicator.startAnimating()
         interactor?.didPressSearch(withSearchString: searchText)
     }
 }
