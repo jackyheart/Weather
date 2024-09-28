@@ -42,6 +42,14 @@ final class SearchInteractorTests: XCTestCase {
         storeMockItems()
         sut.onViewWillAppear()
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
+        
+        sut.kLastViewedLimit = 1
+        sut.onViewWillAppear()
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
+        
+        sut.kLastViewedLimit = 2
+        sut.onViewWillAppear()
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 2)
     }
     
     func testOnSearchTextEntered() {
