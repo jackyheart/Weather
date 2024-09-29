@@ -82,7 +82,7 @@ final class SearchPresenterTests: XCTestCase {
     }
     
     func testPresentError() {
-        sut.presentError(error: APIError.dataError)
+        sut.presentError(error: APIError.noData)
         XCTAssertNotNil(viewSpy.errorResult)
         
         sut.presentError(error: nil)

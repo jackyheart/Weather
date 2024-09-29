@@ -22,14 +22,14 @@ class RemoteService: RemoteServiceDelegate {
         httpClient?.fetchData(urlString: urlString,
                               completion: { data, error in
             guard let data = data else {
-                failure(APIError.dataError)
+                failure(APIError.noData)
                 return
             }
             do {
                 let response = try JSONDecoder().decode(T.self, from: data)
                 success(response)
             } catch let error {
-                failure(error)
+                failure(APIError.dataError)
             }
         })
     }

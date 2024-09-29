@@ -54,7 +54,7 @@ final class MockHTTPClient: HTTPClientProtocol {
     func fetchData(urlString: String,
                    completion: @escaping (Data?, (any Error)?) -> Void) {
         if fileName.isEmpty {
-            completion(nil, APIError.dataError)
+            completion(nil, APIError.noData)
         } else {
             let data = MockDataManager.getJsonDataFromFile(fileName: fileName)
             completion(data, nil)

@@ -17,7 +17,7 @@ class MockRemoteServiceManager: RemoteServiceManagerDelegate {
             let data: SearchResponse = MockDataManager.fetchMockResponse(fileName: "search")
             success(data)
         } else {
-            failure(APIError.dataError)
+            failure(APIError.noData)
         }
     }
     
@@ -28,7 +28,7 @@ class MockRemoteServiceManager: RemoteServiceManagerDelegate {
             let data: WeatherResponse = MockDataManager.fetchMockResponse(fileName: "weather")
             success(data)
         } else {
-            failure(APIError.dataError)
+            failure(APIError.noData)
         }
     }
 }
