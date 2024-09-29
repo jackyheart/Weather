@@ -2,6 +2,18 @@
 
 ![Alt text](documentation/app_architecture.png?raw=true "App Architecture")
 
+1. View interacts with Interactor on view's lifecycle callbacks,<br />
+   eg. viewDidLoad(), viewWillAppear(), didSelectRowAt(), searchButtonClicked(), etc.
+2. Interactor contains the main business logic, fetching data from Repository. Interactor is completely agnostic to the data source.
+3. Repository abstract out the data layer. It handles fetching data from remote source and local storage.<br />
+   With this, one can completely swap one source with another and the app will still work,<br />
+   eg. swapping local source UserDefaults with CoreData, Realm, or even in-memory data structure (useful for test purpose)
+   or swapping remote source URLSession with networking library, such as Alamofire.
+4. Data fetched from Interactor will be passed to Presenter.
+5. Presenter formats the data to UI-related view model
+6. Eventually, view will display the UI based on the passed-in view model.
+
+
 **Additional information**
 
 1. On Use Case 1, it's unclear where data will come from<br />
@@ -13,6 +25,7 @@
    In real app, it should be determined on how the local cache should be cleared.<br />
    In this exercise, I've implemented a variable to determine how many items the local cache should store,<br />
    and delete least recently visited items.
+
 
 **Code Coverage**
 
