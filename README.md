@@ -15,3 +15,5 @@
    and delete least recently visited items.
 
 **Code Coverage**
+
+![Alt text](documentation/code_coverage.png?raw=true "Code Coverage")
