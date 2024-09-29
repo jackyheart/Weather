@@ -14,6 +14,10 @@
 5. Presenter formats the data to UI-related view model.
 6. Eventually, view will display the UI based on the passed-in view model.
 
+**Alternative solution**
+
+Alternative solution using VIPER architecture here:
+https://github.com/jackyheart/WeatherVIPER
 
 **Additional information**
 
