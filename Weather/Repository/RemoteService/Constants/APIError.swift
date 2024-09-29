@@ -8,8 +8,8 @@
 import Foundation
 
 struct APIError {
-    static let kDomain = "WeatherAPIError"
+    private static let kDomain = "WeatherAPIError"
     static let kMessageKey = "message"
-    static let noData = NSError(domain: kDomain, code: 1001, userInfo: [kMessageKey: "no data available"])
-    static let dataError = NSError(domain: kDomain, code: 1002, userInfo: [kMessageKey: "fetched data couldn't be read"])
+    static let noData = NSError(domain: kDomain, code: 1001, userInfo: [kMessageKey: "No data available"])
+    static let dataError = NSError(domain: kDomain, code: 1002, userInfo: [kMessageKey: "Fetched data couldn't be read"])
 }
