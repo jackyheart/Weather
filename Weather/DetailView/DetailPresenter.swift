@@ -18,7 +18,8 @@ class DetailPresenter: DetailPresenterDelegate {
                                         country: dataItem?.country.first?.value,
                                         temperatureCelcius: result?.tempC,
                                         imageURLString: result?.weatherIconUrl.first?.value,
-                                        weatherDescription: result?.weatherDesc.first?.value)
+                                        weatherDescription: result?.weatherDesc.first?.value, 
+                                        humidityDisplay: "humidity: \(result?.humidity ?? "")%")
         view?.displayResult(result: viewModel)
     }
     

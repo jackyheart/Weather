@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var temperatureCelciusLabel: UILabel!
     @IBOutlet weak var celciusLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -39,6 +40,7 @@ class DetailViewController: UIViewController {
         self.celciusLabel.isHidden = true
         self.weatherImageView.image = nil
         self.weatherLabel.text = ""
+        self.humidityLabel.text = ""
     }
     
     private func displayNavigationTitle() {
@@ -59,6 +61,7 @@ extension DetailViewController: DetailViewControllerDelegate {
             self?.celciusLabel.isHidden = false
             self?.weatherImageView.load(urlString: result.imageURLString)
             self?.weatherLabel.text = result.weatherDescription
+            self?.humidityLabel.text = result.humidityDisplay
         }
     }
     

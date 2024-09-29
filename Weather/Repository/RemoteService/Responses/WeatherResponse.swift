@@ -28,10 +28,12 @@ struct WeatherCondition: Codable {
     let tempC: String
     let weatherIconUrl: [ValueList]
     let weatherDesc: [ValueList]
+    let humidity: String
     
     enum CodingKeys: String, CodingKey {
         case tempC = "temp_C"
         case weatherIconUrl
         case weatherDesc
+        case humidity
     }
 }

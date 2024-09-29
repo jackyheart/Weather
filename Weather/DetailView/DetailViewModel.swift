@@ -11,4 +11,5 @@ struct DetailViewModel {
     let temperatureCelcius: String?
     let imageURLString: String?
     let weatherDescription: String?
+    let humidityDisplay: String?
 }

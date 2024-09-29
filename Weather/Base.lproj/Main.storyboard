@@ -116,15 +116,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="humidity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOm-Jk-zvo">
+                                <rect key="frame" x="16" y="294" width="361" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZZX-io-A8S">
-                                <rect key="frame" x="159" y="323" width="75" height="75"/>
+                                <rect key="frame" x="159" y="365" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="7VR-me-VmI"/>
                                     <constraint firstAttribute="width" constant="75" id="veM-JL-4NE"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCd-F6-y47">
-                                <rect key="frame" x="16" y="428" width="361" height="25.333333333333314"/>
+                                <rect key="frame" x="16" y="470" width="361" height="25.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -143,6 +149,9 @@
                             <constraint firstItem="qTT-VE-5Ie" firstAttribute="top" secondItem="Pe3-84-lZh" secondAttribute="bottom" constant="10" id="4ZQ-uB-5sY"/>
                             <constraint firstItem="XFK-FL-Ext" firstAttribute="top" secondItem="qTT-VE-5Ie" secondAttribute="bottom" constant="36" id="4qS-Xf-uRU"/>
                             <constraint firstItem="2rN-at-EQJ" firstAttribute="centerX" secondItem="5K5-6Y-1HV" secondAttribute="centerX" id="9ro-tm-mL2"/>
+                            <constraint firstItem="5K5-6Y-1HV" firstAttribute="trailing" secondItem="sOm-Jk-zvo" secondAttribute="trailing" constant="16" id="AVc-dc-CfN"/>
+                            <constraint firstItem="sOm-Jk-zvo" firstAttribute="top" secondItem="aT3-iK-IlB" secondAttribute="bottom" constant="-21" id="AYp-Rg-QQf"/>
+                            <constraint firstItem="sOm-Jk-zvo" firstAttribute="leading" secondItem="5K5-6Y-1HV" secondAttribute="leading" constant="16" id="Dgf-wc-r3C"/>
                             <constraint firstItem="2rN-at-EQJ" firstAttribute="centerY" secondItem="5K5-6Y-1HV" secondAttribute="centerY" constant="-50" id="IW5-up-4zF"/>
                             <constraint firstItem="aT3-iK-IlB" firstAttribute="top" secondItem="qTT-VE-5Ie" secondAttribute="bottom" constant="20" id="IdR-JZ-YM3"/>
                             <constraint firstItem="Pe3-84-lZh" firstAttribute="leading" secondItem="5K5-6Y-1HV" secondAttribute="leading" constant="16" id="IkH-T9-iAc"/>
@@ -152,11 +161,11 @@
                             <constraint firstItem="5K5-6Y-1HV" firstAttribute="trailing" secondItem="nCd-F6-y47" secondAttribute="trailing" constant="16" id="SMp-cQ-Rpc"/>
                             <constraint firstItem="5K5-6Y-1HV" firstAttribute="trailing" secondItem="Pe3-84-lZh" secondAttribute="trailing" constant="16" id="UrL-as-NkH"/>
                             <constraint firstItem="XFK-FL-Ext" firstAttribute="leading" secondItem="aT3-iK-IlB" secondAttribute="trailing" id="ZcW-92-bI7"/>
-                            <constraint firstItem="ZZX-io-A8S" firstAttribute="top" secondItem="aT3-iK-IlB" secondAttribute="bottom" constant="8" symbolic="YES" id="cpa-9k-BPh"/>
                             <constraint firstItem="ZZX-io-A8S" firstAttribute="centerX" secondItem="5K5-6Y-1HV" secondAttribute="centerX" id="pE9-In-7Xt"/>
                             <constraint firstItem="5K5-6Y-1HV" firstAttribute="trailing" secondItem="qTT-VE-5Ie" secondAttribute="trailing" constant="16" id="q4T-fB-8zX"/>
                             <constraint firstItem="Pe3-84-lZh" firstAttribute="top" secondItem="5K5-6Y-1HV" secondAttribute="top" constant="36" id="r9i-Oc-W6i"/>
                             <constraint firstItem="nCd-F6-y47" firstAttribute="top" secondItem="ZZX-io-A8S" secondAttribute="bottom" constant="30" id="rva-gf-wc4"/>
+                            <constraint firstItem="ZZX-io-A8S" firstAttribute="top" secondItem="sOm-Jk-zvo" secondAttribute="bottom" constant="50" id="s6G-id-dt3"/>
                         </constraints>
                     </view>
                     <connections>
@@ -164,6 +173,7 @@
                         <outlet property="celciusLabel" destination="XFK-FL-Ext" id="Qfh-aj-BV2"/>
                         <outlet property="cityLabel" destination="Pe3-84-lZh" id="dhs-x3-r5I"/>
                         <outlet property="countryLabel" destination="qTT-VE-5Ie" id="a0S-WW-4Mx"/>
+                        <outlet property="humidityLabel" destination="sOm-Jk-zvo" id="7BA-oB-tFQ"/>
                         <outlet property="temperatureCelciusLabel" destination="aT3-iK-IlB" id="wOS-hi-T8Z"/>
                         <outlet property="weatherImageView" destination="ZZX-io-A8S" id="Dqh-hY-a47"/>
                         <outlet property="weatherLabel" destination="nCd-F6-y47" id="kC4-Bp-FYh"/>
