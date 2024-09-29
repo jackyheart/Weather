@@ -27,6 +27,12 @@ final class RemoteServiceManagerTests: XCTestCase {
         XCTAssertTrue(serviceSpy.passedURLString
             .contains("https://api.worldweatheronline.com/premium/v1/search.ashx"))
     }
+    
+    func testFetchWeather() {
+        sut.fetchWeather(queryString: "someQuery") { response in } failure: { error in }
+        XCTAssertTrue(serviceSpy.passedURLString
+            .contains("https://api.worldweatheronline.com/premium/v1/weather.ashx"))
+    }
 }
 
 final class RemoteServiceSpy: RemoteServiceDelegate {
