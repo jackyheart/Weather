@@ -23,16 +23,10 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         }
         do {
             let storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
-            let sortedViews = storedLastViews.sorted(by: {
-                switch ordering {
-                case .descending:
-                    $0.dateViewed > $1.dateViewed
-                case .ascending:
-                    $0.dateViewed < $1.dateViewed
-                }
-            })
-            let limitSortedViews = Array(sortedViews.prefix(limit))
-            return limitSortedViews
+            let filteredSortedViews = sortAndLimitLastViews(viewedItems: storedLastViews,
+                                                            ordering: ordering,
+                                                            limit: limit)
+            return filteredSortedViews
         } catch let error {
             print(error)
         }
@@ -60,8 +54,9 @@ class LocalStorageManager: LocalStorageManagerDelegate {
             let storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
             
             //only maintain n recently viewed items (descending order)
-            let sortedViews = storedLastViews.sorted { $0.dateViewed > $1.dateViewed }
-            var filteredSortedViews = Array(sortedViews.prefix(kStorageLimit))
+            var filteredSortedViews = sortAndLimitLastViews(viewedItems: storedLastViews,
+                                                            ordering: .descending,
+                                                            limit: kStorageLimit)
             
             //remove duplicate
             let dataKey = DataModelConverter.constructDataKey(data: data)
@@ -88,5 +83,19 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         } catch let error {
             print(error)
         }
+    }
+    
+    private func sortAndLimitLastViews(viewedItems: [ViewedItem], 
+                                       ordering: ItemOrdering,
+                                       limit: Int) -> [ViewedItem] {
+        let sortedViews = viewedItems.sorted(by: {
+            switch ordering {
+            case .descending:
+                $0.dateViewed > $1.dateViewed
+            case .ascending:
+                $0.dateViewed < $1.dateViewed
+            }
+        })
+        return Array(sortedViews.prefix(limit))
     }
 }
