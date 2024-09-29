@@ -8,13 +8,13 @@
 import UIKit
 
 protocol SearchRouterDelegate {
-    func navigateToDetailScreen(withDataItem dataItem: ResultItem)
+    func navigateToDetailScreen(withDataItem dataItem: ResultItem?)
 }
 
 class SearchRouter: SearchRouterDelegate {
     weak var view: (UIViewController & SearchViewDelegate)?
     
-    func navigateToDetailScreen(withDataItem dataItem: ResultItem) {
+    func navigateToDetailScreen(withDataItem dataItem: ResultItem?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let detailVC = storyboard.instantiateViewController(withIdentifier: "DetailViewController")
                 as? DetailViewController else {

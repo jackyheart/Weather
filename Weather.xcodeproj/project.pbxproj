@@ -53,6 +53,8 @@
 		91EDA9272CA30C90009DD6C1 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */; };
 		91EDA92A2CA3168D009DD6C1 /* WeatherRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */; };
 		91EDA92C2CA31C85009DD6C1 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EDA92B2CA31C85009DD6C1 /* APIError.swift */; };
+		91EEE9E52CA8FB46000D2BEC /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EEE9E42CA8FB46000D2BEC /* MockNavigationController.swift */; };
+		91EEE9E72CA8FE8A000D2BEC /* SearchRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EEE9E62CA8FE8A000D2BEC /* SearchRouterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		91EDA9262CA30C90009DD6C1 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		91EDA9292CA3168D009DD6C1 /* WeatherRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRepository.swift; sourceTree = "<group>"; };
 		91EDA92B2CA31C85009DD6C1 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		91EEE9E42CA8FB46000D2BEC /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
+		91EEE9E62CA8FE8A000D2BEC /* SearchRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				91DD6BAC2CA6F46F001B8725 /* MockDataManager.swift */,
+				91EEE9E42CA8FB46000D2BEC /* MockNavigationController.swift */,
 				91014ABC2CA856770022E56F /* MockRepositoryManager.swift */,
 				91014AB82CA848070022E56F /* MockLocalStorage.swift */,
 				91014ABA2CA84B360022E56F /* MockRemoteServiceManager.swift */,
@@ -311,6 +316,7 @@
 			children = (
 				91DD6BAA2CA6C482001B8725 /* SearchInteractorTests.swift */,
 				91DD6BA82CA6C1EC001B8725 /* SearchPresenterTests.swift */,
+				91EEE9E62CA8FE8A000D2BEC /* SearchRouterTests.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -479,9 +485,11 @@
 				91014AB92CA848070022E56F /* MockLocalStorage.swift in Sources */,
 				91014ABD2CA856770022E56F /* MockRepositoryManager.swift in Sources */,
 				91014AB52CA83ED70022E56F /* DetailPresenterTests.swift in Sources */,
+				91EEE9E72CA8FE8A000D2BEC /* SearchRouterTests.swift in Sources */,
 				910865D02CA474BA00B924D8 /* RemoteServiceTests.swift in Sources */,
 				91DD6BAB2CA6C482001B8725 /* SearchInteractorTests.swift in Sources */,
 				91DD6BAD2CA6F46F001B8725 /* MockDataManager.swift in Sources */,
+				91EEE9E52CA8FB46000D2BEC /* MockNavigationController.swift in Sources */,
 				919DCEE32CA5BD480046DF58 /* RemoteServiceManagerTests.swift in Sources */,
 				91014AB72CA844E70022E56F /* DetailInteractorTests.swift in Sources */,
 				91014ABB2CA84B360022E56F /* MockRemoteServiceManager.swift in Sources */,

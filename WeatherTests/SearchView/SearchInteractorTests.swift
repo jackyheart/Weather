@@ -140,7 +140,7 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
 final class SearchRouterSpy: SearchRouterDelegate {
     var passedDataItem: ResultItem?
     
-    func navigateToDetailScreen(withDataItem dataItem: ResultItem) {
+    func navigateToDetailScreen(withDataItem dataItem: ResultItem?) {
         passedDataItem = dataItem
     }
 }
