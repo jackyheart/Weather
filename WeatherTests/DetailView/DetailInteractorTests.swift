@@ -39,6 +39,7 @@ final class DetailInteractorTests: XCTestCase {
         XCTAssertEqual(presenterSpy.weatherResult?.tempC, "15")
         XCTAssertTrue(presenterSpy.weatherResult?.weatherIconUrl.first?.value.isEmpty == false)
         XCTAssertEqual(presenterSpy.weatherResult?.weatherDesc.first?.value, "Partly cloudy")
+        XCTAssertEqual(presenterSpy.weatherResult?.humidity, "51")
         
         mockRepositoryManager.shouldRemoteServiceReturnSuccessResponse = false
         sut.onViewLoaded(withDataItem: searchResponse.searchApi.result.first)
