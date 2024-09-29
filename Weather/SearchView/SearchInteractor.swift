@@ -12,7 +12,7 @@ protocol SearchInteractorDelegate {
     func didSelectItem(onIndex index: Int)
 }
 
-class SearchInteractor: SearchInteractorDelegate {
+final class SearchInteractor: SearchInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: SearchPresenterDelegate?
     var router: SearchRouterDelegate?

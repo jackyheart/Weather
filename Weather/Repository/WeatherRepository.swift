@@ -16,7 +16,7 @@ protocol WeatherRepositoryDelegate {
                       failure: @escaping (Error?) -> Void)
 }
 
-class WeatherRepository: WeatherRepositoryDelegate {
+final class WeatherRepository: WeatherRepositoryDelegate {
     var localSource: LocalStorageManagerDelegate? = LocalStorageManager()
     var remoteSource: RemoteServiceManagerDelegate? = RemoteServiceManager()
     

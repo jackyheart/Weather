@@ -11,7 +11,7 @@ protocol SearchRouterDelegate {
     func navigateToDetailScreen(withDataItem dataItem: ResultItem?)
 }
 
-class SearchRouter: SearchRouterDelegate {
+final class SearchRouter: SearchRouterDelegate {
     weak var view: (UIViewController & SearchViewDelegate)?
     
     func navigateToDetailScreen(withDataItem dataItem: ResultItem?) {

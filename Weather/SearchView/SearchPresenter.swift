@@ -16,7 +16,7 @@ protocol SearchPresenterDelegate {
     func presentError(error: Error?)
 }
 
-class SearchPresenter: SearchPresenterDelegate {
+final class SearchPresenter: SearchPresenterDelegate {
     weak var view: SearchViewDelegate?
     
     func presentLastViewedCities(results: [ViewedItem]) {

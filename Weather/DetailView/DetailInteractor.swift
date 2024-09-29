@@ -9,7 +9,7 @@ protocol DetailInteractorDelegate {
     func onViewLoaded(withDataItem dataItem: ResultItem?)
 }
 
-class DetailInteractor: DetailInteractorDelegate {
+final class DetailInteractor: DetailInteractorDelegate {
     var repository: WeatherRepositoryDelegate?
     var presenter: DetailPresenterDelegate?
     

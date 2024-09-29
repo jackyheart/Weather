@@ -14,7 +14,7 @@ protocol RemoteServiceManagerDelegate {
                       failure: @escaping (Error?) -> Void)
 }
 
-class RemoteServiceManager: RemoteServiceManagerDelegate {
+final class RemoteServiceManager: RemoteServiceManagerDelegate {
     var service: RemoteServiceDelegate? = RemoteService()
     
     func fetchCityList(searchString: String, 

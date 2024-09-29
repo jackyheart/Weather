@@ -12,7 +12,7 @@ protocol LocalStorageManagerDelegate {
     func saveViewedItem(data: ResultItem)
 }
 
-class LocalStorageManager: LocalStorageManagerDelegate {
+final class LocalStorageManager: LocalStorageManagerDelegate {
     private let kStorageKey = "viewedItems"
     private let kStorageLimit = 10
     var localSource: LocalSourceDelegate? = UserDefaultsManager()

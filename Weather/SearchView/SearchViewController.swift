@@ -12,7 +12,7 @@ protocol SearchViewDelegate: AnyObject {
     func displayErrorAlert(error: Error?)
 }
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

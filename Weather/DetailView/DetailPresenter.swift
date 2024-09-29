@@ -10,7 +10,7 @@ protocol DetailPresenterDelegate {
     func presentError(error: Error?)
 }
 
-class DetailPresenter: DetailPresenterDelegate {
+final class DetailPresenter: DetailPresenterDelegate {
     weak var view: DetailViewControllerDelegate?
     
     func presentWeatherResult(onDataItem dataItem: ResultItem?, result: WeatherCondition?) {
