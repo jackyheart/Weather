@@ -1,5 +1,5 @@
 //
-//  WeatherServiceTests.swift
+//  RemoteServiceTests.swift
 //  WeatherTests
 //
 //  Created by Jacky Tjoa on 26/9/24.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Weather
 
-final class WeatherServiceTests: XCTestCase {
+final class RemoteServiceTests: XCTestCase {
     var sut: RemoteService!
     var mockHTTPClient: MockHTTPClient!
     
