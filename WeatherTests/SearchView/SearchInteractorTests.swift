@@ -45,17 +45,38 @@ final class SearchInteractorTests: XCTestCase {
     }
     
     func testOnViewWillAppear() {
+        var dateViewedOrder: [Date] = []
+        
+        // no data initially
+        sut.onViewWillAppear()
+        XCTAssertEqual(presenterSpy.lastViewedResults.count, 0)
+        
+        // store 3 mock items, should expect 3 viewed items from local storage
         storeMockItems()
         sut.onViewWillAppear()
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
         
+        // by default, date is ordered by descending order
+        dateViewedOrder = presenterSpy.lastViewedResults.map { $0.dateViewed }
+        
+        // check item limit
         sut.kLastViewedLimit = 1
         sut.onViewWillAppear()
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 1)
+        XCTAssertEqual(presenterSpy.lastViewedResults[0].dateViewed, dateViewedOrder[0])
         
         sut.kLastViewedLimit = 2
         sut.onViewWillAppear()
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 2)
+        XCTAssertEqual(presenterSpy.lastViewedResults[0].dateViewed, dateViewedOrder[0])
+        XCTAssertEqual(presenterSpy.lastViewedResults[1].dateViewed, dateViewedOrder[1])
+        
+        // check ascending order, date order should be reversed from previous retrieval
+        sut.itemOrdering = .ascending
+        sut.kLastViewedLimit = 3
+        sut.onViewWillAppear()
+        let ascendingDateOrder: [Date] = presenterSpy.lastViewedResults.map { $0.dateViewed }
+        XCTAssertEqual(ascendingDateOrder, dateViewedOrder.reversed())
     }
     
     func testOnSearchTextEntered() {

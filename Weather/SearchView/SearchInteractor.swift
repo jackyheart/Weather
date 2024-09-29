@@ -18,12 +18,13 @@ class SearchInteractor: SearchInteractorDelegate {
     var router: SearchRouterDelegate?
     var kLastViewedLimit = 10
     var kLengthStartSearch = 1
+    var itemOrdering: ItemOrdering = .descending
     private var dataList: [ResultItem] = []
     private var viewedDataList: [ViewedItem] = []
     
     private func fetchViewedCities() -> [ViewedItem] {
         let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit,
-                                                                ordering: .descending) ?? []
+                                                                ordering: itemOrdering) ?? []
         self.viewedDataList = lastViewedCities
         self.dataList = lastViewedCities.map { $0.data }
         return lastViewedCities
