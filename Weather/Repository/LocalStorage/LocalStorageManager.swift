@@ -14,6 +14,7 @@ protocol LocalStorageManagerDelegate {
 
 class LocalStorageManager: LocalStorageManagerDelegate {
     private let kStorageKey = "viewedItems"
+    private let kStorageLimit = 10
     var localSource: LocalSourceDelegate? = UserDefaultsManager()
     
     func retrieveViewedItems(limit: Int, ordering: ItemOrdering) -> [ViewedItem] {
@@ -56,12 +57,16 @@ class LocalStorageManager: LocalStorageManagerDelegate {
         }
         
         do {
-            var storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
-            let dataKey = DataModelConverter.constructDataKey(data: data)
+            let storedLastViews = try JSONDecoder().decode([ViewedItem].self, from: storedData)
+            
+            //only maintain n recently viewed items (descending order)
+            let sortedViews = storedLastViews.sorted { $0.dateViewed > $1.dateViewed }
+            var filteredSortedViews = Array(sortedViews.prefix(kStorageLimit))
             
             //remove duplicate
-            if let index = storedLastViews.firstIndex(where: { $0.key == dataKey }) {
-                storedLastViews.remove(at: index)
+            let dataKey = DataModelConverter.constructDataKey(data: data)
+            if let index = filteredSortedViews.firstIndex(where: { $0.key == dataKey }) {
+                filteredSortedViews.remove(at: index)
             }
             
             //add newly viewed item
@@ -70,12 +75,16 @@ class LocalStorageManager: LocalStorageManagerDelegate {
                     key: dataKey,
                     data: data,
                     dateViewed: Date())
-            storedLastViews.append(lastViewed)
+            
+            //if storage limit exceeded, remove last item (least recently visited item)
+            if filteredSortedViews.count + 1 > kStorageLimit {
+                filteredSortedViews.removeLast()
+            }
+            filteredSortedViews.append(lastViewed)
             
             //write to storage
-            let encodedData = try JSONEncoder().encode(storedLastViews)
+            let encodedData = try JSONEncoder().encode(filteredSortedViews)
             localSource?.write(value: encodedData, key: kStorageKey)
-            //TODO: cleanup storage
         } catch let error {
             print(error)
         }
