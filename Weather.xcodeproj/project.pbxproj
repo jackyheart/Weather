@@ -56,6 +56,7 @@
 		91EEE9E52CA8FB46000D2BEC /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EEE9E42CA8FB46000D2BEC /* MockNavigationController.swift */; };
 		91EEE9E72CA8FE8A000D2BEC /* SearchRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EEE9E62CA8FE8A000D2BEC /* SearchRouterTests.swift */; };
 		91EEE9E92CA92E69000D2BEC /* UIAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EEE9E82CA92E69000D2BEC /* UIAlertManager.swift */; };
+		91EEE9ED2CA983CD000D2BEC /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EEE9EC2CA983CD000D2BEC /* UIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		91EEE9E42CA8FB46000D2BEC /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
 		91EEE9E62CA8FE8A000D2BEC /* SearchRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouterTests.swift; sourceTree = "<group>"; };
 		91EEE9E82CA92E69000D2BEC /* UIAlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertManager.swift; sourceTree = "<group>"; };
+		91EEE9EC2CA983CD000D2BEC /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				919DCEE52CA5C0E90046DF58 /* DateUtil.swift */,
+				91EEE9EC2CA983CD000D2BEC /* UIHelper.swift */,
 				91EEE9E82CA92E69000D2BEC /* UIAlertManager.swift */,
 			);
 			path = Utils;
@@ -454,6 +457,7 @@
 				919DCEDE2CA5B1980046DF58 /* URLBuilder.swift in Sources */,
 				914BE3BD2CA1A8C5009A5BEE /* SearchViewController.swift in Sources */,
 				914BE3F92CA1B854009A5BEE /* SearchResponse.swift in Sources */,
+				91EEE9ED2CA983CD000D2BEC /* UIHelper.swift in Sources */,
 				919DCED82CA583E10046DF58 /* UserDefaultsManager.swift in Sources */,
 				91EEE9E92CA92E69000D2BEC /* UIAlertManager.swift in Sources */,
 				919DCEDC2CA5AADA0046DF58 /* RemoteServiceManager.swift in Sources */,
