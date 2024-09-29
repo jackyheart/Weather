@@ -1,4 +1,5 @@
 **App Architecture**
+![Alt text](documentation/app_architecture.png?raw=true "App Architecture")
 
 **Additional information**
 
