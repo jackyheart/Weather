@@ -9,13 +9,13 @@ import Foundation
 @testable import Weather
 
 class MockLocalStorage: LocalSourceDelegate {
-    var array: [String: Data] = [String: Data]()
+    var dataDict: [String: Data] = [String: Data]()
     
     func read(key: String) -> Data? {
-        return array[key]
+        return dataDict[key]
     }
     
     func write(value: Data, key: String) {
-        array[key] = value
+        dataDict[key] = value
     }
 }
