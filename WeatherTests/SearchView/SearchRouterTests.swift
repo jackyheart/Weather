@@ -14,6 +14,7 @@ final class SearchRouterTests: XCTestCase {
     var mockNavVC: MockNavigationController!
     
     override func setUp() {
+        super.setUp()
         mockVC = MockSearchViewController()
         mockNavVC = MockNavigationController()
         mockNavVC.setViewControllers([mockVC], animated: false)
@@ -25,6 +26,7 @@ final class SearchRouterTests: XCTestCase {
         mockVC = nil
         mockNavVC = nil
         sut = nil
+        super.tearDown()
     }
     
     func testNavigateToDetailScreen() {

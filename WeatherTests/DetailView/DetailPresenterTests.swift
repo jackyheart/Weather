@@ -13,6 +13,7 @@ final class DetailPresenterTests: XCTestCase {
     var viewSpy: DetailViewSpy!
     
     override func setUp() {
+        super.setUp()
         viewSpy = DetailViewSpy()
         sut = DetailPresenter()
         sut.view = viewSpy
@@ -21,6 +22,7 @@ final class DetailPresenterTests: XCTestCase {
     override func tearDown() {
         viewSpy = nil
         sut = nil
+        super.tearDown()
     }
     
     func testPresentWeatherResult() {

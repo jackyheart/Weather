@@ -15,6 +15,7 @@ final class DetailInteractorTests: XCTestCase {
     var mockRepository: WeatherRepository!
     
     override func setUp() {
+        super.setUp()
         presenterSpy = DetailPresenterSpy()
         mockRepositoryManager = MockRepositoryManager()
         mockRepository = mockRepositoryManager.getMockRepository()
@@ -28,6 +29,7 @@ final class DetailInteractorTests: XCTestCase {
         mockRepositoryManager = nil
         mockRepository = nil
         sut = nil
+        super.tearDown()
     }
     
     func testOnViewLoaded() {

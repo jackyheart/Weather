@@ -16,6 +16,7 @@ final class SearchInteractorTests: XCTestCase {
     var mockRepository: WeatherRepository!
     
     override func setUp() {
+        super.setUp()
         presenterSpy = SearchPresenterSpy()
         routerSpy = SearchRouterSpy()
         mockRepositoryManager = MockRepositoryManager()
@@ -32,6 +33,7 @@ final class SearchInteractorTests: XCTestCase {
         mockRepositoryManager = nil
         mockRepository = nil
         sut = nil
+        super.tearDown()
     }
     
     func storeMockItems() {

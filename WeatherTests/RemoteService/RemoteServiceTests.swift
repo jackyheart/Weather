@@ -13,6 +13,7 @@ final class RemoteServiceTests: XCTestCase {
     var mockHTTPClient: MockHTTPClient!
     
     override func setUp() {
+        super.setUp()
         sut = RemoteService()
         mockHTTPClient = MockHTTPClient()
         sut.httpClient = mockHTTPClient
@@ -21,6 +22,7 @@ final class RemoteServiceTests: XCTestCase {
     override func tearDown() {
         mockHTTPClient = nil
         sut = nil
+        super.tearDown()
     }
     
     func testFetchData() {

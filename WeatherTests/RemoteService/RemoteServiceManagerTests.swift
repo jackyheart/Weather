@@ -13,13 +13,16 @@ final class RemoteServiceManagerTests: XCTestCase {
     var serviceSpy: RemoteServiceSpy!
     
     override func setUp() {
+        super.setUp()
         serviceSpy = RemoteServiceSpy()
         sut = RemoteServiceManager()
         sut.service = serviceSpy
     }
     
     override func tearDown() {
+        serviceSpy = nil
         sut = nil
+        super.tearDown()
     }
     
     func testFetchCityList() {

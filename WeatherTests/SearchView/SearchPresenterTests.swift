@@ -14,6 +14,7 @@ final class SearchPresenterTests: XCTestCase {
     var resultItems: [ResultItem] = []
     
     override func setUp() {
+        super.setUp()
         viewSpy = SearchViewSpy()
         sut = SearchPresenter()
         sut.view = viewSpy
@@ -24,6 +25,7 @@ final class SearchPresenterTests: XCTestCase {
         resultItems.removeAll()
         viewSpy = nil
         sut = nil
+        super.tearDown()
     }
     
     func prepareData() {
