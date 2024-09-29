@@ -11,20 +11,24 @@ import XCTest
 final class SearchInteractorTests: XCTestCase {
     var sut: SearchInteractor!
     var presenterSpy: SearchPresenterSpy!
+    var routerSpy: SearchRouterSpy!
     var mockRepositoryManager: MockRepositoryManager!
     var mockRepository: WeatherRepository!
     
     override func setUp() {
         presenterSpy = SearchPresenterSpy()
+        routerSpy = SearchRouterSpy()
         mockRepositoryManager = MockRepositoryManager()
         mockRepository = mockRepositoryManager.getMockRepository()
         sut = SearchInteractor()
         sut.repository = mockRepository
         sut.presenter = presenterSpy
+        sut.router = routerSpy
     }
     
     override func tearDown() {
         presenterSpy = nil
+        routerSpy = nil
         mockRepositoryManager = nil
         mockRepository = nil
         sut = nil
@@ -85,22 +89,33 @@ final class SearchInteractorTests: XCTestCase {
     func testDidSelectItem() {
         sut.didPressSearch(withSearchString: "someSearchString")
         
+        routerSpy.passedDataItem = nil
         sut.didSelectItem(onIndex: 0)
         var viewedItems = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
         XCTAssertEqual(viewedItems.count, 1)
+        XCTAssertEqual(routerSpy.passedDataItem?.areaName.first?.value, "London")
+        XCTAssertEqual(routerSpy.passedDataItem?.country.first?.value, "United Kingdom")
         
+        routerSpy.passedDataItem = nil
         sut.didSelectItem(onIndex: 1)
         viewedItems = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
         XCTAssertEqual(viewedItems.count, 2)
+        XCTAssertEqual(routerSpy.passedDataItem?.areaName.first?.value, "London")
+        XCTAssertEqual(routerSpy.passedDataItem?.country.first?.value, "Canada")
         
+        routerSpy.passedDataItem = nil
         sut.didSelectItem(onIndex: 2)
         viewedItems = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
         XCTAssertEqual(viewedItems.count, 3)
+        XCTAssertEqual(routerSpy.passedDataItem?.areaName.first?.value, "Londonderry")
+        XCTAssertEqual(routerSpy.passedDataItem?.country.first?.value, "United States of America")
         
         //test out-of-bounds
+        routerSpy.passedDataItem = nil
         sut.didSelectItem(onIndex: 100)
         viewedItems = mockRepository.retrieveViewedCities(limit: 10, ordering: .descending)
         XCTAssertEqual(viewedItems.count, 3)
+        XCTAssertNil(routerSpy.passedDataItem)
     }
 }
 
@@ -119,5 +134,13 @@ final class SearchPresenterSpy: SearchPresenterDelegate {
     
     func presentError(error: Error?) {
         errorResult = error
+    }
+}
+
+final class SearchRouterSpy: SearchRouterDelegate {
+    var passedDataItem: ResultItem?
+    
+    func navigateToDetailScreen(withDataItem dataItem: ResultItem) {
+        passedDataItem = dataItem
     }
 }
