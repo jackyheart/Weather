@@ -28,7 +28,7 @@ class RemoteService: RemoteServiceDelegate {
             do {
                 let response = try JSONDecoder().decode(T.self, from: data)
                 success(response)
-            } catch let error {
+            } catch {
                 failure(APIError.dataError)
             }
         })
