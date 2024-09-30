@@ -6,6 +6,9 @@ https://github.com/jackyheart/WeatherVIPER
 
 **App Architecture**
 
+Clean Swift
+https://clean-swift.com/clean-swift-ios-architecture/
+
 ![Alt text](documentation/app_architecture.png?raw=true "App Architecture")
 
 1. View interacts with Interactor on view's lifecycle callbacks,<br />
