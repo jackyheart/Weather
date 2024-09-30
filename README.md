@@ -6,7 +6,7 @@ https://github.com/jackyheart/WeatherVIPER
 
 **App Architecture**
 
-Clean Swift
+Clean Swift<br />
 https://clean-swift.com/clean-swift-ios-architecture/
 
 ![Alt text](documentation/app_architecture.png?raw=true "App Architecture")
