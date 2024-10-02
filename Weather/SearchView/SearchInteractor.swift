@@ -6,6 +6,7 @@
 //
 
 protocol SearchInteractorDelegate {
+    func onViewWillAppear()
     func onSearchTextEntered(withSearchString searchString: String)
     func didPressSearch(withSearchString searchString: String)
     func didSelectItem(onIndex index: Int)
@@ -24,14 +25,16 @@ final class SearchInteractor: SearchInteractorDelegate {
     private func fetchViewedCities() -> [ViewedItem] {
         let lastViewedCities = repository?.retrieveViewedCities(limit: kLastViewedLimit,
                                                                 ordering: itemOrdering) ?? []
-        self.viewedDataList = lastViewedCities
-        self.dataList = lastViewedCities.map { $0.data }
         return lastViewedCities
+    }
+    
+    func onViewWillAppear() {
+        viewedDataList = fetchViewedCities()
+        self.dataList = viewedDataList.map { $0.data }
     }
     
     func onSearchTextEntered(withSearchString searchString: String) {
         var filteredViewedDataList: [ViewedItem] = []
-        viewedDataList = fetchViewedCities()
         if searchString.isEmpty {
             filteredViewedDataList = viewedDataList
         } else if searchString.count >= kLengthStartSearch {
