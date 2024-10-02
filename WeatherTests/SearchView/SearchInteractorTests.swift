@@ -46,6 +46,7 @@ final class SearchInteractorTests: XCTestCase {
     
     func testOnSearchTextEntered() {
         storeMockItems()
+        sut.onViewWillAppear()
         
         sut.onSearchTextEntered(withSearchString: "")
         XCTAssertEqual(presenterSpy.lastViewedResults.count, 3)
